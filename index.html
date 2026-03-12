@@ -99,13 +99,20 @@
     .tag.blue{background:var(--blue-bg);color:var(--blue);}
     .count-label{font-size:0.76rem;color:var(--muted);margin-bottom:0.5rem;}
 
-    /* Detail panel */
-    .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:100;}
-    .overlay.open{display:flex;justify-content:flex-end;}
-    .panel{width:min(48rem,92vw);background:white;height:100vh;overflow-y:auto;padding:1.5rem 2rem;box-shadow:-4px 0 24px rgba(0,0,0,0.1);}
-    .panel .close{float:right;font-size:1.5rem;cursor:pointer;color:var(--muted);border:none;background:none;}
-    .panel h2{margin-top:1.25rem;font-size:0.95rem;}
-    .panel table{font-size:0.78rem;}
+    /* Detail page */
+    .detail-page{display:none;}
+    .detail-page.open{display:block;}
+    .detail-page .back-btn{font-size:0.82rem;color:var(--accent);cursor:pointer;border:none;background:none;padding:0;margin-bottom:1rem;display:inline-flex;align-items:center;gap:0.3rem;}
+    .detail-page .back-btn:hover{text-decoration:underline;}
+    .detail-page h2{margin-top:1.5rem;font-size:1rem;}
+    .detail-page table{font-size:0.8rem;}
+    .detail-header{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;}
+    .detail-header h1{font-size:1.8rem;}
+    .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1rem;}
+    @media(max-width:768px){.detail-grid{grid-template-columns:1fr;}}
+    .detail-section{border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;}
+    .detail-section h3{font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.6rem;}
+    .detail-full{grid-column:1/-1;}
     .req-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(2.8rem,1fr));gap:0.25rem;margin:0.5rem 0;}
     .req-cell{text-align:center;font-size:0.68rem;font-weight:600;padding:0.3rem 0.15rem;border-radius:4px;cursor:help;position:relative;}
     .req-cell.met{background:var(--green-bg);color:var(--green);}
@@ -241,12 +248,10 @@
     <div id="meth-features"></div>
   </div>
 
-  <!-- Detail panel -->
-  <div class="overlay" id="overlay">
-    <div class="panel" id="panel"></div>
-  </div>
+  <!-- Detail page (replaces main view) -->
+  <div class="detail-page" id="detail-page"></div>
 
-  <footer>
+  <footer id="main-footer">
     <p>&copy; 2026 <a href="https://attestto.com">Attestto</a> &middot; <a href="mailto:standards@attestto.com">standards@attestto.com</a></p>
     <p>Published under the <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">W3C Software and Document License</a>.</p>
   </footer>
@@ -475,10 +480,15 @@ function bindSort(){document.querySelectorAll('#main-table th[data-col]').forEac
   th.querySelector('.arrow').textContent=sortDir===-1?' ▼':' ▲'; applyFilters()
 })})}
 
-// ─── Detail panel ────────────────────────────────────────────────────────────
+// ─── Detail page ─────────────────────────────────────────────────────────────
 function openDetail(m){
-  const p=document.getElementById('panel'), o=document.getElementById('overlay')
+  const dp=document.getElementById('detail-page')
   const rGloss=GLOSS.requirements
+
+  // Hide main content, show detail
+  document.querySelectorAll('.tab-bar,.tab-panel,#main-footer').forEach(el=>el.style.display='none')
+  dp.classList.add('open')
+  window.scrollTo(0,0)
 
   // Abstract
   const abstractHtml = m.abstract
@@ -547,23 +557,24 @@ function openDetail(m){
 
   // Cross-method compatibility
   const compatHtml = m.compat
-    ? `<div class="card" style="background:var(--blue-bg);border-color:var(--blue)">
-        <h3 style="color:var(--blue)">Compatible With</h3>
-        <p style="margin-bottom:0.4rem">${m.compat.methods.map(cm=>`<span class="tag blue" style="cursor:pointer" onclick="event.stopPropagation();const x=allMethods.find(z=>z.method==='${cm}');if(x)openDetail(x)">${cm}</span>`).join(' ')}</p>
-        <p class="desc">Via: ${m.compat.via}</p>
-       </div>`
-    : `<p style="font-size:0.8rem;color:var(--muted);font-style:italic">No cross-method compatibility data. Interoperability depends on shared standards (DIDComm v2, SD-JWT, Universal Resolver).</p>`
+    ? `<p style="margin-bottom:0.4rem">${m.compat.methods.map(cm=>`<span class="tag blue" style="cursor:pointer;font-size:0.75rem;padding:0.2em 0.5em" onclick="event.stopPropagation();const x=allMethods.find(z=>z.method==='${cm}');if(x)openDetail(x)">${cm}</span>`).join(' ')}</p>
+       <p style="font-size:0.78rem;color:var(--muted);margin-top:0.3rem"><strong>Via:</strong> ${m.compat.via}</p>`
+    : `<p style="font-size:0.8rem;color:var(--muted);font-style:italic">No cross-method compatibility data yet. Interoperability depends on shared standards (DIDComm v2, SD-JWT, Universal Resolver).</p>`
 
-  p.innerHTML=`
-    <button class="close" onclick="closeDetail()">&times;</button>
-    <h1 style="font-size:1.4rem"><code>${m.method}</code></h1>
-    <p style="color:var(--muted);font-size:0.82rem;margin-top:0.15rem;">
-      ${m.blockchain?m.blockchain+' &middot; ':''}${m.registryType} &middot;
-      ${m.active?'<span class="tag green">Active</span>':m.archived?'<span class="tag red">Archived</span>':'<span class="tag">Inactive</span>'}
-      ${m.stars?' &middot; ★ '+m.stars:''}
-      ${m.specLength?' &middot; Spec: '+(m.specLength/1000).toFixed(0)+'K chars':''}
-    </p>
-    <p style="margin-top:0.4rem;font-size:0.8rem;">
+  dp.innerHTML=`
+    <button class="back-btn" onclick="closeDetail()">← Back to Explorer</button>
+
+    <div class="detail-header">
+      <h1><code>${m.method}</code></h1>
+      <span style="color:var(--muted);font-size:0.88rem;">
+        ${m.blockchain?m.blockchain+' &middot; ':''}${m.registryType} &middot;
+        ${m.active?'<span class="tag green">Active</span>':m.archived?'<span class="tag red">Archived</span>':'<span class="tag">Inactive</span>'}
+        ${m.stars?' &middot; ★ '+m.stars:''}
+        ${m.specLength?' &middot; Spec: '+(m.specLength/1000).toFixed(0)+'K chars':''}
+      </span>
+    </div>
+
+    <p style="margin-top:0.5rem;font-size:0.85rem;">
       ${m.specUrl?`<a href="${m.specUrl}" target="_blank">Specification ↗</a>`:''}
       ${m.githubRepo?` &middot; <a href="https://github.com/${m.githubRepo}" target="_blank">GitHub ↗</a>`:''}
       ${m.lastCommit?` &middot; Last commit: ${m.lastCommit.split('T')[0]}`:''}
@@ -571,42 +582,60 @@ function openDetail(m){
 
     ${abstractHtml}
 
-    <h2>Industry Verticals</h2>
-    <p>${indRows}</p>
+    <!-- Row 1: Industry + Use Cases + Benefits side by side -->
+    <div class="detail-grid">
+      <div class="detail-section">
+        <h3>Industry Verticals</h3>
+        <p>${indRows}</p>
+      </div>
+      <div class="detail-section">
+        <h3>Cross-Method Compatibility</h3>
+        ${compatHtml}
+      </div>
+      <div class="detail-section">
+        <h3>Use Case Scores</h3>
+        <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">Score = reqs met / reqs needed. <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#focal" target="_blank">W3C source ↗</a></p>
+        <table>${ucRows}</table>
+      </div>
+      <div class="detail-section">
+        <h3>Benefit Alignment</h3>
+        <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">Hover names for details.</p>
+        <table>${benefitRows}</table>
+      </div>
+      <div class="detail-section">
+        <h3>Crypto Support</h3>
+        ${cryptoTags}
+      </div>
+      <div class="detail-section">
+        <h3>Features &amp; Capabilities</h3>
+        <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">Why each feature matters for developers.</p>
+        ${featRows}
+      </div>
+    </div>
 
-    <h2>Use Case Scores</h2>
-    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">Score = requirements met / requirements needed for that use case. <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#focal" target="_blank">W3C source ↗</a></p>
-    <table>${ucRows}</table>
-
-    <h2>Benefit Alignment</h2>
-    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">How well this method serves each benefit category. Hover names for details.</p>
-    <table>${benefitRows}</table>
-
-    <h2>Cross-Method Compatibility</h2>
-    ${compatHtml}
-
-    <h2>W3C Requirements &amp; Tech Stack (${m.reqTotal}/22 — ${m.reqPct}%)</h2>
-    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">
-      For each requirement: status, what technology satisfies it, and link to <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#requirements" target="_blank">W3C source</a>.
-    </p>
-    <div class="req-grid">${reqGrid}</div>
-    <table style="margin-top:0.5rem">
-      <thead><tr><th style="width:2.5rem">Req</th><th style="width:5rem">Name</th><th>Tech / Approach</th><th style="width:2rem">W3C</th></tr></thead>
-      <tbody>${reqDetailRows}</tbody>
-    </table>
-
-    <h2>Crypto Support</h2>
-    ${cryptoTags}
-
-    <h2>Features &amp; Capabilities</h2>
-    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">What this method supports and why each feature matters for developers.</p>
-    ${featRows}
+    <!-- Full-width: Requirements + Tech Stack -->
+    <div class="detail-section detail-full" style="margin-top:1.25rem;">
+      <h3>W3C Requirements &amp; Tech Stack (${m.reqTotal}/22 — ${m.reqPct}%)</h3>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">
+        For each requirement: status, what technology satisfies it, and link to <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#requirements" target="_blank">W3C source</a>. Hover cells for descriptions.
+      </p>
+      <div class="req-grid">${reqGrid}</div>
+      <table style="margin-top:0.75rem">
+        <thead><tr><th style="width:2.5rem">Req</th><th style="width:6rem">Name</th><th>Tech / Approach</th><th style="width:2.5rem">W3C</th></tr></thead>
+        <tbody>${reqDetailRows}</tbody>
+      </table>
+    </div>
   `
-  o.classList.add('open')
 }
-function closeDetail(){document.getElementById('overlay').classList.remove('open')}
-document.getElementById('overlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeDetail()})
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail()})
+function closeDetail(){
+  document.getElementById('detail-page').classList.remove('open')
+  document.getElementById('detail-page').innerHTML=''
+  document.querySelectorAll('.tab-bar,.tab-panel.active,#main-footer').forEach(el=>el.style.display='')
+  // Re-show tab bar
+  document.querySelector('.tab-bar').style.display='flex'
+  window.scrollTo(0,0)
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('detail-page').classList.contains('open'))closeDetail()})
 
 // ─── Ecosystem tab ───────────────────────────────────────────────────────────
 function renderEcosystem(){
