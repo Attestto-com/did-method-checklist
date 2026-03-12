@@ -117,6 +117,11 @@
     .scoring-table{width:100%;font-size:0.8rem;margin:0.75rem 0;}
     .scoring-table th{background:var(--accent-light);}
 
+    .page-btn{font-size:0.75rem;padding:0.3rem 0.65rem;border:1px solid var(--border);border-radius:5px;background:white;cursor:pointer;color:var(--fg);transition:all 0.15s;}
+    .page-btn:hover{border-color:var(--accent);color:var(--accent);}
+    .page-btn.active{background:var(--accent);color:white;border-color:var(--accent);}
+    .page-btn:disabled{opacity:0.4;cursor:default;}
+    .page-info{font-size:0.72rem;color:var(--muted);padding:0 0.3rem;}
     footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);color:var(--muted);font-size:0.72rem;}
   </style>
 </head>
@@ -184,7 +189,10 @@
     </div>
 
     <!-- Table -->
-    <div class="count-label" id="count-label"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem">
+      <div class="count-label" id="count-label"></div>
+      <div id="pagination" style="display:flex;gap:0.3rem;align-items:center"></div>
+    </div>
     <div class="table-wrap">
       <table id="main-table">
         <thead><tr>
@@ -247,7 +255,10 @@
 <script>
 // ─── Globals ─────────────────────────────────────────────────────────────────
 let DATA, GLOSS, ECO, allMethods=[], sortCol='reqPct', sortDir=-1
+const PAGE_SIZE = 50
+let currentPage = 0
 const activeFilters = { uc:new Set(), ind:new Set(), req:new Set(), feat:new Set(), crypto:new Set() }
+let filteredMethods = []
 
 const UC_MAP = {enterprise:'Enterprise Identifiers',education:'Life-long Credentials',healthcare:'Healthcare / Prescriptions',legal:'Legal / Digital Executor',credentials:'Portable Credentials',communication:'Secure Communication'}
 const IND_MAP = {'cross-border-finance':'Finance','banking-kyc':'KYC/AML','defi-identity':'DeFi','supply-chain':'Supply Chain','government-eid':'Gov/eID','academic-credentials':'Education','patient-health':'Healthcare','messaging':'Messaging','social-media':'Social','iot-devices':'IoT','insurance':'Insurance','immigration':'Immigration','workforce-hr':'HR','real-estate':'Real Estate','gaming-metaverse':'Gaming','energy-carbon':'Energy','pharma-provenance':'Pharma'}
@@ -381,10 +392,31 @@ function ftags(m){
 function itags(m){return m.industries.map(i=>`<span class="tag">${IND_MAP[i]||i}</span>`).join('')}
 
 function renderTable(methods){
+  filteredMethods = methods
+  const totalPages = Math.ceil(methods.length / PAGE_SIZE)
+  if (currentPage >= totalPages) currentPage = Math.max(0, totalPages - 1)
+  const start = currentPage * PAGE_SIZE
+  const page = methods.slice(start, start + PAGE_SIZE)
+
+  document.getElementById('count-label').textContent = `Showing ${start+1}–${start+page.length} of ${methods.length} methods (${allMethods.length} total)`
+
+  // Pagination
+  const pag = document.getElementById('pagination')
+  if (totalPages <= 1) { pag.innerHTML = '' }
+  else {
+    let html = `<button class="page-btn" onclick="goPage(0)" ${currentPage===0?'disabled':''}>«</button>`
+    html += `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===0?'disabled':''}>‹</button>`
+    for (let i = 0; i < totalPages; i++) {
+      html += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i+1}</button>`
+    }
+    html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage>=totalPages-1?'disabled':''}>›</button>`
+    html += `<button class="page-btn" onclick="goPage(${totalPages-1})" ${currentPage>=totalPages-1?'disabled':''}>»</button>`
+    pag.innerHTML = html
+  }
+
   const tb=document.getElementById('tbody')
-  document.getElementById('count-label').textContent=`Showing ${methods.length} of ${allMethods.length} methods`
-  tb.innerHTML=methods.map(m=>`<tr data-method="${m.method}" style="cursor:pointer">
-    <td class="mname"><code>${m.method}</code></td>
+  tb.innerHTML=page.map((m,idx)=>`<tr data-method="${m.method}" style="cursor:pointer">
+    <td class="mname"><span style="color:var(--muted);font-size:0.68rem;margin-right:0.3rem">${start+idx+1}</span><code>${m.method}</code></td>
     <td>${pb(m.reqPct,m.reqPct*0.5)}</td>
     <td>${pb(m.ucScores.enterprise,m.ucScores.enterprise*0.35)}</td>
     <td>${pb(m.ucScores.healthcare,m.ucScores.healthcare*0.35)}</td>
@@ -399,9 +431,11 @@ function renderTable(methods){
     const m=allMethods.find(x=>x.method===r.dataset.method);if(m)openDetail(m)
   }))
 }
+function goPage(n){ currentPage=n; renderTable(filteredMethods) }
 
 // ─── Filters ─────────────────────────────────────────────────────────────────
 function applyFilters(){
+  currentPage = 0
   const search=document.getElementById('f-search').value.toLowerCase()
   const registry=document.getElementById('f-registry').value
   const chain=document.getElementById('f-chain').value
@@ -445,78 +479,128 @@ function bindSort(){document.querySelectorAll('#main-table th[data-col]').forEac
 function openDetail(m){
   const p=document.getElementById('panel'), o=document.getElementById('overlay')
   const rGloss=GLOSS.requirements
+
+  // Abstract
+  const abstractHtml = m.abstract
+    ? `<div class="method-box" style="margin-top:0.75rem">${m.abstract}</div>`
+    : `<p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;font-style:italic">No abstract available. <a href="./checklist.md">Submit a checklist</a> to add one.</p>`
+
+  // Req grid with tooltips
   const reqGrid=Array.from({length:22},(_,i)=>{
     const id=`R${i+1}`,met=m.reqMet.includes(id),g=rGloss[id]
-    return `<div class="req-cell ${met?'met':'not-met'}" data-tooltip="${g.full}: ${g.description.slice(0,100)}...">${id}</div>`
+    const rt=m.reqTechs?.[id]
+    const techStr=rt&&rt.techs.length?` | Tech: ${rt.techs.join(', ')}`:''
+    return `<div class="req-cell ${met?'met':'not-met'}" data-tooltip="${g.full}${techStr}">${id}</div>`
   }).join('')
 
-  const cryptoTags=Object.entries(m.crypto).filter(([_,v])=>v).map(([k])=>{
-    const g=GLOSS.crypto[k];return `<span class="tag blue" title="${g?g.description:k}">${g?g.name:k}</span>`
-  }).join(' ')||'<span style="color:var(--muted)">Unknown</span>'
+  // Requirements with tech approach table
+  const reqDetailRows=Array.from({length:22},(_,i)=>{
+    const id=`R${i+1}`,met=m.reqMet.includes(id),g=rGloss[id],rt=m.reqTechs?.[id]
+    const techTags=rt&&rt.techs.length ? rt.techs.map(t=>`<span class="tag ${met?'blue':''}">${t}</span>`).join(' ') : `<span style="color:var(--muted);font-size:0.72rem">${met?rt?.approach||'—':'Not covered'}</span>`
+    return `<tr>
+      <td><span class="tag ${met?'green':'red'}">${id}</span></td>
+      <td style="font-size:0.75rem">${g?g.short:id}</td>
+      <td>${techTags}</td>
+      <td style="font-size:0.68rem;color:var(--muted)">${g?`<a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#req${g.w3cSection.replace('.','')}" target="_blank" style="color:var(--muted)">§${g.w3cSection}</a>`:''}</td>
+    </tr>`
+  }).join('')
 
-  const featTags=Object.entries(m.feat).filter(([k,v])=>v&&FEAT_MAP[k]).map(([k])=>{
-    const g=GLOSS.features[k];return `<span class="tag green" title="${g?g.whyItMatters:''}">${FEAT_MAP[k]}</span>`
-  }).join(' ')||'<span style="color:var(--muted)">None documented</span>'
-
-  const indTags=m.industries.length?m.industries.map(i=>`<span class="tag">${IND_MAP[i]||i}</span>`).join(' '):'<span style="color:var(--muted)">None inferred</span>'
-
+  // Use case scores with needed requirements
   const ucRows=Object.entries(m.ucScores).map(([k,v])=>{
-    const reqsNeeded=GLOSS.requirements?Object.entries(GLOSS.requirements).filter(([_,r])=>r.useCases&&r.useCases.some(u=>u.toLowerCase().includes(k.slice(0,4)))).map(([id])=>id):[]
-    return `<tr><td style="min-width:7rem">${UC_MAP[k]||k}</td><td>${pb(v,v*0.55)}</td></tr>`
+    return `<tr>
+      <td style="min-width:7.5rem;font-weight:500">${UC_MAP[k]||k}</td>
+      <td style="min-width:10rem">${pb(v,v*0.55)}</td>
+    </tr>`
   }).join('')
 
+  // Benefits with descriptions
   const benefitRows=Object.entries(m.benefits||{}).map(([k,v])=>{
-    const g=GLOSS.benefits[k];return `<tr><td style="min-width:8rem" title="${g?g.description:''}">${g?g.name:k}</td><td>${pb(v,v*0.55)}</td></tr>`
+    const g=GLOSS.benefits[k]
+    return `<tr>
+      <td style="min-width:8.5rem;cursor:help" title="${g?g.description:''}">${g?g.name:k}</td>
+      <td>${pb(v,v*0.55)}</td>
+    </tr>`
   }).join('')
 
-  // Requirements detail table
-  const reqDetail=m.reqMet.map(id=>{
-    const g=rGloss[id];return `<tr><td><span class="tag green">${id}</span></td><td>${g?g.full:id}</td><td style="font-size:0.72rem;color:var(--muted)">${g?g.description.slice(0,80)+'...':''}</td></tr>`
-  }).join('')
-  const reqMissing=Array.from({length:22},(_,i)=>`R${i+1}`).filter(id=>!m.reqMet.includes(id)).map(id=>{
-    const g=rGloss[id];return `<tr><td><span class="tag red">${id}</span></td><td>${g?g.full:id}</td><td style="font-size:0.72rem;color:var(--muted)">${g?g.description.slice(0,80)+'...':''}</td></tr>`
-  }).join('')
+  // Crypto with descriptions
+  const cryptoTags=Object.entries(m.crypto).filter(([_,v])=>v).map(([k])=>{
+    const g=GLOSS.crypto[k]
+    return `<div style="display:flex;align-items:baseline;gap:0.5rem;margin-bottom:0.3rem">
+      <span class="tag blue" style="min-width:5rem;text-align:center">${g?g.name:k}</span>
+      <span style="font-size:0.72rem;color:var(--muted)">${g?g.description.split('.')[0]:''}</span>
+    </div>`
+  }).join('')||'<span style="color:var(--muted);font-size:0.8rem">No crypto info available</span>'
+
+  // Features with "why it matters"
+  const featRows=Object.entries(m.feat).filter(([k,v])=>v&&FEAT_MAP[k]).map(([k])=>{
+    const g=GLOSS.features[k]
+    return `<div style="display:flex;align-items:baseline;gap:0.5rem;margin-bottom:0.35rem">
+      <span class="tag green" style="min-width:6rem;text-align:center">${FEAT_MAP[k]}</span>
+      <span style="font-size:0.72rem;color:var(--muted)">${g?g.whyItMatters.split('.')[0]:''}</span>
+    </div>`
+  }).join('')||'<span style="color:var(--muted);font-size:0.8rem">No features documented</span>'
+
+  // Industries with context
+  const indRows=m.industries.length?m.industries.map(i=>{
+    return `<span class="tag" style="margin-bottom:0.2rem">${IND_MAP[i]||i}</span>`
+  }).join(' '):'<span style="color:var(--muted);font-size:0.8rem">None inferred. <a href="./checklist.md">Submit a checklist</a> to specify.</span>'
+
+  // Cross-method compatibility
+  const compatHtml = m.compat
+    ? `<div class="card" style="background:var(--blue-bg);border-color:var(--blue)">
+        <h3 style="color:var(--blue)">Compatible With</h3>
+        <p style="margin-bottom:0.4rem">${m.compat.methods.map(cm=>`<span class="tag blue" style="cursor:pointer" onclick="event.stopPropagation();const x=allMethods.find(z=>z.method==='${cm}');if(x)openDetail(x)">${cm}</span>`).join(' ')}</p>
+        <p class="desc">Via: ${m.compat.via}</p>
+       </div>`
+    : `<p style="font-size:0.8rem;color:var(--muted);font-style:italic">No cross-method compatibility data. Interoperability depends on shared standards (DIDComm v2, SD-JWT, Universal Resolver).</p>`
 
   p.innerHTML=`
     <button class="close" onclick="closeDetail()">&times;</button>
-    <h1><code>${m.method}</code></h1>
-    <p style="color:var(--muted);font-size:0.82rem;margin-top:0.2rem;">
+    <h1 style="font-size:1.4rem"><code>${m.method}</code></h1>
+    <p style="color:var(--muted);font-size:0.82rem;margin-top:0.15rem;">
       ${m.blockchain?m.blockchain+' &middot; ':''}${m.registryType} &middot;
       ${m.active?'<span class="tag green">Active</span>':m.archived?'<span class="tag red">Archived</span>':'<span class="tag">Inactive</span>'}
       ${m.stars?' &middot; ★ '+m.stars:''}
+      ${m.specLength?' &middot; Spec: '+(m.specLength/1000).toFixed(0)+'K chars':''}
     </p>
-    <p style="margin-top:0.5rem;font-size:0.8rem;">
+    <p style="margin-top:0.4rem;font-size:0.8rem;">
       ${m.specUrl?`<a href="${m.specUrl}" target="_blank">Specification ↗</a>`:''}
       ${m.githubRepo?` &middot; <a href="https://github.com/${m.githubRepo}" target="_blank">GitHub ↗</a>`:''}
       ${m.lastCommit?` &middot; Last commit: ${m.lastCommit.split('T')[0]}`:''}
     </p>
 
-    <h2>W3C Requirements (${m.reqTotal}/22 — ${m.reqPct}%)</h2>
-    <p style="font-size:0.75rem;color:var(--muted);margin-bottom:0.3rem;">
-      Hover for description. Source: <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#requirements" target="_blank">W3C DID Use Cases §3</a>
-    </p>
-    <div class="req-grid">${reqGrid}</div>
+    ${abstractHtml}
 
-    ${m.reqMet.length?`<h3 style="margin-top:0.75rem;color:var(--green)">Satisfied (${m.reqMet.length})</h3><table>${reqDetail}</table>`:''}
-    ${reqMissing?`<h3 style="margin-top:0.75rem;color:var(--red)">Not Satisfied (${22-m.reqMet.length})</h3><table>${reqMissing}</table>`:''}
+    <h2>Industry Verticals</h2>
+    <p>${indRows}</p>
 
     <h2>Use Case Scores</h2>
-    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">Score = requirements met / requirements needed for that use case. See <a href="#" onclick="document.querySelector('[data-tab=methodology]').click();closeDetail();return false">Methodology</a>.</p>
+    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">Score = requirements met / requirements needed for that use case. <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#focal" target="_blank">W3C source ↗</a></p>
     <table>${ucRows}</table>
 
     <h2>Benefit Alignment</h2>
-    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">How well this method serves each benefit category. Hover for details.</p>
+    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">How well this method serves each benefit category. Hover names for details.</p>
     <table>${benefitRows}</table>
 
+    <h2>Cross-Method Compatibility</h2>
+    ${compatHtml}
+
+    <h2>W3C Requirements &amp; Tech Stack (${m.reqTotal}/22 — ${m.reqPct}%)</h2>
+    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">
+      For each requirement: status, what technology satisfies it, and link to <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#requirements" target="_blank">W3C source</a>.
+    </p>
+    <div class="req-grid">${reqGrid}</div>
+    <table style="margin-top:0.5rem">
+      <thead><tr><th style="width:2.5rem">Req</th><th style="width:5rem">Name</th><th>Tech / Approach</th><th style="width:2rem">W3C</th></tr></thead>
+      <tbody>${reqDetailRows}</tbody>
+    </table>
+
     <h2>Crypto Support</h2>
-    <p>${cryptoTags}</p>
+    ${cryptoTags}
 
     <h2>Features &amp; Capabilities</h2>
-    <p>${featTags}</p>
-
-    <h2>Industry Verticals (Inferred)</h2>
-    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem;">Inferred from use case scores + features. Authors can override via <a href="./checklist.md">checklist submission</a>.</p>
-    <p>${indTags}</p>
+    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">What this method supports and why each feature matters for developers.</p>
+    ${featRows}
   `
   o.classList.add('open')
 }
