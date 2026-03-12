@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "categories": {
+    "core": {
+      "label": "Core DID Standards",
+      "standards": [
+        { "id": "W3C-DID-CORE", "name": "W3C DID Core v1.1", "url": "https://www.w3.org/TR/did-core/", "required": true },
+        { "id": "W3C-DID-RES", "name": "DID Resolution v0.3", "url": "https://w3c.github.io/did-resolution/", "required": true },
+        { "id": "W3C-DID-REG", "name": "W3C DID Spec Registries", "url": "https://www.w3.org/TR/did-spec-registries/" },
+        { "id": "W3C-JSONLD", "name": "W3C JSON-LD 1.1", "url": "https://www.w3.org/TR/json-ld11/" }
+      ]
+    },
+    "credentials": {
+      "label": "Credential Formats",
+      "standards": [
+        { "id": "W3C-VC", "name": "W3C Verifiable Credentials Data Model v2.0", "url": "https://www.w3.org/TR/vc-data-model-2.0/" },
+        { "id": "SD-JWT", "name": "SD-JWT (IETF draft-ietf-oauth-sd-jwt)", "url": "https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/" },
+        { "id": "JWT", "name": "JSON Web Token (RFC 7519)", "url": "https://www.rfc-editor.org/rfc/rfc7519" },
+        { "id": "CBOR-LD", "name": "CBOR-LD", "url": "https://digitalbazaar.github.io/cborld-spec/" },
+        { "id": "AnonCreds", "name": "AnonCreds v1.0", "url": "https://hyperledger.github.io/anoncreds-spec/" }
+      ]
+    },
+    "presentation": {
+      "label": "Presentation & Exchange",
+      "standards": [
+        { "id": "DIDComm-V2", "name": "DIDComm Messaging v2", "url": "https://identity.foundation/didcomm-messaging/spec/" },
+        { "id": "PE", "name": "Presentation Exchange v2", "url": "https://identity.foundation/presentation-exchange/" },
+        { "id": "OID4VP", "name": "OpenID for Verifiable Presentations", "url": "https://openid.net/specs/openid-4-verifiable-presentations-1_0.html" },
+        { "id": "OID4VCI", "name": "OpenID for Verifiable Credential Issuance", "url": "https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html" },
+        { "id": "SIOP-V2", "name": "Self-Issued OpenID Provider v2", "url": "https://openid.net/specs/openid-connect-self-issued-v2-1_0.html" },
+        { "id": "WACI-DIDCOMM", "name": "WACI-DIDComm", "url": "https://identity.foundation/waci-didcomm/" },
+        { "id": "CHAPI", "name": "Credential Handler API", "url": "https://w3c-ccg.github.io/credential-handler-api/" },
+        { "id": "W3C-CRED-API", "name": "W3C Credential Management API", "url": "https://www.w3.org/TR/credential-management-1/" }
+      ]
+    },
+    "status": {
+      "label": "Status & Revocation",
+      "standards": [
+        { "id": "W3C-BSL", "name": "W3C Bitstring Status List v1.0", "url": "https://www.w3.org/TR/vc-bitstring-status-list/" },
+        { "id": "TOKEN-SL", "name": "Token Status List (IETF draft)", "url": "https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/" },
+        { "id": "REV-LIST-2020", "name": "RevocationList2020", "url": "https://w3c-ccg.github.io/vc-status-rl-2020/" }
+      ]
+    },
+    "crypto": {
+      "label": "Cryptographic Algorithms",
+      "standards": [
+        { "id": "ED25519", "name": "Ed25519 (RFC 8032)", "url": "https://www.rfc-editor.org/rfc/rfc8032" },
+        { "id": "SECP256K1", "name": "secp256k1 / ECDSA", "url": "https://www.secg.org/sec2-v2.pdf" },
+        { "id": "P256", "name": "P-256 / NIST Curve (RFC 5480)", "url": "https://www.rfc-editor.org/rfc/rfc5480" },
+        { "id": "BLS", "name": "BLS12-381", "url": "https://datatracker.ietf.org/doc/draft-irtf-cfrg-bls-signature/" },
+        { "id": "ML-DSA", "name": "ML-DSA (FIPS 204, Dilithium)", "url": "https://csrc.nist.gov/pubs/fips/204/final" },
+        { "id": "ML-KEM", "name": "ML-KEM (FIPS 203, Kyber)", "url": "https://csrc.nist.gov/pubs/fips/203/final" },
+        { "id": "SLH-DSA", "name": "SLH-DSA (FIPS 205, SPHINCS+)", "url": "https://csrc.nist.gov/pubs/fips/205/final" },
+        { "id": "AES-256-GCM", "name": "AES-256-GCM", "url": "https://csrc.nist.gov/publications/detail/sp/800-38d/final" },
+        { "id": "RSA", "name": "RSA (RFC 8017)", "url": "https://www.rfc-editor.org/rfc/rfc8017" }
+      ]
+    },
+    "agentFrameworks": {
+      "label": "Agent Frameworks & Toolkits",
+      "standards": [
+        { "id": "CREDO", "name": "Credo-TS (formerly Aries Framework JS)", "url": "https://credo.js.org/" },
+        { "id": "ACA-PY", "name": "ACA-Py (Aries Cloud Agent Python)", "url": "https://github.com/openwallet-foundation/acapy" },
+        { "id": "WALTID", "name": "walt.id SSI Kit", "url": "https://walt.id/" },
+        { "id": "VERAMO", "name": "Veramo", "url": "https://veramo.io/" },
+        { "id": "SPRUCE-DIDKIT", "name": "SpruceID DIDKit", "url": "https://www.spruceid.dev/didkit/didkit" },
+        { "id": "UNI-RESOLVER", "name": "DIF Universal Resolver", "url": "https://dev.uniresolver.io/" },
+        { "id": "UNI-REGISTRAR", "name": "DIF Universal Registrar", "url": "https://uniregistrar.io/" }
+      ]
+    },
+    "trust": {
+      "label": "Trust & Organizational Identity",
+      "standards": [
+        { "id": "GLEIF-VLEI", "name": "GLEIF vLEI (Verifiable LEI)", "url": "https://www.gleif.org/en/lei-solutions/gleifs-digital-strategy-for-the-lei/introducing-the-verifiable-lei" },
+        { "id": "EIDAS2", "name": "eIDAS 2.0 (EU Digital Identity)", "url": "https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation" },
+        { "id": "TRUST-OVER-IP", "name": "Trust Over IP Foundation", "url": "https://trustoverip.org/" },
+        { "id": "X509", "name": "X.509 Certificates (RFC 5280)", "url": "https://www.rfc-editor.org/rfc/rfc5280" }
+      ]
+    },
+    "registries": {
+      "label": "Verifiable Data Registries",
+      "standards": [
+        { "id": "ETHEREUM", "name": "Ethereum", "url": "https://ethereum.org/" },
+        { "id": "SOLANA", "name": "Solana", "url": "https://solana.com/" },
+        { "id": "BITCOIN", "name": "Bitcoin", "url": "https://bitcoin.org/" },
+        { "id": "HYPERLEDGER-INDY", "name": "Hyperledger Indy", "url": "https://www.hyperledger.org/projects/hyperledger-indy" },
+        { "id": "IPFS", "name": "IPFS", "url": "https://ipfs.tech/" },
+        { "id": "DNS", "name": "DNS / DNSSEC", "url": "https://www.rfc-editor.org/rfc/rfc4033" },
+        { "id": "SIDETREE", "name": "Sidetree Protocol", "url": "https://identity.foundation/sidetree/spec/" },
+        { "id": "CARDANO", "name": "Cardano", "url": "https://cardano.org/" },
+        { "id": "POLKADOT", "name": "Polkadot", "url": "https://polkadot.network/" },
+        { "id": "COSMOS", "name": "Cosmos", "url": "https://cosmos.network/" },
+        { "id": "HEDERA", "name": "Hedera", "url": "https://hedera.com/" },
+        { "id": "WEB-HTTPS", "name": "Web (HTTPS)", "url": "https://www.rfc-editor.org/rfc/rfc2818" }
+      ]
+    },
+    "compliance": {
+      "label": "Regulatory & Compliance",
+      "standards": [
+        { "id": "GDPR", "name": "EU General Data Protection Regulation", "url": "https://gdpr.eu/" },
+        { "id": "CCPA", "name": "California Consumer Privacy Act", "url": "https://oag.ca.gov/privacy/ccpa" },
+        { "id": "LGPD", "name": "Brazil Lei Geral de Protecao de Dados", "url": "https://www.gov.br/cidadania/pt-br/acesso-a-informacao/lgpd" },
+        { "id": "FATF-R16", "name": "FATF Travel Rule (Recommendation 16)", "url": "https://www.fatf-gafi.org/" },
+        { "id": "ISO-20022", "name": "ISO 20022 Financial Messaging", "url": "https://www.iso20022.org/" },
+        { "id": "PCI-DSS", "name": "PCI DSS v4.0", "url": "https://www.pcisecuritystandards.org/" }
+      ]
+    }
+  }
+}

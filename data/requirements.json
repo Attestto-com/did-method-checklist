@@ -1,0 +1,138 @@
+{
+  "version": "1.0.0",
+  "source": "W3C DID Use Cases and Requirements (NOTE-did-use-cases-20210317)",
+  "requirements": [
+    {
+      "id": "R1",
+      "name": "Authentication / Proof of Control",
+      "description": "The DID method MUST support cryptographic authentication and proof of control over the identifier.",
+      "benefits": ["antiExploitation", "sustainability"]
+    },
+    {
+      "id": "R2",
+      "name": "Decentralized / Self-Issued",
+      "description": "Identifiers MUST be created without a central registration authority.",
+      "benefits": ["antiCensorship", "antiExploitation", "privacy", "sustainability"]
+    },
+    {
+      "id": "R3",
+      "name": "Guaranteed Unique Identifier",
+      "description": "The method MUST guarantee global uniqueness of identifiers.",
+      "benefits": ["easeOfUse", "sustainability"]
+    },
+    {
+      "id": "R4",
+      "name": "No Call Home",
+      "description": "Resolution MUST NOT require contacting the issuer or any single third party.",
+      "benefits": ["antiCensorship", "antiExploitation", "privacy", "sustainability"]
+    },
+    {
+      "id": "R5",
+      "name": "Associated Cryptographic Material",
+      "description": "The DID Document MUST include public keys or verification methods for cryptographic operations.",
+      "benefits": ["antiCensorship", "antiExploitation", "easeOfUse"]
+    },
+    {
+      "id": "R6",
+      "name": "Streamlined Key Rotation",
+      "description": "The method MUST support key rotation without changing the DID identifier.",
+      "benefits": ["antiCensorship", "antiExploitation", "easeOfUse", "sustainability"]
+    },
+    {
+      "id": "R7",
+      "name": "Service Endpoint Discovery",
+      "description": "The DID Document MUST support service endpoints for messaging, credential exchange, and other interactions.",
+      "benefits": ["easeOfUse"]
+    },
+    {
+      "id": "R8",
+      "name": "Privacy Preserving",
+      "description": "The method MUST minimize personally identifiable information stored on-chain or in the DID Document.",
+      "benefits": ["antiCensorship", "antiExploitation", "privacy"]
+    },
+    {
+      "id": "R9",
+      "name": "Delegation of Control",
+      "description": "The method MUST support delegating control over a DID to other DIDs or keys.",
+      "benefits": ["easeOfUse"]
+    },
+    {
+      "id": "R10",
+      "name": "Inter-Jurisdictional",
+      "description": "The method MUST work across legal jurisdictions without requiring jurisdiction-specific infrastructure.",
+      "benefits": ["antiCensorship", "sustainability"]
+    },
+    {
+      "id": "R11",
+      "name": "Cannot Be Administratively Denied",
+      "description": "No single administrative authority can revoke or deny a DID without the controller's consent.",
+      "benefits": ["antiCensorship"]
+    },
+    {
+      "id": "R12",
+      "name": "Minimized Rents",
+      "description": "Ongoing costs for maintaining a DID SHOULD be minimal or zero.",
+      "benefits": ["sustainability"]
+    },
+    {
+      "id": "R13",
+      "name": "No Vendor Lock-In",
+      "description": "The DID and its associated data MUST be portable across implementations and providers.",
+      "benefits": ["antiExploitation", "sustainability"]
+    },
+    {
+      "id": "R14",
+      "name": "Preempt / Limit Trackable Data Trails",
+      "description": "The method SHOULD minimize correlation across interactions and contexts.",
+      "benefits": ["antiCensorship", "antiExploitation", "privacy"]
+    },
+    {
+      "id": "R15",
+      "name": "Cryptographic Future-Proof",
+      "description": "The method SHOULD define a migration path for post-quantum cryptography or algorithm agility.",
+      "benefits": ["antiExploitation", "sustainability"]
+    },
+    {
+      "id": "R16",
+      "name": "Survives Issuing Organization Mortality",
+      "description": "The DID MUST remain resolvable and usable even if the original issuing organization ceases to exist.",
+      "benefits": ["sustainability"]
+    },
+    {
+      "id": "R17",
+      "name": "Survives Deployment End-of-Life",
+      "description": "The DID MUST remain usable if a specific software deployment is retired.",
+      "benefits": ["antiCensorship", "sustainability"]
+    },
+    {
+      "id": "R18",
+      "name": "Survives Relationship with Service Provider",
+      "description": "The DID MUST remain under the controller's authority regardless of their relationship with any service provider.",
+      "benefits": ["antiExploitation", "sustainability"]
+    },
+    {
+      "id": "R19",
+      "name": "Cryptographic Authentication and Communication",
+      "description": "The method MUST enable authenticated, encrypted communication between DID controllers.",
+      "benefits": ["antiCensorship", "antiExploitation"]
+    },
+    {
+      "id": "R20",
+      "name": "Registry Agnostic",
+      "description": "The method SHOULD NOT depend on a single verifiable data registry.",
+      "benefits": ["antiCensorship", "antiExploitation", "sustainability"]
+    },
+    {
+      "id": "R21",
+      "name": "Legally-Enabled Identity",
+      "description": "The method SHOULD support binding a DID to a legal identity where required by regulation.",
+      "benefits": ["antiExploitation", "easeOfUse", "sustainability"]
+    },
+    {
+      "id": "R22",
+      "name": "Human-Centered Interoperability",
+      "description": "The method SHOULD support human-readable identifiers or aliases for usability.",
+      "benefits": ["easeOfUse", "sustainability"]
+    }
+  ]
+}

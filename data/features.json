@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "categories": {
+    "crud": {
+      "label": "CRUD Operations",
+      "features": [
+        { "id": "supportsCreate", "name": "Create", "description": "Method defines a create/register operation" },
+        { "id": "supportsRead", "name": "Read / Resolve", "description": "Method defines a resolution algorithm" },
+        { "id": "supportsUpdate", "name": "Update", "description": "Method supports updating the DID Document" },
+        { "id": "supportsDeactivate", "name": "Deactivate", "description": "Method supports deactivating/revoking a DID" }
+      ]
+    },
+    "keyManagement": {
+      "label": "Key Management",
+      "features": [
+        { "id": "hasKeyRotation", "name": "Key Rotation", "description": "Keys can be rotated without changing the DID" },
+        { "id": "hasRecovery", "name": "Key Recovery", "description": "Method defines a key recovery mechanism (social recovery, backup keys, etc.)" },
+        { "id": "hasMultiSig", "name": "Multi-Signature", "description": "Method supports multi-sig or threshold signing" },
+        { "id": "hasDIDLog", "name": "DID Log / History", "description": "Method maintains an append-only log of DID Document changes" }
+      ]
+    },
+    "credentials": {
+      "label": "Credential Support",
+      "features": [
+        { "id": "hasVerifiableCredentials", "name": "Verifiable Credentials", "description": "Method is designed to work with W3C VCs" },
+        { "id": "hasSelectiveDisclosure", "name": "Selective Disclosure", "description": "Method supports per-field disclosure (SD-JWT, AnonCreds, etc.)" },
+        { "id": "hasStatusList", "name": "Status List / Revocation", "description": "Method defines or references a credential revocation mechanism" }
+      ]
+    },
+    "communication": {
+      "label": "Communication & Exchange",
+      "features": [
+        { "id": "hasDIDComm", "name": "DIDComm v2", "description": "Method supports or references DIDComm messaging" },
+        { "id": "hasPresentationExchange", "name": "Presentation Exchange", "description": "Method references DIF Presentation Exchange or OID4VP" },
+        { "id": "hasCredentialAPI", "name": "Credential API / CHAPI", "description": "Method integrates with browser Credential API or CHAPI" }
+      ]
+    },
+    "interop": {
+      "label": "Interoperability",
+      "features": [
+        { "id": "hasUniversalResolver", "name": "Universal Resolver Driver", "description": "Method has a published DIF Universal Resolver driver" },
+        { "id": "hasJSONLD", "name": "JSON-LD Context", "description": "Method publishes a JSON-LD context for DID Documents" },
+        { "id": "hasDNSDiscovery", "name": "DNS Discovery", "description": "Method supports DNS TXT record discovery" },
+        { "id": "hasAgentFramework", "name": "Agent Framework Integration", "description": "Method is integrated into at least one agent framework (Credo, ACA-Py, Veramo, etc.)" }
+      ]
+    },
+    "privacy": {
+      "label": "Privacy",
+      "features": [
+        { "id": "supportsPrivacy", "name": "Privacy Architecture", "description": "Method has a documented privacy architecture beyond basic key-only resolution" },
+        { "id": "hasZKP", "name": "Zero-Knowledge Proofs", "description": "Method supports ZKP-based verification" },
+        { "id": "hasPairwiseDIDs", "name": "Pairwise DIDs", "description": "Method supports creating unique DIDs per relationship" },
+        { "id": "hasEncryptedVault", "name": "Encrypted Data Vault", "description": "Method defines or references encrypted personal data storage" }
+      ]
+    },
+    "security": {
+      "label": "Security",
+      "features": [
+        { "id": "supportsPQ", "name": "Post-Quantum Ready", "description": "Method defines or reserves post-quantum key types or migration path" },
+        { "id": "hasThreatModel", "name": "Threat Model", "description": "Spec includes a documented threat model or security considerations section" },
+        { "id": "hasCryptoShredding", "name": "Crypto-Shredding", "description": "Method supports permanent data erasure via key deletion" }
+      ]
+    },
+    "governance": {
+      "label": "Governance & Trust",
+      "features": [
+        { "id": "hasTrustModel", "name": "Trust Model", "description": "Method defines a trust hierarchy or trust framework" },
+        { "id": "hasControllerHierarchy", "name": "Controller Hierarchy", "description": "Method supports parent-child or organizational DID hierarchies" },
+        { "id": "hasLEIBinding", "name": "LEI / Org Binding", "description": "Method supports binding DIDs to legal entity identifiers" },
+        { "id": "hasCharter", "name": "Community Charter", "description": "Method has published governance and contribution guidelines" }
+      ]
+    }
+  }
+}

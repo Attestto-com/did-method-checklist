@@ -1,0 +1,167 @@
+{
+  "version": "1.0.0",
+  "description": "L1 = W3C focal use case categories. L2 = Industry-specific verticals that a method actually targets.",
+  "l1Categories": [
+    { "id": "enterprise", "name": "Enterprise Identifiers", "w3cUseCase": "UC-ENT" },
+    { "id": "education", "name": "Life-long Credentials", "w3cUseCase": "UC-EDU" },
+    { "id": "healthcare", "name": "Healthcare & Prescriptions", "w3cUseCase": "UC-RX" },
+    { "id": "legal", "name": "Legal & Digital Executor", "w3cUseCase": "UC-LAW" },
+    { "id": "credentials", "name": "Portable Credentials", "w3cUseCase": "UC-CRED" },
+    { "id": "communication", "name": "Secure Communication", "w3cUseCase": "UC-COMM" }
+  ],
+  "l2Verticals": [
+    {
+      "id": "cross-border-finance",
+      "name": "Cross-Border Finance & Payments",
+      "l1Parent": "enterprise",
+      "description": "Stablecoin corridors, SWIFT/IBAN replacement, ISO 20022 compliance, FATF Travel Rule, DeFi-as-a-Service.",
+      "relevantRequirements": ["R1","R2","R3","R5","R6","R7","R8","R9","R10","R13","R15","R19","R21"],
+      "relevantStandards": ["ISO-20022","FATF-R16","SD-JWT","GLEIF-VLEI"],
+      "exampleMethods": ["did:sns"]
+    },
+    {
+      "id": "banking-kyc",
+      "name": "Banking & KYC/AML",
+      "l1Parent": "enterprise",
+      "description": "Customer due diligence, enhanced due diligence, source of funds verification, sanctions screening.",
+      "relevantRequirements": ["R1","R3","R5","R7","R8","R9","R10","R14","R21"],
+      "relevantStandards": ["FATF-R16","GDPR","SD-JWT","W3C-BSL"],
+      "exampleMethods": ["did:sns","did:ethr"]
+    },
+    {
+      "id": "defi-identity",
+      "name": "DeFi & On-Chain Identity",
+      "l1Parent": "enterprise",
+      "description": "Soulbound tokens, on-chain reputation, protocol governance, wallet-bound credentials.",
+      "relevantRequirements": ["R1","R2","R3","R5","R8","R11","R12","R14"],
+      "relevantStandards": ["ED25519","SECP256K1"],
+      "exampleMethods": ["did:ethr","did:pkh","did:sns"]
+    },
+    {
+      "id": "insurance",
+      "name": "Insurance & Claims",
+      "l1Parent": "enterprise",
+      "description": "Policy issuance, claims verification, reinsurance identity chains.",
+      "relevantRequirements": ["R1","R3","R5","R7","R8","R9","R10","R21"],
+      "relevantStandards": ["SD-JWT","W3C-VC","GDPR"],
+      "exampleMethods": []
+    },
+    {
+      "id": "supply-chain",
+      "name": "Supply Chain & Trade",
+      "l1Parent": "enterprise",
+      "description": "Product provenance, customs documentation, trade finance, IoT device identity.",
+      "relevantRequirements": ["R1","R2","R3","R5","R7","R9","R10","R14","R18"],
+      "relevantStandards": ["W3C-VC","CBOR-LD"],
+      "exampleMethods": ["did:web","did:ethr"]
+    },
+    {
+      "id": "government-eid",
+      "name": "Government & National eID",
+      "l1Parent": "legal",
+      "description": "National ID programs, eIDAS wallets, digital residency, public authority credentials.",
+      "relevantRequirements": ["R1","R2","R3","R5","R6","R7","R10","R11","R15","R19","R21","R22"],
+      "relevantStandards": ["EIDAS2","OID4VP","SD-JWT","X509"],
+      "exampleMethods": ["did:ebsi","did:andorra"]
+    },
+    {
+      "id": "immigration",
+      "name": "Immigration & Border Control",
+      "l1Parent": "legal",
+      "description": "Digital travel credentials, visa verification, cross-border identity.",
+      "relevantRequirements": ["R1","R3","R4","R5","R10","R12","R21","R22"],
+      "relevantStandards": ["SD-JWT","EIDAS2"],
+      "exampleMethods": []
+    },
+    {
+      "id": "academic-credentials",
+      "name": "Academic Credentials & Diplomas",
+      "l1Parent": "education",
+      "description": "University degrees, professional certifications, micro-credentials, transcript portability.",
+      "relevantRequirements": ["R1","R2","R3","R5","R6","R10","R11","R12","R15","R16","R17","R22"],
+      "relevantStandards": ["W3C-VC","OID4VCI","SD-JWT"],
+      "exampleMethods": ["did:web","did:ebsi"]
+    },
+    {
+      "id": "workforce-hr",
+      "name": "Workforce & HR",
+      "l1Parent": "education",
+      "description": "Employee identity, skill badges, contractor verification, gig economy credentials.",
+      "relevantRequirements": ["R1","R3","R5","R6","R8","R15","R18"],
+      "relevantStandards": ["W3C-VC","SD-JWT"],
+      "exampleMethods": []
+    },
+    {
+      "id": "patient-health",
+      "name": "Patient Health Records",
+      "l1Parent": "healthcare",
+      "description": "EHR portability, prescription verification, clinical trial consent, insurance claims.",
+      "relevantRequirements": ["R1","R2","R3","R5","R7","R8","R14","R19","R22"],
+      "relevantStandards": ["SD-JWT","GDPR","W3C-VC"],
+      "exampleMethods": []
+    },
+    {
+      "id": "pharma-provenance",
+      "name": "Pharmaceutical Provenance",
+      "l1Parent": "healthcare",
+      "description": "Drug supply chain, counterfeit prevention, manufacturer identity.",
+      "relevantRequirements": ["R1","R3","R5","R7","R10","R14"],
+      "relevantStandards": ["W3C-VC","CBOR-LD"],
+      "exampleMethods": []
+    },
+    {
+      "id": "social-media",
+      "name": "Social Media & Reputation",
+      "l1Parent": "communication",
+      "description": "Decentralized social identity, portable reputation, anti-impersonation.",
+      "relevantRequirements": ["R1","R2","R4","R8","R11","R12","R14","R22"],
+      "relevantStandards": [],
+      "exampleMethods": ["did:plc","did:web"]
+    },
+    {
+      "id": "messaging",
+      "name": "Encrypted Messaging & Collaboration",
+      "l1Parent": "communication",
+      "description": "E2E encrypted channels, team identity, provider-portable messaging.",
+      "relevantRequirements": ["R1","R2","R4","R5","R6","R7","R8","R13","R15","R19","R20"],
+      "relevantStandards": ["DIDComm-V2","ED25519","ML-KEM"],
+      "exampleMethods": ["did:peer","did:key"]
+    },
+    {
+      "id": "iot-devices",
+      "name": "IoT & Device Identity",
+      "l1Parent": "enterprise",
+      "description": "Embedded device identity, firmware attestation, device-to-device trust.",
+      "relevantRequirements": ["R1","R3","R5","R7","R10","R12","R15"],
+      "relevantStandards": ["CBOR-LD","ED25519","X509"],
+      "exampleMethods": ["did:io","did:tangle"]
+    },
+    {
+      "id": "real-estate",
+      "name": "Real Estate & Property",
+      "l1Parent": "legal",
+      "description": "Title verification, notarization, property-bound credentials, mortgage identity.",
+      "relevantRequirements": ["R1","R3","R5","R7","R9","R10","R21"],
+      "relevantStandards": ["W3C-VC","SD-JWT"],
+      "exampleMethods": []
+    },
+    {
+      "id": "gaming-metaverse",
+      "name": "Gaming & Metaverse",
+      "l1Parent": "credentials",
+      "description": "Cross-platform avatar identity, in-game asset provenance, age verification.",
+      "relevantRequirements": ["R1","R2","R3","R8","R12","R14","R22"],
+      "relevantStandards": [],
+      "exampleMethods": []
+    },
+    {
+      "id": "energy-carbon",
+      "name": "Energy & Carbon Credits",
+      "l1Parent": "enterprise",
+      "description": "Renewable energy certificates, carbon offset verification, grid operator identity.",
+      "relevantRequirements": ["R1","R3","R5","R7","R10","R14","R18"],
+      "relevantStandards": ["W3C-VC"],
+      "exampleMethods": []
+    }
+  ]
+}
