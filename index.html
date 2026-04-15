@@ -12,6 +12,13 @@
       --red:#dc2626; --red-bg:#fef2f2; --purple:#7c3aed; --purple-bg:#faf5ff;
       --blue:#2563eb; --blue-bg:#eff6ff;
     }
+    [data-theme="dark"] {
+      --fg:#e2e2f0; --bg:#0f0f1a; --accent:#7c6ff7; --accent-light:#1e1b3a;
+      --muted:#8b8ba3; --border:#2a2a3a; --code-bg:#1a1d27; --green:#34d399;
+      --green-bg:#0a2a1a; --amber:#fbbf24; --amber-bg:#2a2000; --red:#f87171;
+      --red-bg:#2a0a0a; --purple:#a78bfa; --purple-bg:#1a0a2a; --blue:#60a5fa;
+      --blue-bg:#0a1a2a;
+    }
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6;}
     .container{max-width:var(--max-w);margin:0 auto;padding:1.5rem;}
@@ -73,10 +80,10 @@
     .filter-section{margin-bottom:1rem;}
     .filter-section label{font-size:0.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.03em;display:block;margin-bottom:0.3rem;}
     .filter-row{display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;margin-bottom:0.5rem;}
-    .filter-row select,.filter-row input[type="text"]{font-size:0.8rem;padding:0.35rem 0.6rem;border:1px solid var(--border);border-radius:6px;background:white;color:var(--fg);}
+    .filter-row select,.filter-row input[type="text"]{font-size:0.8rem;padding:0.35rem 0.6rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg);}
     .filter-row input[type="text"]{width:14rem;}
     .pill-group{display:flex;gap:0.3rem;flex-wrap:wrap;}
-    .pill{font-size:0.7rem;padding:0.2rem 0.55rem;border:1px solid var(--border);border-radius:999px;cursor:pointer;user-select:none;transition:all 0.15s;background:white;position:relative;}
+    .pill{font-size:0.7rem;padding:0.2rem 0.55rem;border:1px solid var(--border);border-radius:999px;cursor:pointer;user-select:none;transition:all 0.15s;background:var(--bg);position:relative;}
     .pill:hover{border-color:var(--accent);}
     .pill.active{background:var(--accent);color:white;border-color:var(--accent);}
     .pill[data-tooltip]:hover::after{content:attr(data-tooltip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--fg);color:white;font-size:0.68rem;padding:0.4rem 0.6rem;border-radius:4px;white-space:normal;width:max-content;max-width:20rem;line-height:1.4;z-index:50;pointer-events:none;}
@@ -124,7 +131,7 @@
     .scoring-table{width:100%;font-size:0.8rem;margin:0.75rem 0;}
     .scoring-table th{background:var(--accent-light);}
 
-    .page-btn{font-size:0.75rem;padding:0.3rem 0.65rem;border:1px solid var(--border);border-radius:5px;background:white;cursor:pointer;color:var(--fg);transition:all 0.15s;}
+    .page-btn{font-size:0.75rem;padding:0.3rem 0.65rem;border:1px solid var(--border);border-radius:5px;background:var(--bg);cursor:pointer;color:var(--fg);transition:all 0.15s;}
     .page-btn:hover{border-color:var(--accent);color:var(--accent);}
     .page-btn.active{background:var(--accent);color:white;border-color:var(--accent);}
     .page-btn:disabled{opacity:0.4;cursor:default;}
@@ -132,13 +139,16 @@
     footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);color:var(--muted);font-size:0.72rem;}
 
     /* Resolver presets */
-    .resolve-preset{display:flex;align-items:center;width:100%;padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:white;cursor:pointer;text-align:left;transition:all 0.15s;}
+    .resolve-preset{display:flex;align-items:center;width:100%;padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;text-align:left;transition:all 0.15s;color:var(--fg);}
     .resolve-preset:hover{border-color:var(--accent);background:var(--accent-light);}
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>DID Method Checklist <span style="font-size:0.6em;color:var(--muted);font-weight:400">V2</span></h1>
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <h1>DID Method Checklist <span style="font-size:0.6em;color:var(--muted);font-weight:400">V2</span></h1>
+    <button id="theme-toggle" onclick="toggleTheme()" style="background:none;border:1px solid var(--border);border-radius:6px;padding:0.35rem 0.7rem;cursor:pointer;font-size:0.8rem;color:var(--muted);" title="Toggle dark/light mode">🌙</button>
+  </div>
   <p class="subtitle">
     Self-assessment framework for DID method authors. 225 methods indexed against 22 W3C requirements, 18 use cases, and 30+ features.
     Data sourced from <a href="https://www.w3.org/TR/did-spec-registries/">W3C DID Spec Registries</a> + GitHub &mdash; not editorial opinion.
@@ -345,6 +355,30 @@
     <p>Published under the <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">W3C Software and Document License</a>.</p>
   </footer>
 </div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement
+  const current = html.getAttribute('data-theme')
+  const next = current === 'dark' ? 'light' : 'dark'
+  html.setAttribute('data-theme', next)
+  localStorage.setItem('theme', next)
+  document.getElementById('theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙'
+}
+// Init theme from localStorage or system preference
+(function() {
+  const saved = localStorage.getItem('theme')
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const theme = saved || (prefersDark ? 'dark' : 'light')
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('theme-toggle')
+      if (btn) btn.textContent = '☀️'
+    })
+  }
+})()
+</script>
 
 <script type="module" src="https://unpkg.com/@attestto/verify"></script>
 <script type="module" src="https://unpkg.com/@attestto/login"></script>
