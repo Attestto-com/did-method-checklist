@@ -43,10 +43,10 @@ export const IDENTITY_PROVIDERS: IdentityProviderConfig[] = [
   {
     key: 'wallet',
     label: 'Web3 Wallet',
-    description: 'MetaMask, Phantom, or any Web3 wallet — resolves to did:sns if you have a .sol domain, otherwise signs with your wallet address (CAIP-10)',
+    description: 'MetaMask, Phantom, or any Web3 wallet — signs with your wallet address (CAIP-10). Uses the wallet adapter protocol for discovery.',
     icon: '\u26D3',
     didMethod: 'caip10',
-    enabled: true,
+    enabled: false, // Disabled — Web3 wallets don't produce W3C DIDs natively
     order: 2,
   },
   {

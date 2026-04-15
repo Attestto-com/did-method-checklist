@@ -10,8 +10,8 @@ const { loading, error, loadAll } = useMethodsData()
 const NAV_ITEMS = [
   { name: 'catalogue', label: 'Catalogue' },
   { name: 'ecosystem', label: 'Ecosystem' },
-  { name: 'self-assessment', label: 'Self-Assessment' },
   { name: 'requirements', label: 'Requirements Matrix' },
+  { name: 'self-assessment', label: 'Self-Assessment' },
 ]
 
 onMounted(loadAll)

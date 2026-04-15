@@ -25,7 +25,7 @@ const STEPS = [
   { num: 3, label: 'Features' },
   { num: 4, label: 'Requirements' },
   { num: 5, label: 'Review' },
-  { num: 6, label: 'Sign' },
+  { num: 6, label: 'Sign (optional)' },
 ]
 
 // ---------------------------------------------------------------------------
@@ -1035,10 +1035,11 @@ function canAdvance(): boolean {
       <!-- Identity connection -->
       <div class="card space-y-5">
         <div>
-          <h2 class="text-subsection mb-1">Authenticate &amp; Sign</h2>
+          <h2 class="text-subsection mb-1">Authenticate &amp; Sign <span class="text-xs text-muted font-normal">(optional)</span></h2>
           <p class="text-help">
-            Connect your identity to sign this assessment. Your DID will be publicly linked to this
-            revision, creating a verifiable chain of contributions.
+            Optionally sign this assessment with your DID to create a verifiable chain of contributions.
+            Unsigned assessments can still be submitted via pull request.
+            Signing uses the <a href="https://www.npmjs.com/package/@attestto/id-wallet-adapter" target="_blank" class="link">wallet adapter protocol</a> for identity wallet discovery.
           </p>
         </div>
 
