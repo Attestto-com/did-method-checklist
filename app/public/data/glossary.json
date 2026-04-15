@@ -1,0 +1,198 @@
+{
+  "version": "1.0.0",
+  "ecosystem": {
+    "title": "How the DID Ecosystem Works",
+    "intro": "A Decentralized Identifier (DID) is a globally unique address that a person, organization, or device controls — without depending on a central authority. DID methods define how these identifiers are created, resolved, and managed on a specific infrastructure (blockchain, web, peer network).",
+    "layers": [
+      {
+        "name": "Identifier Layer",
+        "description": "The DID itself — a URI like did:sns:alice.crbank.sol. Each DID method defines its own syntax, anchoring mechanism, and resolution algorithm. The identifier is permanent; the keys behind it can rotate.",
+        "standards": ["W3C-DID-CORE", "W3C-DID-RES"]
+      },
+      {
+        "name": "Document Layer",
+        "description": "The DID Document — a JSON-LD file returned when you resolve a DID. Contains public keys (verification methods), service endpoints (where to reach this identity), and controller relationships (who can update it).",
+        "standards": ["W3C-DID-CORE", "W3C-JSONLD"]
+      },
+      {
+        "name": "Credential Layer",
+        "description": "Verifiable Credentials (VCs) — signed claims about a DID subject. A university issues a diploma VC, a bank issues a KYC VC. The holder stores them and selectively discloses fields to verifiers. SD-JWT and AnonCreds are the two main formats for selective disclosure.",
+        "standards": ["W3C-VC", "SD-JWT", "AnonCreds"]
+      },
+      {
+        "name": "Presentation Layer",
+        "description": "How credentials are shared — DIDComm v2 for peer-to-peer encrypted messaging, OID4VP for browser-based flows, Presentation Exchange for defining what a verifier needs. The holder chooses which fields to reveal.",
+        "standards": ["DIDComm-V2", "OID4VP", "PE"]
+      },
+      {
+        "name": "Trust Layer",
+        "description": "How verifiers decide to trust an issuer — trust frameworks (GLEIF vLEI for legal entities, eIDAS for EU governments), trust registries, and issuer reputation. Without this layer, anyone can issue anything.",
+        "standards": ["GLEIF-VLEI", "EIDAS2", "TRUST-OVER-IP"]
+      },
+      {
+        "name": "Status Layer",
+        "description": "How credentials are revoked or suspended after issuance. Bitstring Status Lists publish a compact bitfield at a stable URL — any verifier can check if credential #4721 is still valid without contacting the issuer.",
+        "standards": ["W3C-BSL", "TOKEN-SL"]
+      }
+    ]
+  },
+  "registryTypes": {
+    "blockchain": {
+      "name": "Blockchain-Anchored",
+      "description": "DID is anchored to a blockchain (Ethereum, Solana, Bitcoin, etc.). The blockchain provides immutability, censorship resistance, and decentralized consensus. Trade-off: gas costs, throughput limits, and chain-specific tooling.",
+      "examples": ["did:ethr", "did:sns", "did:ion"]
+    },
+    "web": {
+      "name": "Web-Anchored",
+      "description": "DID resolves via HTTPS — the DID Document is hosted at a well-known URL derived from the DID. Simple to deploy, no blockchain needed. Trade-off: depends on DNS and web hosting — if the domain goes down, the DID is unresolvable.",
+      "examples": ["did:web", "did:webvh"]
+    },
+    "peer": {
+      "name": "Peer-Based",
+      "description": "DID exists only between two parties — no registry at all. Created locally, exchanged directly. Maximum privacy. Trade-off: not publicly resolvable, not discoverable, ephemeral by design.",
+      "examples": ["did:peer", "did:key"]
+    }
+  },
+  "features": {
+    "keyRotation": {
+      "name": "Key Rotation",
+      "description": "The ability to change the cryptographic keys behind a DID without changing the DID itself. Critical for long-lived identities — if a key is compromised, you rotate it and the identifier remains stable. Without this, key compromise = identity loss.",
+      "whyItMatters": "Any identity system that will last more than a few months needs key rotation. Hardware tokens fail, employees leave, algorithms get deprecated.",
+      "relatedReqs": ["R6"]
+    },
+    "recovery": {
+      "name": "Key Recovery",
+      "description": "A mechanism to regain control of a DID after losing all active keys. Approaches include social recovery (trusted contacts hold key shares via Shamir Secret Sharing), backup keys stored separately, or multi-sig threshold schemes where M-of-N signers can recover.",
+      "whyItMatters": "Without recovery, a lost phone or corrupted backup means permanent identity loss. For regulated industries, this is unacceptable.",
+      "relatedReqs": ["R6", "R18"]
+    },
+    "multiSig": {
+      "name": "Multi-Signature",
+      "description": "Requires multiple keys to authorize DID operations (updates, deactivation). Organizational DIDs typically use multi-sig so no single person can hijack the identity. Common patterns: 2-of-3 signers, M-of-N threshold.",
+      "whyItMatters": "Essential for organizational identity. No single employee should be able to unilaterally modify a company's DID.",
+      "relatedReqs": ["R9"]
+    },
+    "didLog": {
+      "name": "DID Log / History",
+      "description": "An append-only log of every change to the DID Document. To resolve the current state, a verifier replays the entire log. Provides full audit trail but grows linearly over time — post-quantum signatures (3+ KB each) can make logs very large.",
+      "whyItMatters": "Useful for audit trails but creates scalability concerns. Some methods (like did:sns) avoid this by using mutable state buffers with O(1) resolution instead.",
+      "relatedReqs": ["R15"]
+    },
+    "vc": {
+      "name": "Verifiable Credentials",
+      "description": "The method is designed to work with W3C Verifiable Credentials — signed, tamper-evident digital claims about a subject. A VC has an issuer (who signs it), a subject (who it's about), and claims (the data). Verifiers check the signature and issuer trust.",
+      "whyItMatters": "VCs are how DIDs become useful — the identifier alone is just an address. Credentials attach meaning: 'this DID belongs to a KYC-verified person' or 'this DID holds a valid medical license'.",
+      "relatedReqs": ["R5", "R7"]
+    },
+    "sd": {
+      "name": "Selective Disclosure",
+      "description": "The ability to reveal only specific fields from a credential without exposing the entire document. SD-JWT uses per-field salted hashes — each field has its own salt, and the holder chooses which to disclose. AnonCreds uses zero-knowledge proofs for predicate proofs ('age > 18' without revealing the actual age).",
+      "whyItMatters": "Privacy regulation (GDPR, CCPA) requires data minimization. A bar doesn't need your address to verify your age. A bank doesn't need your medical history to verify your income.",
+      "relatedReqs": ["R8", "R14"]
+    },
+    "didcomm": {
+      "name": "DIDComm v2",
+      "description": "A peer-to-peer encrypted messaging protocol using DIDs. Messages are encrypted to the recipient's DID Document keys, routed through service endpoints. No central server sees the plaintext. Used for credential exchange (Present Proof), trust establishment, and any DID-to-DID communication.",
+      "whyItMatters": "DIDComm is the transport layer for the credential ecosystem. Without it, there's no standard way for a holder to send a credential to a verifier privately.",
+      "relatedReqs": ["R19"]
+    },
+    "resolver": {
+      "name": "Universal Resolver Driver",
+      "description": "A driver for the DIF Universal Resolver — a shared HTTP service that wraps many DID method drivers behind a single REST API. Any system running the Universal Resolver can resolve this method's DIDs without installing method-specific software.",
+      "whyItMatters": "Interoperability at the resolution layer. A verifier doesn't need to know about Solana or Ethereum — they call the Universal Resolver and get a standard DID Document back.",
+      "relatedReqs": ["R20"]
+    },
+    "jsonld": {
+      "name": "JSON-LD Context",
+      "description": "A published JSON-LD context file that defines the vocabulary used in DID Documents. Any JSON-LD processor can expand the document without method-specific tooling. Enables semantic interoperability — different methods can use the same terms with the same meaning.",
+      "whyItMatters": "Without a JSON-LD context, DID Documents are just opaque JSON. With it, any standards-compliant tool can understand the structure.",
+      "relatedReqs": ["R22"]
+    },
+    "privacy": {
+      "name": "Privacy Architecture",
+      "description": "The method has a documented privacy architecture beyond basic key-only resolution. This may include: no PII on-chain, encrypted data vaults, blind indexing, correlation mitigation, pairwise DIDs, or formal privacy analysis.",
+      "whyItMatters": "Most DID methods claim to be 'privacy preserving' but don't document how. A real privacy architecture addresses specific threats: on-chain correlation, metadata leakage, resolver tracking, and regulatory compliance.",
+      "relatedReqs": ["R8", "R14"]
+    }
+  },
+  "crypto": {
+    "ed25519": {
+      "name": "Ed25519",
+      "description": "An elliptic curve signature algorithm (RFC 8032). Fast, compact (32-byte keys, 64-byte signatures), and the default for Solana. Used for DID authentication and credential signing. Vulnerable to quantum computers (Shor's algorithm).",
+      "standard": "RFC 8032"
+    },
+    "secp256k1": {
+      "name": "secp256k1",
+      "description": "The elliptic curve used by Bitcoin and Ethereum for ECDSA signatures. Widely supported in Web3 tooling. Also used for ECIES encryption (key agreement + AES). Vulnerable to quantum computers.",
+      "standard": "SEC 2"
+    },
+    "p256": {
+      "name": "P-256 (NIST Curve)",
+      "description": "NIST-standardized elliptic curve, widely used in enterprise and government systems (TLS, X.509, WebAuthn). Required by eIDAS and many compliance frameworks. Vulnerable to quantum computers.",
+      "standard": "NIST FIPS 186-4"
+    },
+    "bls": {
+      "name": "BLS12-381",
+      "description": "A pairing-friendly elliptic curve that enables signature aggregation — multiple signatures can be combined into one. Used in AnonCreds for zero-knowledge proof schemes and in Ethereum 2.0 for validator signatures.",
+      "standard": "IRTF draft-irtf-cfrg-bls-signature"
+    },
+    "pq": {
+      "name": "Post-Quantum",
+      "description": "Cryptographic algorithms resistant to quantum computers. ML-DSA (Dilithium, FIPS 204) for signatures and ML-KEM (Kyber, FIPS 203) for key encapsulation. Keys and signatures are 20-50x larger than classical equivalents. Only 5 of 225 methods have defined PQ migration paths.",
+      "standard": "NIST FIPS 203/204/205"
+    }
+  },
+  "requirements": {
+    "R1":  { "short": "Auth", "full": "Authentication / Proof of Control", "description": "The DID controller can cryptographically prove they own the identifier. Typically via digital signatures using keys listed in the DID Document. This is the foundation — without it, a DID is just a string.", "useCases": ["UC-ENT","UC-EDU","UC-RX","UC-LAW","UC-CRED","UC-COMM"], "w3cSection": "3.1" },
+    "R2":  { "short": "Decentral", "full": "Decentralized / Self-Issued", "description": "The identifier can be created without permission from a central authority. No registration office, no approval process. The controller generates a key pair and derives (or registers) the DID autonomously.", "useCases": ["UC-ENT","UC-EDU","UC-LAW","UC-CRED","UC-COMM"], "w3cSection": "3.2" },
+    "R3":  { "short": "Unique ID", "full": "Guaranteed Unique Identifier", "description": "The method guarantees global uniqueness — no two entities can share the same DID. Blockchain methods achieve this through deterministic derivation or on-chain uniqueness checks. Peer methods use cryptographic randomness.", "useCases": ["UC-ENT","UC-EDU","UC-RX","UC-LAW"], "w3cSection": "3.3" },
+    "R4":  { "short": "No Call Home", "full": "No Call Home", "description": "Resolving the DID does not require contacting the issuer. A verifier can resolve and verify without the issuer knowing. This prevents the issuer from tracking when and where credentials are used.", "useCases": ["UC-ENT","UC-EDU","UC-CRED","UC-COMM"], "w3cSection": "3.4" },
+    "R5":  { "short": "Crypto Keys", "full": "Associated Cryptographic Material", "description": "The DID Document contains public keys (verification methods) that enable signature verification, encryption, and key agreement. Without this, a DID cannot be used for any cryptographic operation.", "useCases": ["UC-ENT","UC-EDU","UC-RX","UC-LAW","UC-CRED","UC-COMM"], "w3cSection": "3.5" },
+    "R6":  { "short": "Key Rotation", "full": "Streamlined Key Rotation", "description": "Keys can be replaced without changing the DID. When a key is compromised or expires, the controller updates the DID Document with new keys. The identifier stays the same — all existing references remain valid.", "useCases": ["UC-ENT","UC-EDU","UC-LAW","UC-CRED","UC-COMM"], "w3cSection": "3.6" },
+    "R7":  { "short": "Services", "full": "Service Endpoint Discovery", "description": "The DID Document advertises service endpoints — URLs where the controller can be reached for specific interactions (messaging, credential exchange, API calls). Enables machine-readable discovery of capabilities.", "useCases": ["UC-ENT","UC-EDU","UC-RX","UC-LAW","UC-COMM"], "w3cSection": "3.7" },
+    "R8":  { "short": "Privacy", "full": "Privacy Preserving", "description": "The method minimizes personal data exposure. No PII in the DID Document or on-chain. Supports selective disclosure, pairwise DIDs, and encrypted storage. The DID itself should not leak information about the controller.", "useCases": ["UC-LAW","UC-RX","UC-COMM"], "w3cSection": "3.8" },
+    "R9":  { "short": "Delegation", "full": "Delegation of Control", "description": "A DID controller can delegate authority to other DIDs or keys. Enables organizational hierarchies (root domain controls subdomains), guardianship, and power-of-attorney scenarios.", "useCases": ["UC-ENT","UC-LAW"], "w3cSection": "3.9" },
+    "R10": { "short": "Cross-Jurisd", "full": "Inter-Jurisdictional", "description": "The method works across legal jurisdictions without requiring jurisdiction-specific infrastructure. A DID created in Costa Rica is resolvable and verifiable in the EU, Japan, or anywhere else.", "useCases": ["UC-ENT","UC-EDU","UC-LAW","UC-COMM"], "w3cSection": "3.10" },
+    "R11": { "short": "No Admin Deny", "full": "Cannot Be Administratively Denied", "description": "No single administrative authority can unilaterally revoke or deny a DID. Censorship-resistant by design. The controller maintains sovereignty over their identifier.", "useCases": ["UC-ENT","UC-EDU","UC-LAW"], "w3cSection": "3.11" },
+    "R12": { "short": "Min Rents", "full": "Minimized Rents", "description": "Ongoing costs for maintaining a DID are minimal or zero. The method should not impose recurring fees, subscription requirements, or economic extraction that could force abandonment.", "useCases": ["UC-EDU","UC-LAW"], "w3cSection": "3.12" },
+    "R13": { "short": "No Lock-In", "full": "No Vendor Lock-In", "description": "The DID and its data are portable across implementations. If your current provider disappears, you can migrate to another one. No proprietary APIs, no platform dependencies.", "useCases": ["UC-ENT","UC-EDU","UC-LAW","UC-COMM"], "w3cSection": "3.13" },
+    "R14": { "short": "Anti-Tracking", "full": "Preempt / Limit Trackable Data Trails", "description": "The method minimizes correlation across interactions. Using the same DID everywhere creates a global tracking beacon. Mitigations: pairwise DIDs (unique per relationship), selective disclosure, ZKP-based proofs.", "useCases": ["UC-EDU","UC-RX","UC-COMM"], "w3cSection": "3.14" },
+    "R15": { "short": "Future-Proof", "full": "Cryptographic Future-Proof", "description": "The method defines a migration path for algorithm agility — particularly post-quantum cryptography. Quantum computers will break Ed25519, secp256k1, and P-256. Methods need a plan for ML-DSA / ML-KEM transition.", "useCases": ["UC-ENT","UC-EDU","UC-LAW","UC-COMM"], "w3cSection": "3.15" },
+    "R16": { "short": "Survives Org", "full": "Survives Issuing Organization Mortality", "description": "The DID remains resolvable even if the organization that created it ceases to exist. Blockchain methods inherently satisfy this (the chain outlives any one company). Web-based methods do not.", "useCases": ["UC-ENT","UC-EDU","UC-LAW"], "w3cSection": "3.16" },
+    "R17": { "short": "Survives Deploy", "full": "Survives Deployment End-of-Life", "description": "The DID survives if a specific software deployment is retired. A method tied to one codebase or one hosted service fails this. Methods with multiple independent implementations pass.", "useCases": ["UC-ENT","UC-EDU","UC-LAW"], "w3cSection": "3.17" },
+    "R18": { "short": "Survives Provider", "full": "Survives Relationship with Service Provider", "description": "The DID remains under the controller's authority regardless of their relationship with any service provider. If you leave a platform, your DID comes with you.", "useCases": ["UC-ENT","UC-EDU","UC-LAW"], "w3cSection": "3.18" },
+    "R19": { "short": "Crypto Comm", "full": "Cryptographic Authentication and Communication", "description": "The method enables authenticated, encrypted communication between DID controllers. Typically via DIDComm v2 — peer-to-peer encrypted messaging using keys from the DID Document.", "useCases": ["UC-ENT","UC-EDU","UC-LAW","UC-COMM"], "w3cSection": "3.19" },
+    "R20": { "short": "Registry Agnostic", "full": "Registry Agnostic", "description": "The method doesn't depend on a single verifiable data registry. It can be replicated across multiple blockchains or registries. Cross-chain and multi-chain architectures satisfy this.", "useCases": ["UC-ENT","UC-EDU","UC-COMM"], "w3cSection": "3.20" },
+    "R21": { "short": "Legal ID", "full": "Legally-Enabled Identity", "description": "The method supports binding a DID to a legal identity where regulation requires it. LEI binding for organizations, KYC attestations for individuals. Not all use cases need this — but finance, healthcare, and government do.", "useCases": ["UC-LAW"], "w3cSection": "3.21" },
+    "R22": { "short": "Human Interop", "full": "Human-Centered Interoperability", "description": "The method supports human-readable identifiers or aliases. Instead of did:key:z6Mkf5rG..., the user sees alice.crbank.sol or alice@company.com. Dramatically improves UX for non-technical users.", "useCases": ["UC-EDU","UC-RX","UC-LAW","UC-CRED","UC-COMM"], "w3cSection": "3.22" }
+  },
+  "benefits": {
+    "antiCensorship": {
+      "name": "Anti-Censorship",
+      "description": "The identity cannot be suppressed, blocked, or censored by authorities or platforms. Requirements that contribute: decentralized issuance (R2), no call home (R4), cross-jurisdictional (R10), no admin denial (R11), survives deployment (R17), registry agnostic (R20)."
+    },
+    "antiExploitation": {
+      "name": "Anti-Exploitation",
+      "description": "The identity holder is protected from exploitation by service providers, platforms, or issuers. Requirements that contribute: proof of control (R1), self-issued (R2), no call home (R4), key rotation (R6), privacy (R8), anti-tracking (R14), no lock-in (R13), survives provider (R18)."
+    },
+    "easeOfUse": {
+      "name": "Ease of Use",
+      "description": "The method is usable by non-technical users without understanding the underlying cryptography or blockchain. Requirements that contribute: unique IDs (R3), crypto material (R5), key rotation (R6), service discovery (R7), delegation (R9), legal identity (R21), human interop (R22)."
+    },
+    "privacy": {
+      "name": "Privacy",
+      "description": "The method protects the controller's personal data and prevents unwanted tracking or correlation. Requirements that contribute: self-issued (R2), no call home (R4), privacy preserving (R8), anti-tracking (R14)."
+    },
+    "sustainability": {
+      "name": "Sustainability",
+      "description": "The identity survives over time — across organizations, deployments, providers, and cryptographic transitions. Requirements that contribute: decentralized (R2), unique ID (R3), no call home (R4), key rotation (R6), cross-jurisdictional (R10), minimized rents (R12), no lock-in (R13), future-proof (R15), survives org/deploy/provider (R16/R17/R18), registry agnostic (R20), legal ID (R21), human interop (R22)."
+    }
+  },
+  "scoring": {
+    "methodology": "Scores are derived from the W3C DID Use Cases and Requirements document (NOTE-did-use-cases-20210317). Each of the 22 requirements was evaluated per method by analyzing the specification text, code, and documentation.",
+    "useCaseScores": "Each W3C use case defines a subset of requirements that are essential for that scenario. The use case score = (requirements met / requirements needed) × 100. For example, Enterprise Identifiers needs 17 of 22 requirements — a method meeting 15 of those 17 scores 88%.",
+    "benefitScores": "Each requirement maps to one or more benefit categories (anti-censorship, anti-exploitation, ease of use, privacy, sustainability). The benefit score = (contributing requirements met / total contributing requirements) × 100.",
+    "industryInference": "L2 industry tags are inferred from a combination of use case scores, feature flags, and blockchain type. A method scoring 75%+ on Enterprise with selective disclosure gets tagged 'Cross-Border Finance'. These are heuristic — authors can override them in their checklist submission.",
+    "source": "https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/"
+  }
+}

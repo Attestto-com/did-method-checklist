@@ -1,0 +1,1614 @@
+{
+  "version": "1.1.0",
+  "description": "Verified claims per method \u2014 only data that is explicitly documented in the method's spec, repo, or official docs. If a method is not listed here, it has no verified claims.",
+  "stageOptions": [
+    "R&D",
+    "Development",
+    "Staging",
+    "Production",
+    "Discontinued"
+  ],
+  "regionOptions": [
+    "Global",
+    "EU",
+    "Americas",
+    "LATAM",
+    "USA",
+    "Asia-Pacific",
+    "Africa",
+    "Middle East"
+  ],
+  "methods": {
+    "did:sns": {
+      "focalUseCase": "Cross-Border Finance",
+      "stage": "Development",
+      "regions": [
+        "Global",
+        "LATAM",
+        "EU"
+      ],
+      "npm": {
+        "package": "@attestto/did-sns-resolver",
+        "url": "https://www.npmjs.com/package/@attestto/did-sns-resolver"
+      },
+      "useCaseSummary": "Cross-border identity for regulated finance \u2014 stablecoin corridors, KYC/AML credential exchange, and legal entity binding via vLEI. Also supports academic credentials, healthcare consent, and encrypted messaging via DIDComm v2.",
+      "useCaseSource": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md",
+      "reqSatisfaction": {
+        "R1": "Controller proves ownership via Ed25519/secp256k1/ML-DSA-44 signature on a challenge. Spec \u00a74.2 defines verification method resolution.",
+        "R2": "Controller creates DID without central authority \u2014 PDA derived from domain hash on Solana. No registration needed beyond an on-chain transaction.",
+        "R3": "Registry enforces global uniqueness via Solana PDA derivation \u2014 same domain hash always maps to same account, collisions impossible.",
+        "R4": "Resolution reads from public Solana registry and IPFS. No need to contact the issuer \u2014 any resolver node can verify independently.",
+        "R5": "DID Document includes Ed25519, secp256k1, and ML-DSA-44 verification methods. Keys are bound to the DID at creation.",
+        "R6": "DID Document update operation rotates keys without changing the DID identifier. Spec \u00a75.3 defines the update protocol.",
+        "R7": "DID Document supports service endpoints for DIDComm v2, credential exchange, and linked domains. Spec \u00a74.4.",
+        "R8": "No PII stored on-chain. Selective Disclosure via SD-JWT for credential presentations. Domain names are pseudonymous.",
+        "R9": "Multi-sig controller support \u2014 multiple keys can be authorized as controllers with threshold signing.",
+        "R10": "Works on Solana (global, permissionless). No jurisdiction-specific infrastructure required.",
+        "R11": "No single authority can revoke the DID. Only the controller's private key can deactivate it.",
+        "R12": "Minimal Solana rent (~0.002 SOL) for on-chain account. No per-transaction fees for resolution.",
+        "R13": "Open-source spec and tooling. Standard DID Document format. Universal Resolver driver available.",
+        "R14": "SD-JWT selective disclosure limits data exposure. Pairwise DIDs possible for privacy-sensitive contexts.",
+        "R15": "ML-DSA-44 (CRYSTALS-Dilithium) and ML-KEM-768 post-quantum algorithms supported as verification methods.",
+        "R16": "Data lives on Solana (decentralized, replicated) + IPFS. Survives even if Attestto ceases to exist.",
+        "R17": "Not tied to a single software deployment. Any compatible resolver can read the on-chain state.",
+        "R18": "Controller retains keys independent of any service provider. DID is bound to cryptographic keys, not a business relationship.",
+        "R19": "DIDComm v2 encrypted messaging channel. End-to-end encryption with authenticated key agreement.",
+        "R20": "Primary registry is Solana, but the method spec allows alternate registries implementing the same PDA derivation interface.",
+        "R21": "DID binds to legal identity via vLEI verifiable credential. Supports eIDAS and FATF compliance frameworks.",
+        "R22": "Human-readable SNS domain names (e.g. alice.sol) resolve to DID Documents. No need to memorize cryptographic hashes."
+      },
+      "industries": [
+        {
+          "id": "cross-border-finance",
+          "evidence": "Section 3.1 \u2014 stablecoin corridors, SWIFT/IBAN replacement, ISO 20022 compliance",
+          "source": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Section 3.1 \u2014 FATF Travel Rule, KYC credential exchange, sanctions screening",
+          "source": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md"
+        },
+        {
+          "id": "defi-identity",
+          "evidence": "Section 3.1 \u2014 SBT minting, on-chain reputation, wallet-bound credentials",
+          "source": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md"
+        },
+        {
+          "id": "government-eid",
+          "evidence": "Section 3.2 \u2014 eIDAS compliance, national eID binding, public authority credentials",
+          "source": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Section 3.3 \u2014 university degrees, micro-credentials, transcript portability",
+          "source": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md"
+        },
+        {
+          "id": "patient-health",
+          "evidence": "Section 3.4 \u2014 prescription verification, consent-gated health records",
+          "source": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md"
+        },
+        {
+          "id": "messaging",
+          "evidence": "Section 3.5 \u2014 DIDComm v2 encrypted messaging, provider-portable channels",
+          "source": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md"
+        },
+        {
+          "id": "supply-chain",
+          "evidence": "Section 3.6 \u2014 product provenance, trade document credentials",
+          "source": "https://github.com/Attestto-com/did-sns-spec/blob/main/did-sns/spec/03-focal-use-cases.md"
+        }
+      ]
+    },
+    "did:ion": {
+      "focalUseCase": "Enterprise",
+      "stage": "Discontinued",
+      "regions": [
+        "Global",
+        "USA"
+      ],
+      "npm": {
+        "package": "@decentralized-identity/ion-tools",
+        "url": "https://www.npmjs.com/package/@decentralized-identity/ion-tools"
+      },
+      "useCaseSummary": "Enterprise identity anchored to Bitcoin via Sidetree protocol. Intended for corporate credentials and employee badges, but the project was discontinued before delivering on most enterprise features.",
+      "useCaseSource": "https://github.com/decentralized-identity/ion-did-method",
+      "industries": [
+        {
+          "id": "enterprise",
+          "evidence": "README \u2014 Microsoft enterprise identity initiative, corporate DID operations",
+          "source": "https://github.com/decentralized-identity/ion-did-method"
+        }
+      ]
+    },
+    "did:web": {
+      "focalUseCase": "Enterprise",
+      "stage": "Production",
+      "regions": [
+        "Global"
+      ],
+      "npm": {
+        "package": "web-did-resolver",
+        "url": "https://www.npmjs.com/package/web-did-resolver"
+      },
+      "useCaseSummary": "DNS-anchored identity for organizations that already have web domains. Low barrier to entry \u2014 no blockchain required. Used for enterprise VCs and as a bridge to other methods.",
+      "useCaseSource": "https://w3c-ccg.github.io/did-method-web/",
+      "industries": [
+        {
+          "id": "enterprise",
+          "evidence": "Spec intro \u2014 organizational identity via existing DNS infrastructure",
+          "source": "https://w3c-ccg.github.io/did-method-web/"
+        }
+      ]
+    },
+    "did:ethr": {
+      "focalUseCase": "DeFi Identity",
+      "stage": "Production",
+      "regions": [
+        "Global"
+      ],
+      "npm": {
+        "package": "ethr-did-resolver",
+        "url": "https://www.npmjs.com/package/ethr-did-resolver"
+      },
+      "useCaseSummary": "Ethereum-based identity using smart contract registry. Primarily for DeFi and supply chain identity within the Ethereum ecosystem.",
+      "useCaseSource": "https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Spec \u2014 Ethereum address-based DID, ERC-1056 registry, on-chain identity",
+          "source": "https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md"
+        },
+        {
+          "id": "supply-chain",
+          "evidence": "uPort ecosystem docs \u2014 supply chain provenance use cases",
+          "source": "https://github.com/decentralized-identity/ethr-did-resolver"
+        }
+      ]
+    },
+    "did:key": {
+      "focalUseCase": "Credentials",
+      "stage": "Production",
+      "regions": [
+        "Global"
+      ],
+      "npm": {
+        "package": "@digitalbazaar/did-method-key",
+        "url": "https://www.npmjs.com/package/@digitalbazaar/did-method-key"
+      },
+      "useCaseSummary": "Ephemeral, self-contained identity derived from a public key. No registry needed. Used for testing, short-lived sessions, and as a building block in credential exchanges.",
+      "useCaseSource": "https://w3c-ccg.github.io/did-method-key/",
+      "industries": []
+    },
+    "did:peer": {
+      "focalUseCase": "Communication",
+      "stage": "Production",
+      "regions": [
+        "Global"
+      ],
+      "npm": {
+        "package": "@aviarytech/did-peer",
+        "url": "https://www.npmjs.com/package/@aviarytech/did-peer"
+      },
+      "useCaseSummary": "Pairwise, off-ledger identity for direct peer-to-peer relationships. Designed for DIDComm messaging channels. No global registry \u2014 each peer relationship creates a unique DID.",
+      "useCaseSource": "https://identity.foundation/peer-did-method-spec/",
+      "industries": [
+        {
+          "id": "messaging",
+          "evidence": "Spec Section 1 \u2014 designed specifically for DIDComm peer-to-peer messaging",
+          "source": "https://identity.foundation/peer-did-method-spec/"
+        }
+      ]
+    },
+    "did:ebsi": {
+      "focalUseCase": "Government eID",
+      "stage": "Staging",
+      "regions": [
+        "EU"
+      ],
+      "useCaseSummary": "EU Blockchain Services Infrastructure \u2014 government-backed identity for eIDAS compliance, cross-border credential recognition within the EU.",
+      "useCaseSource": "https://ec.europa.eu/digital-building-blocks/sites/display/EBSI/Home",
+      "industries": [
+        {
+          "id": "government-eid",
+          "evidence": "EBSI docs \u2014 EU member state identity, eIDAS wallet integration",
+          "source": "https://ec.europa.eu/digital-building-blocks/sites/display/EBSI/Home"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "EBSI diploma use case \u2014 cross-border academic credential verification",
+          "source": "https://ec.europa.eu/digital-building-blocks/sites/display/EBSI/Home"
+        },
+        {
+          "id": "cross-border-finance",
+          "evidence": "EBSI docs \u2014 European cross-border identity for financial services",
+          "source": "https://ec.europa.eu/digital-building-blocks/sites/display/EBSI/Home"
+        }
+      ]
+    },
+    "did:sov": {
+      "focalUseCase": "Government eID",
+      "stage": "Production",
+      "regions": [
+        "Global",
+        "Americas",
+        "EU"
+      ],
+      "npm": {
+        "package": "sovrin-did-resolver",
+        "url": "https://www.npmjs.com/package/sovrin-did-resolver"
+      },
+      "useCaseSummary": "Hyperledger Indy-based identity for government credential programs. Used in Canadian and EU pilot programs for digital identity and KYC.",
+      "useCaseSource": "https://sovrin.org/wp-content/uploads/Sovrin-Protocol-and-Token-White-Paper.pdf",
+      "industries": [
+        {
+          "id": "government-eid",
+          "evidence": "Sovrin whitepaper \u2014 government-issued digital identity credentials",
+          "source": "https://sovrin.org/wp-content/uploads/Sovrin-Protocol-and-Token-White-Paper.pdf"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Sovrin ecosystem \u2014 KYC credential exchange pilots",
+          "source": "https://sovrin.org/"
+        }
+      ]
+    },
+    "did:indy": {
+      "focalUseCase": "Government eID",
+      "stage": "Production",
+      "regions": [
+        "Global",
+        "Americas",
+        "EU"
+      ],
+      "npm": {
+        "package": "@hyperledger/indy-vdr-nodejs",
+        "url": "https://www.npmjs.com/package/@hyperledger/indy-vdr-nodejs"
+      },
+      "useCaseSummary": "Hyperledger Indy network identity with AnonCreds support. Designed for privacy-preserving government and financial credentials with ZKP-based selective disclosure.",
+      "useCaseSource": "https://hyperledger.github.io/indy-did-method/",
+      "industries": [
+        {
+          "id": "government-eid",
+          "evidence": "Indy docs \u2014 government credential issuance, digital ID programs",
+          "source": "https://hyperledger.github.io/indy-did-method/"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Aries/Indy ecosystem \u2014 privacy-preserving KYC with AnonCreds",
+          "source": "https://hyperledger.github.io/indy-did-method/"
+        },
+        {
+          "id": "patient-health",
+          "evidence": "Hyperledger Health SIG \u2014 health credential pilots",
+          "source": "https://wiki.hyperledger.org/display/HCSIG"
+        }
+      ]
+    },
+    "did:ens": {
+      "focalUseCase": "DeFi Identity",
+      "stage": "Production",
+      "regions": [
+        "Global"
+      ],
+      "npm": {
+        "package": "ens-did-resolver",
+        "url": "https://www.npmjs.com/package/ens-did-resolver"
+      },
+      "useCaseSummary": "Ethereum Name Service integration \u2014 maps ENS names to DID Documents. Primarily for DeFi identity and social identity in the Ethereum ecosystem.",
+      "useCaseSource": "https://github.com/veramolabs/ens-did-resolver",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "ENS spec \u2014 Ethereum name-based identity, DeFi wallet resolution",
+          "source": "https://github.com/veramolabs/ens-did-resolver"
+        },
+        {
+          "id": "social-media",
+          "evidence": "ENS ecosystem \u2014 social identity with .eth names",
+          "source": "https://ens.domains/"
+        }
+      ]
+    },
+    "did:pkh": {
+      "focalUseCase": "DeFi Identity",
+      "stage": "Development",
+      "regions": [
+        "Global"
+      ],
+      "npm": {
+        "package": "pkh-did-resolver",
+        "url": "https://www.npmjs.com/package/pkh-did-resolver"
+      },
+      "useCaseSummary": "Blockchain address-based identity \u2014 derives a DID from any blockchain public key hash (Ethereum, Solana, Bitcoin, etc.). Multi-chain wallet identity.",
+      "useCaseSource": "https://github.com/w3c-ccg/did-pkh/blob/main/did-pkh-method-draft.md",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Spec \u2014 multi-chain address-derived identity for DeFi",
+          "source": "https://github.com/w3c-ccg/did-pkh/blob/main/did-pkh-method-draft.md"
+        }
+      ]
+    },
+    "did:plc": {
+      "focalUseCase": "Social Media",
+      "stage": "Production",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "AT Protocol (Bluesky) identity \u2014 portable social identity with account migration support. Custom resolution via PLC directory.",
+      "useCaseSource": "https://github.com/did-method-plc/did-method-plc",
+      "industries": [
+        {
+          "id": "social-media",
+          "evidence": "Spec \u2014 designed for Bluesky/AT Protocol social identity",
+          "source": "https://github.com/did-method-plc/did-method-plc"
+        }
+      ]
+    },
+    "did:cheqd": {
+      "focalUseCase": "Enterprise",
+      "stage": "Production",
+      "regions": [
+        "Global",
+        "EU"
+      ],
+      "npm": {
+        "package": "@cheqd/did-provider-cheqd",
+        "url": "https://www.npmjs.com/package/@cheqd/did-provider-cheqd"
+      },
+      "useCaseSummary": "Cosmos SDK-based identity with built-in credential payment rails. Designed for enterprise credential issuance with on-chain payment models.",
+      "useCaseSource": "https://docs.cheqd.io/identity",
+      "industries": [
+        {
+          "id": "enterprise",
+          "evidence": "cheqd docs \u2014 enterprise credential payment infrastructure",
+          "source": "https://docs.cheqd.io/identity"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "cheqd docs \u2014 paid credential verification for KYC",
+          "source": "https://docs.cheqd.io/identity"
+        }
+      ]
+    },
+    "did:prism": {
+      "focalUseCase": "Government eID",
+      "stage": "Production",
+      "regions": [
+        "Africa",
+        "Global"
+      ],
+      "useCaseSummary": "Cardano-based identity via Identus (formerly Atala PRISM). Designed for government eID programs and academic credentials in developing markets.",
+      "useCaseSource": "https://docs.atalaprism.io/",
+      "industries": [
+        {
+          "id": "government-eid",
+          "evidence": "Identus docs \u2014 Ethiopia national ID pilot, government credential programs",
+          "source": "https://docs.atalaprism.io/"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Identus docs \u2014 educational credential pilots in Ethiopia",
+          "source": "https://docs.atalaprism.io/"
+        }
+      ]
+    },
+    "did:eosio": {
+      "focalUseCase": "Communication",
+      "regions": [
+        "Global",
+        "EU",
+        "LATAM"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/Gimly-Blockchain/eosio-did-spec",
+      "industries": [
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "messaging",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:antelope": {
+      "focalUseCase": "Communication",
+      "regions": [
+        "Global",
+        "EU",
+        "LATAM"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/Tonomy-Foundation/antelope-did-spec",
+      "industries": [
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "messaging",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:itn": {
+      "focalUseCase": "Communication",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/itn-trust/itn-did-spec",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "enterprise",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "messaging",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:example": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://www.w3.org/TR/did-core/",
+      "industries": [
+        {
+          "id": "supply-chain",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:oyd": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global",
+        "EU"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://ownyourdata.github.io/oydid/",
+      "industries": [
+        {
+          "id": "enterprise",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "supply-chain",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:zk": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/zCloak-Network/zk-did-method-specs",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:bsv": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://docs.teranode.group/tng-identity-documentation/did/bsv-did-method-specifications/method-specification.-a-utxo-friendly-method",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:ipid": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://did-ipid.github.io/ipid-did-method/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:keri": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://weboftrust.github.io/did-keri/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:life": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://lifeid.github.io/did-method-spec/",
+      "industries": [
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:peaq": {
+      "focalUseCase": "Communication",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/peaqnetwork/peaq-did-specifications",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "supply-chain",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "messaging",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:ev": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/KayTrust/did-method-ev",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:dotbit": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/dotbithq/dotbit-did-spec",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "social-media",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:3": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://cips.ceramic.network/CIPs/cip-79",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:bit": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/dotbitHQ/did-bit-spec",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:btcr": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://w3c-ccg.github.io/didm-btcr",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:dime": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/dime-coin/dimedid-method",
+      "industries": [
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:dns": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://danubetech.github.io/did-method-dns/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:is": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/block-core/blockcore-did-method",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:myDiD": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/MyDidCom/myDiD_Method",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:nostr": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://nostrcg.github.io/did-nostr/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "social-media",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:san": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/Baasze/DID-method-specification",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "patient-health",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:sideos": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/sideos/sideos-did-method",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "enterprise",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:sol": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://g.identity.com/sol-did/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:cosmos": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/EarthProgram/did-cosmos",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:webplus": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://ledgerdomain.github.io/did-webplus-spec/",
+      "industries": [
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "supply-chain",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:abt": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://arcblock.github.io/abt-did-spec/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:ccd": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://proposals.concordium.software/ID/concordium-did.html",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:drop": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://tenman1739-alt.github.io/did-drop-spec/",
+      "industries": [
+        {
+          "id": "supply-chain",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:dweb": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/Aisino-Blockchain/dweb-Method-Specification",
+      "industries": [
+        {
+          "id": "enterprise",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:knox": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/knox-networks/knox-did-specification",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "enterprise",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:monid": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://lianxi-tech.github.io/monid/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "social-media",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:orb": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://trustbloc.github.io/did-method-orb/",
+      "industries": [
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:ssw": {
+      "focalUseCase": "Communication",
+      "regions": [
+        "Global",
+        "Asia-Pacific"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://sktston.github.io/ssw-did/did-method-spec.html",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "messaging",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:vvo": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://vivvo.github.io/vivvo-did-scheme/spec/did-method-spec-template.html",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:wlk": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global",
+        "Asia-Pacific"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://weelink-team.github.io/weelink/DIDDesignEn",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:zkme": {
+      "focalUseCase": "Privacy",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/zkMeLabs/zkme-did-method-spec",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:onion": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://blockchaincommons.github.io/did-method-onion/",
+      "industries": []
+    },
+    "did:rm": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/realmatterio/RealMatter-DID-Method",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:gatc": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/gatacaid/gataca-did-method",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:yourd": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global",
+        "EU"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/DataSovereignty-YourD/YourD-did-sepcification",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:art": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/ArtracID/ArtracID-DID-ART-Method",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "enterprise",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "supply-chain",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:cn": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global",
+        "Asia-Pacific"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/caict-4iot-dev/CN-DID-Method-Specification",
+      "industries": [
+        {
+          "id": "enterprise",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:jlinc": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://did-spec.jlinc.org/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:nda": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://did-specs.ndachain.vn",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:resume": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/realmatterio/Resume-DID-Method/",
+      "industries": [
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:v1": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global",
+        "EU",
+        "USA"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://w3c-ccg.github.io/did-method-v1/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "government-eid",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:content": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/KataruInc/did-content-spec",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:ccp": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global",
+        "Asia-Pacific"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://did.baidu.com/did-spec/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:ct": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/blueroominnovation/did-ct-spec",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:gns": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://lsd.gnunet.org/lsd0005/",
+      "industries": []
+    },
+    "did:iscc": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://ieps.iscc.codes/iep-0015/",
+      "industries": []
+    },
+    "did:nft": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://cips.ceramic.network/CIPs/cip-94",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:nuts": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://nuts-foundation.gitbook.io/drafts/rfc/rfc006-distributed-registry",
+      "industries": []
+    },
+    "did:safe": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://cips.ceramic.network/CIPs/cip-101",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:polygon": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/ayanworks/polygon-did-method-spec",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:jlinx": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://didspec.jlinx.io",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:self": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global",
+        "EU"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/excid-io/did-self",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "messaging",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:ishare": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global",
+        "EU"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://did.ishare.eu/",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "government-eid",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "academic-credentials",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:bee": {
+      "focalUseCase": "IoT",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/mesur-io/did-method-bee",
+      "industries": [
+        {
+          "id": "banking-kyc",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "supply-chain",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:meme": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://or13.github.io/didme.me/did-method-spec",
+      "industries": []
+    },
+    "did:erat": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://gitlab.com/eratosthenes-h2020/erat-did-spec",
+      "industries": []
+    },
+    "did:unisot": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://gitlab.com/unisot-did/unisot-did-method-specification",
+      "industries": []
+    },
+    "did:jwk": {
+      "focalUseCase": "Credentials",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/quartzjer/did-jwk",
+      "industries": []
+    },
+    "did:ni": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://storage.bengo.is/space/07ce89c1-f836-4d1e-94d8-b5a87f825fb8/",
+      "industries": []
+    },
+    "did:polygonid": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://github.com/iden3/did-iden3/",
+      "industries": []
+    },
+    "did:corda": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://htmlpreview.github.io/?https://github.com/persistentsystems/corda-did-method/blob/master/corda_did_method.html",
+      "industries": []
+    },
+    "did:dyne": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://dyne.github.io/W3C-DID",
+      "industries": []
+    },
+    "did:everscale": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://git.defispace.com/ssi-4/everscale-did-registry/-/blob/master/docs/documentation.md",
+      "industries": []
+    },
+    "did:ling": {
+      "focalUseCase": "DeFi Identity",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://www.notion.so/LING-DID-Method-Specification-7b9d25a62a1849a496890b9ef24e0890",
+      "industries": [
+        {
+          "id": "defi-identity",
+          "evidence": "Extracted from spec text"
+        },
+        {
+          "id": "iot",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    },
+    "did:psqr": {
+      "focalUseCase": "Content",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://vpsqr.com/did-method-psqr/v1/",
+      "industries": []
+    },
+    "did:sirius": {
+      "focalUseCase": "Enterprise",
+      "regions": [
+        "Global"
+      ],
+      "useCaseSummary": "",
+      "useCaseSource": "https://gitlab.com/proximax-enterprise/siriusid/sirius-id-specs/-/blob/master/docs/did-method-spec.md",
+      "industries": [
+        {
+          "id": "enterprise",
+          "evidence": "Extracted from spec text"
+        }
+      ]
+    }
+  }
+}

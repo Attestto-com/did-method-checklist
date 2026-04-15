@@ -1,0 +1,1217 @@
+@import "tailwindcss";
+@source "../src/**/*.{vue,ts}";
+
+/*
+ * DID Landscape Explorer — Design System
+ *
+ * Dark-first, minimal, data-dense.
+ * Optimized for tables, matrices, and comparison views.
+ *
+ * ALL visual patterns are defined here as semantic classes.
+ * Components MUST use these classes — never raw Tailwind colors/sizes.
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+ * 1. DESIGN TOKENS
+ * ═══════════════════════════════════════════════════════════════ */
+:root {
+  /* Semantic status colors */
+  --color-green: #22c55e;
+  --color-yellow: #eab308;
+  --color-red: #ef4444;
+  --color-blue: #3b82f6;
+  --color-purple: #a855f7;
+  --color-cyan: #06b6d4;
+  --color-amber: #f59e0b;
+  --color-orange: #f97316;
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e5e7eb;
+  --color-text-description: #d1d5db;
+  --color-text-muted: #9ca3af;
+  --color-text-dim: #6b7280;
+  --color-text-ghost: #4b5563;
+
+  /* Surfaces */
+  --color-bg-base: #030712;
+  --color-bg-raised: rgba(31, 41, 55, 0.3);
+  --color-bg-elevated: rgba(31, 41, 55, 0.4);
+  --color-bg-input: #1f2937;
+  --color-bg-overlay: rgba(0, 0, 0, 0.6);
+
+  /* Borders */
+  --color-border: #374151;
+  --color-border-subtle: rgba(55, 65, 81, 0.5);
+  --color-border-active: #4b5563;
+
+  /* Spacing scale */
+  --space-section: 1.5rem;   /* space-y-6 between page sections */
+  --space-card: 0.75rem;     /* space-y-3 within cards */
+  --space-gap: 0.75rem;      /* gap-3 for grids */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+}
+
+/*
+ * Text contrast rules on bg-gray-950 (#030712):
+ *
+ * READABLE (use these):
+ *   .text-primary   #ffffff   — headings, method names
+ *   .text-secondary  #e5e7eb  — body text, table cells
+ *   .text-description #d1d5db — descriptions, secondary content
+ *   .text-muted      #9ca3af  — labels, help text
+ *   .text-dim        #6b7280  — decorative separators, disabled
+ *   .text-ghost      #4b5563  — code class refs in style guide ONLY
+ *
+ * NEVER use gray-700 or darker on dark backgrounds.
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+ * 2. TEXT HIERARCHY
+ * ═══════════════════════════════════════════════════════════════ */
+@layer components {
+
+  /* ── Core text colors ─────────────────────────────────────── */
+  .text-primary   { color: var(--color-text-primary); }
+  .text-secondary { color: var(--color-text-secondary); }
+  .text-description { color: var(--color-text-description); }
+  .text-muted     { color: var(--color-text-muted); }
+  .text-dim       { color: var(--color-text-dim); }
+  .text-ghost     { color: var(--color-text-ghost); }
+
+  /* ── Semantic status text ─────────────────────────────────── */
+  .text-status-met     { color: var(--color-green); }
+  .text-status-partial { color: var(--color-yellow); }
+  .text-status-not-met { color: var(--color-red); }
+  .text-status-info    { color: var(--color-blue); }
+  .text-status-experimental { color: var(--color-purple); }
+
+  /* ── Typography scale ─────────────────────────────────────── */
+  .text-page-title {
+    @apply text-xl font-bold;
+    color: var(--color-text-primary);
+  }
+  .text-section-header {
+    @apply text-lg font-bold;
+    color: var(--color-text-primary);
+  }
+  .text-subsection {
+    @apply text-sm font-semibold;
+    color: var(--color-text-secondary);
+  }
+  .text-body {
+    @apply text-sm;
+    color: var(--color-text-description);
+  }
+  .text-help {
+    @apply text-xs;
+    color: var(--color-text-muted);
+  }
+  .text-footnote {
+    @apply text-[10px] italic;
+    color: var(--color-text-ghost);
+  }
+  .text-label {
+    @apply text-[10px] uppercase tracking-wider;
+    color: var(--color-text-muted);
+  }
+
+  /* ── Monospace ────────────────────────────────────────────── */
+  .text-method-name {
+    @apply font-mono text-sm font-semibold;
+    color: var(--color-text-primary);
+  }
+  .text-requirement-id {
+    @apply font-mono text-[11px];
+    color: var(--color-text-muted);
+  }
+  .text-score {
+    @apply font-mono text-xs;
+    color: var(--color-green);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 3. LAYOUT
+   * ═══════════════════════════════════════════════════════════════ */
+  .layout-page {
+    @apply max-w-7xl mx-auto;
+  }
+  .layout-page-full {
+    @apply max-w-full;
+  }
+  .layout-content {
+    @apply px-8 py-6 sm:px-12 lg:px-16;
+  }
+  .layout-sections {
+    @apply space-y-6;
+  }
+  .layout-card-content {
+    @apply space-y-3;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 4. CARDS
+   * ═══════════════════════════════════════════════════════════════ */
+  .card {
+    @apply rounded-lg p-5;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-raised);
+  }
+  .card-bordered {
+    @apply rounded-lg;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-raised);
+  }
+  .card-stat {
+    @apply rounded-lg py-3 text-center;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+  }
+  .card-stat-value {
+    @apply text-xl font-bold;
+  }
+  .card-stat-label {
+    @apply text-[10px] mt-0.5;
+    color: var(--color-text-muted);
+  }
+  .card-collapsible {
+    @apply rounded-lg;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-raised);
+  }
+  .card-collapsible--expanded {
+    border-color: var(--color-border-active);
+  }
+  .card-collapsible__trigger {
+    @apply w-full flex items-center justify-between px-5 py-4 text-left;
+  }
+  .card-collapsible__body {
+    @apply px-5 py-4;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 5. BADGES & PILLS
+   * ═══════════════════════════════════════════════════════════════ */
+
+  /* Base badge shapes */
+  .badge-pill {
+    @apply text-xs px-2 py-0.5 rounded-full border;
+  }
+  .badge-rect {
+    @apply text-[10px] px-1.5 py-0.5 rounded;
+  }
+
+  /* Lifecycle badge — color set via inline style from config */
+  .badge-lifecycle {
+    @apply text-xs px-2 py-0.5 rounded-full border;
+  }
+
+  /* Category/registry type badge */
+  .badge-category {
+    @apply text-[10px] px-1.5 py-0.5 rounded-full;
+    border: 1px solid var(--color-border-active);
+    color: var(--color-text-description);
+  }
+
+  /* Requirement tier badges */
+  .badge-tier-core {
+    @apply text-[10px] px-1.5 py-0.5 rounded;
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+  }
+  .badge-tier-common {
+    @apply text-[10px] px-1.5 py-0.5 rounded;
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+  }
+  .badge-tier-specialized {
+    @apply text-[10px] px-1.5 py-0.5 rounded;
+    background: rgba(107, 114, 128, 0.2);
+    color: var(--color-text-description);
+  }
+
+  /* Industry pill — color set via :class binding */
+  .badge-industry {
+    @apply text-[10px] px-1.5 py-0.5 rounded border;
+  }
+
+  /* Feature/crypto pills — 3 states */
+  .pill-supported {
+    @apply text-[11px] px-1.5 py-0.5 rounded;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.05);
+  }
+  .pill-unsupported {
+    @apply text-[11px] px-1.5 py-0.5 rounded;
+    border: 1px solid rgba(248, 113, 113, 0.2);
+    color: rgba(248, 113, 113, 0.6);
+  }
+  .pill-unknown {
+    @apply text-[11px] px-1.5 py-0.5 rounded;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-ghost);
+  }
+
+  /* Requirement compatibility pills (method detail) */
+  .pill-req-met {
+    @apply text-[11px] font-mono px-1.5 py-0.5 rounded;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.05);
+  }
+  .pill-req-unmet {
+    @apply text-[11px] font-mono px-1.5 py-0.5 rounded;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 6. BUTTONS
+   * ═══════════════════════════════════════════════════════════════ */
+  .btn-primary {
+    @apply px-4 py-1.5 text-xs rounded-lg font-medium transition-colors;
+    background: var(--color-blue);
+    color: var(--color-text-primary);
+  }
+  .btn-primary:hover {
+    background: #2563eb;
+  }
+  .btn-success {
+    @apply px-4 py-1.5 text-xs rounded-lg font-medium transition-colors;
+    background: var(--color-green);
+    color: var(--color-text-primary);
+  }
+  .btn-success:hover {
+    background: #16a34a;
+  }
+  .btn-outline {
+    @apply px-4 py-1.5 text-xs rounded-lg font-medium transition-colors;
+    border: 1px solid var(--color-border-active);
+    color: var(--color-text-secondary);
+    background: transparent;
+  }
+  .btn-outline:hover {
+    border-color: var(--color-text-muted);
+    color: var(--color-text-primary);
+  }
+  .btn-dashed {
+    @apply px-4 py-1.5 text-xs rounded-lg font-medium transition-colors;
+    border: 1px dashed var(--color-border-active);
+    color: var(--color-text-muted);
+    background: transparent;
+  }
+  .btn-ghost {
+    @apply px-4 py-1.5 text-xs rounded-lg font-medium transition-colors;
+    color: var(--color-text-muted);
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    color: var(--color-text-primary);
+  }
+  .btn-accent {
+    @apply px-4 py-1.5 text-xs rounded-lg font-medium transition-colors;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    color: #60a5fa;
+    background: transparent;
+  }
+  .btn-accent:hover {
+    border-color: rgba(96, 165, 250, 0.5);
+  }
+  .btn-disabled {
+    @apply px-4 py-1.5 text-xs rounded-lg font-medium cursor-not-allowed;
+    background: var(--color-border);
+    color: var(--color-text-dim);
+  }
+
+  /* Segmented toggle group */
+  .toggle-group {
+    @apply inline-flex rounded-lg overflow-hidden;
+    border: 1px solid var(--color-border);
+  }
+  .toggle-group__item {
+    @apply px-3 py-1.5 text-xs font-medium transition-colors;
+    color: var(--color-text-muted);
+  }
+  .toggle-group__item:hover {
+    color: var(--color-text-primary);
+  }
+  .toggle-group__item--active {
+    background: var(--color-blue);
+    color: var(--color-text-primary);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 7. INPUTS
+   * ═══════════════════════════════════════════════════════════════ */
+  .input-base {
+    @apply w-full rounded-lg px-3 py-2 text-sm;
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+  .input-base::placeholder {
+    color: var(--color-text-dim);
+  }
+  .input-base:focus {
+    outline: none;
+    border-color: var(--color-blue);
+    box-shadow: 0 0 0 1px var(--color-blue);
+  }
+  .input-search {
+    @apply w-full rounded-lg pl-10 pr-3 py-2 text-sm;
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+  .input-search::placeholder {
+    color: var(--color-text-dim);
+  }
+  .input-search:focus {
+    outline: none;
+    border-color: var(--color-blue);
+    box-shadow: 0 0 0 1px var(--color-blue);
+  }
+  .input-label {
+    @apply text-[10px] uppercase tracking-wider mb-1 block;
+    color: var(--color-text-muted);
+  }
+  .input-checkbox-group {
+    @apply flex items-center gap-1.5 text-xs cursor-pointer;
+    color: var(--color-text-description);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 8. CALLOUTS
+   * ═══════════════════════════════════════════════════════════════ */
+  .callout-info {
+    @apply rounded-lg px-4 py-3;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    background: rgba(96, 165, 250, 0.05);
+  }
+  .callout-info .callout__title { color: #60a5fa; }
+  .callout-warning {
+    @apply rounded-lg px-4 py-3;
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    background: rgba(251, 191, 36, 0.05);
+  }
+  .callout-warning .callout__title { color: #fbbf24; }
+  .callout-success {
+    @apply rounded-lg px-4 py-3;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    background: rgba(74, 222, 128, 0.05);
+  }
+  .callout-success .callout__title { color: #4ade80; }
+  .callout__title {
+    @apply text-sm font-semibold mb-1;
+  }
+  .callout__body {
+    @apply text-xs;
+    color: var(--color-text-description);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 9. TABLE
+   * ═══════════════════════════════════════════════════════════════ */
+  .table-wrapper {
+    @apply overflow-x-auto rounded-lg;
+    border: 1px solid var(--color-border);
+  }
+  .table {
+    @apply w-full text-sm text-left;
+  }
+  .table-head {
+    @apply text-[11px] uppercase tracking-wider;
+    background: rgba(31, 41, 55, 0.8);
+    color: var(--color-text-description);
+  }
+  .table-head th {
+    @apply px-3 py-2.5;
+  }
+  .table-head th.sortable {
+    @apply cursor-pointer transition-colors;
+  }
+  .table-head th.sortable:hover {
+    color: var(--color-text-primary);
+  }
+  .table-body {
+    @apply divide-y;
+    --tw-divide-opacity: 1;
+    border-color: rgba(31, 41, 55, 0.6);
+  }
+  .table-row {
+    @apply cursor-pointer transition-colors;
+  }
+  .table-row:hover {
+    background: rgba(31, 41, 55, 0.3);
+  }
+  .table-row td {
+    @apply px-3 py-2;
+  }
+  .table-cell-rank {
+    @apply text-center text-xs;
+    color: var(--color-text-dim);
+  }
+  .table-cell-link {
+    @apply text-xs;
+    color: #60a5fa;
+  }
+  .table-cell-empty {
+    @apply text-xs;
+    color: var(--color-text-dim);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 10. MODAL
+   * ═══════════════════════════════════════════════════════════════ */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    background: var(--color-bg-overlay);
+  }
+  .modal-panel {
+    @apply rounded-xl shadow-2xl overflow-hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-base);
+  }
+  .modal-header {
+    @apply flex items-center justify-between px-5 py-3;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .modal-header__close {
+    @apply text-lg leading-none transition-colors;
+    color: var(--color-text-muted);
+  }
+  .modal-header__close:hover {
+    color: var(--color-text-primary);
+  }
+  .modal-body {
+    @apply px-5 py-4 space-y-3;
+  }
+  .modal-purpose {
+    @apply text-xs pl-3;
+    border-left: 2px solid rgba(96, 165, 250, 0.4);
+    color: var(--color-text-muted);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 11. LINKS
+   * ═══════════════════════════════════════════════════════════════ */
+  .link {
+    @apply text-xs transition-colors;
+    color: #60a5fa;
+  }
+  .link:hover {
+    @apply underline;
+  }
+  .link-muted {
+    @apply text-xs transition-colors;
+    color: var(--color-text-muted);
+  }
+  .link-muted:hover {
+    color: var(--color-text-secondary);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 12. CODE
+   * ═══════════════════════════════════════════════════════════════ */
+  .code-inline {
+    @apply rounded px-3 py-2;
+    background: var(--color-bg-base);
+  }
+  .code-inline code {
+    @apply text-xs font-mono;
+    color: var(--color-green);
+  }
+  .code-block {
+    @apply rounded-lg p-4 text-xs overflow-x-auto;
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-description);
+  }
+  .code-ref {
+    @apply text-[10px] font-mono;
+    color: var(--color-text-dim);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 13. EMPTY / NOT PROVIDED STATES
+   * ═══════════════════════════════════════════════════════════════ */
+  .empty-state {
+    @apply text-xs italic;
+    color: var(--color-text-dim);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 14. WIZARD STEPS
+   * ═══════════════════════════════════════════════════════════════ */
+  .wizard-step {
+    @apply rounded-lg px-3 py-2;
+    border: 1px solid var(--color-border);
+  }
+  .wizard-step--active {
+    border-width: 2px;
+    border-color: var(--color-blue);
+    background: rgba(59, 130, 246, 0.1);
+  }
+  .wizard-step--active .wizard-step__number { color: #60a5fa; }
+  .wizard-step--active .wizard-step__label  { color: #93c5fd; }
+  .wizard-step--done {
+    border-color: rgba(34, 197, 94, 0.3);
+    background: rgba(34, 197, 94, 0.05);
+  }
+  .wizard-step--done .wizard-step__number { color: #4ade80; }
+  .wizard-step--done .wizard-step__label  { color: #86efac; }
+  .wizard-step__number {
+    @apply text-xs font-semibold;
+    color: var(--color-text-muted);
+  }
+  .wizard-step__label {
+    @apply text-xs ml-1;
+    color: var(--color-text-muted);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 15. SECTION DIVIDER
+   * ═══════════════════════════════════════════════════════════════ */
+  .section-divider {
+    @apply border-b pb-1;
+    border-color: rgba(31, 41, 55, 1);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 16. SEARCH ICON (positioned inside input)
+   * ═══════════════════════════════════════════════════════════════ */
+  .input-search-icon {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4;
+    color: var(--color-text-muted);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 17. ICON SIZING
+   * ═══════════════════════════════════════════════════════════════ */
+  .icon-xs { @apply h-3 w-3 flex-shrink-0; }
+  .icon-sm { @apply h-4 w-4 flex-shrink-0; }
+  .icon-md { @apply h-5 w-5 flex-shrink-0; }
+  .icon-lg { @apply h-8 w-8 flex-shrink-0; }
+  .icon-xl { @apply h-12 w-12 flex-shrink-0; }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 18. SHELL — Header, Nav, Footer
+   * ═══════════════════════════════════════════════════════════════ */
+  .shell-header {
+    @apply px-6 py-6;
+    border-bottom: 1px solid rgba(31, 41, 55, 1);
+  }
+  .shell-header__title {
+    @apply text-2xl font-bold;
+    color: var(--color-text-secondary);
+  }
+  .shell-header__accent {
+    color: #60a5fa;
+  }
+  .shell-header__subtitle {
+    @apply text-sm mt-1;
+    color: var(--color-text-muted);
+  }
+  .shell-nav {
+    @apply px-6;
+    border-bottom: 1px solid rgba(31, 41, 55, 1);
+  }
+  .shell-nav__link {
+    @apply py-3 text-sm font-medium transition-colors border-b-2;
+  }
+  .shell-nav__link--active {
+    color: #60a5fa;
+    border-color: #60a5fa;
+  }
+  .shell-nav__link--inactive {
+    color: var(--color-text-muted);
+    border-color: transparent;
+  }
+  .shell-nav__link--inactive:hover {
+    color: var(--color-text-secondary);
+  }
+  .shell-footer {
+    @apply px-6 py-4 mt-auto;
+    border-top: 1px solid rgba(31, 41, 55, 1);
+  }
+  .shell-footer__text {
+    @apply text-xs;
+    color: var(--color-text-dim);
+  }
+  .shell-footer__link {
+    @apply transition-colors;
+    color: var(--color-text-dim);
+  }
+  .shell-footer__link:hover {
+    color: var(--color-text-description);
+  }
+
+  /* Loading & error states */
+  .state-loading {
+    @apply text-center py-12;
+    color: var(--color-text-muted);
+  }
+  .state-error {
+    @apply text-center py-12;
+    color: var(--color-red);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 19. HERO (HomePage)
+   * ═══════════════════════════════════════════════════════════════ */
+  .hero-title {
+    @apply text-3xl font-bold;
+    color: var(--color-text-primary);
+  }
+  .hero-description {
+    @apply max-w-2xl mx-auto;
+    color: var(--color-text-muted);
+  }
+  .hero-btn-primary {
+    @apply px-5 py-2 rounded-lg text-sm font-medium transition-colors;
+    background: var(--color-blue);
+    color: var(--color-text-primary);
+  }
+  .hero-btn-primary:hover {
+    background: #2563eb;
+  }
+  .hero-btn-outline {
+    @apply px-5 py-2 rounded-lg text-sm font-medium transition-colors;
+    border: 1px solid var(--color-border-active);
+    color: var(--color-text-secondary);
+  }
+  .hero-btn-outline:hover {
+    border-color: var(--color-text-muted);
+    color: var(--color-text-primary);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 20. TOOL CARDS (HomePage grid)
+   * ═══════════════════════════════════════════════════════════════ */
+  .tool-card {
+    @apply rounded-lg p-5 transition-colors;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-raised);
+  }
+  .tool-card__title {
+    @apply text-sm font-semibold;
+  }
+  .tool-card__desc {
+    @apply text-xs mt-1;
+    color: var(--color-text-muted);
+  }
+  .tool-card--placeholder {
+    @apply rounded-lg p-5;
+    border: 1px dashed var(--color-border);
+    background: rgba(31, 41, 55, 0.1);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 21. PAGINATION
+   * ═══════════════════════════════════════════════════════════════ */
+  .pagination {
+    @apply flex items-center justify-between text-xs;
+    color: var(--color-text-muted);
+  }
+  .pagination__btn {
+    @apply px-3 py-1 rounded transition-colors;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+  .pagination__btn:hover:not(:disabled) {
+    color: var(--color-text-primary);
+  }
+  .pagination__btn:disabled {
+    @apply opacity-30 cursor-not-allowed;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 22. NOT-ASSESSED BANNER (MethodDetail)
+   * ═══════════════════════════════════════════════════════════════ */
+  .not-assessed-banner {
+    @apply rounded-lg p-4 mb-6 text-center;
+    border: 1px solid var(--color-border-active);
+    background: rgba(31, 41, 55, 0.5);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 23. MATRIX — sticky headers, legend, vertical text
+   * ═══════════════════════════════════════════════════════════════ */
+  .matrix {
+    @apply w-full text-xs;
+    border-collapse: collapse;
+  }
+  .matrix-head th {
+    @apply py-2 px-2;
+    color: var(--color-text-muted);
+  }
+  .matrix-head {
+    border-bottom: 1px solid var(--color-border);
+  }
+  .matrix-sticky {
+    @apply sticky left-0 z-10;
+    background: var(--color-bg-base);
+  }
+  .matrix-row {
+    border-bottom: 1px solid rgba(31, 41, 55, 1);
+  }
+  .matrix-row:hover {
+    background: rgba(31, 41, 55, 0.5);
+  }
+  .matrix-row td {
+    @apply py-1.5 px-2;
+  }
+  .matrix-total {
+    @apply font-semibold;
+    border-top: 2px solid var(--color-border-active);
+  }
+  .matrix-total td {
+    @apply py-2 px-2;
+  }
+  .matrix-legend {
+    @apply flex gap-4 mt-3 text-[10px];
+    color: var(--color-text-dim);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 24. OVERLAP STATS (OverlapAnalysis)
+   * ═══════════════════════════════════════════════════════════════ */
+  .overlap-stat {
+    @apply rounded-lg p-3 text-center;
+    background: rgba(31, 41, 55, 0.5);
+  }
+  .overlap-stat__value {
+    @apply text-lg font-bold;
+  }
+  .overlap-stat__label {
+    @apply text-[10px];
+    color: var(--color-text-dim);
+  }
+
+  /* Overlap breakdown pill (Both / Only A / Only B) */
+  .overlap-pill {
+    @apply text-[9px] px-1.5 py-0.5 rounded;
+  }
+  .overlap-pill--shared {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+  }
+  .overlap-pill--a {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+  }
+  .overlap-pill--b {
+    background: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 25. METHODOLOGY NOTE (callout-warning variant with expand)
+   * ═══════════════════════════════════════════════════════════════ */
+  .methodology-note {
+    @apply rounded-lg p-4;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    background: rgba(245, 158, 11, 0.05);
+  }
+  .methodology-note__icon {
+    @apply text-lg;
+    color: var(--color-amber);
+  }
+  .methodology-note__title {
+    @apply font-semibold text-sm;
+    color: #fde68a;
+  }
+  .methodology-note__toggle {
+    @apply text-xs;
+    color: var(--color-text-muted);
+  }
+  .methodology-note__body {
+    @apply mt-3 space-y-3 text-sm;
+    color: var(--color-text-description);
+  }
+  .methodology-note__heading {
+    @apply font-semibold mb-1;
+    color: var(--color-text-secondary);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 26. REQUIREMENT TIER BADGES (inline, 9px)
+   * ═══════════════════════════════════════════════════════════════ */
+  .tier-core {
+    @apply text-[9px] px-1 py-0.5 rounded;
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+  }
+  .tier-common {
+    @apply text-[9px] px-1 py-0.5 rounded;
+    background: rgba(234, 179, 8, 0.2);
+    color: #facc15;
+  }
+  .tier-specialized {
+    @apply text-[9px] px-1 py-0.5 rounded;
+    background: rgba(107, 114, 128, 0.2);
+    color: var(--color-text-muted);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 27. PROMPT CARD (LlmPromptPage)
+   * ═══════════════════════════════════════════════════════════════ */
+  .prompt-card {
+    @apply rounded-lg transition-colors;
+  }
+  .prompt-card--context {
+    background: rgba(251, 191, 36, 0.05);
+  }
+  .prompt-card--default {
+    background: var(--color-bg-raised);
+  }
+  .prompt-card__required-badge {
+    @apply text-[10px] px-1.5 py-0.5 rounded;
+    background: rgba(251, 191, 36, 0.1);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+  .prompt-card__body {
+    border-top: 1px solid var(--color-border);
+  }
+  .prompt-card__content {
+    @apply text-xs whitespace-pre-wrap leading-relaxed px-5 py-3 max-h-[50vh] overflow-y-auto;
+    color: var(--color-text-description);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 28. STEP CARD (go deeper section)
+   * ═══════════════════════════════════════════════════════════════ */
+  .step-card {
+    @apply rounded p-4 space-y-2;
+    border: 1px solid var(--color-border);
+  }
+  .step-card__title {
+    @apply text-sm font-semibold;
+    color: var(--color-text-primary);
+  }
+  .step-card__desc {
+    @apply text-[11px];
+    color: var(--color-text-muted);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+   * 29. WIZARD (SelfAssessment)
+   * ═══════════════════════════════════════════════════════════════ */
+
+  /* Form input — compact variant for wizard forms */
+  .input-compact {
+    @apply w-full rounded px-2.5 py-1.5 text-sm font-mono;
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+  }
+  .input-compact::placeholder {
+    color: var(--color-text-ghost);
+  }
+  .input-compact--text {
+    @apply w-full rounded px-2.5 py-1.5 text-sm;
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+  }
+  .input-compact--text::placeholder {
+    color: var(--color-text-ghost);
+  }
+
+  /* Inline evidence inputs (requirements step) */
+  .input-evidence {
+    @apply rounded px-2 py-1 text-xs;
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+  .input-evidence::placeholder {
+    color: var(--color-text-ghost);
+  }
+
+  /* Progress bar */
+  .progress-track {
+    @apply flex-1 rounded-full h-1.5;
+    background: var(--color-border);
+  }
+  .progress-fill {
+    @apply h-1.5 rounded-full transition-all duration-300;
+  }
+  .progress-fill--complete { background: var(--color-green); }
+  .progress-fill--active   { background: var(--color-blue); }
+
+  /* Requirement card */
+  .req-card {
+    @apply rounded px-4 py-3 space-y-2;
+    background: var(--color-bg-raised);
+  }
+  .req-card--met     { border: 1px solid rgba(34, 197, 94, 0.2); }
+  .req-card--partial { border: 1px solid rgba(234, 179, 8, 0.2); }
+  .req-card--not-met { border: 1px solid rgba(239, 68, 68, 0.2); }
+  .req-card--default { border: 1px solid var(--color-border); }
+
+  /* Status toggle buttons (Met / Partial / Not Met / N/A / Skip) */
+  .status-toggle {
+    @apply px-2 py-0.5 text-[10px] rounded transition-colors;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+  }
+  .status-toggle:hover {
+    color: var(--color-text-description);
+  }
+  .status-toggle--active {
+    border-color: currentColor;
+    background: rgba(55, 65, 81, 0.5);
+    @apply font-semibold;
+  }
+
+  /* Feature toggle card */
+  .feat-card {
+    @apply rounded p-2.5 transition-colors;
+  }
+  .feat-card--yes {
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    background: rgba(34, 197, 94, 0.05);
+  }
+  .feat-card--no {
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.05);
+  }
+  .feat-card--unset {
+    border: 1px solid var(--color-border);
+    background: rgba(3, 7, 18, 0.5);
+  }
+
+  /* Feature toggle micro-button (✓ / ✗) */
+  .feat-toggle {
+    @apply w-5 h-5 rounded text-[10px] transition-colors;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+  }
+  .feat-toggle:hover {
+    color: var(--color-text-description);
+  }
+  .feat-toggle--yes {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+  }
+  .feat-toggle--no {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #f87171;
+  }
+
+  /* Audience filter pill */
+  .audience-pill {
+    @apply px-2 py-0.5 text-xs rounded transition-colors;
+  }
+  .audience-pill--active {
+    border: 1px solid #60a5fa;
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+  }
+  .audience-pill--inactive {
+    border: 1px solid var(--color-border-active);
+    color: var(--color-text-description);
+  }
+  .audience-pill--inactive:hover {
+    border-color: var(--color-text-muted);
+  }
+
+  /* Use case list item */
+  .uc-item {
+    @apply w-full text-left px-2 py-1 rounded text-sm flex items-center justify-between transition-colors leading-tight border-l-2;
+  }
+  .uc-item--active {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-color: #60a5fa;
+  }
+  .uc-item--inactive {
+    color: var(--color-text-secondary);
+    border-color: transparent;
+  }
+  .uc-item--inactive:hover {
+    background: rgba(55, 65, 81, 0.4);
+  }
+
+  /* Actor badge */
+  .actor-badge {
+    @apply text-[10px] px-1.5 py-0.5 rounded-full border;
+  }
+  .actor-badge--matched {
+    border-color: rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+  }
+  .actor-badge--default {
+    border-color: var(--color-border-active);
+    color: var(--color-text-description);
+  }
+
+  /* Connected identity — DID display line */
+  .did-display {
+    @apply text-[10px] font-mono leading-tight mt-1;
+    color: var(--color-text-dim);
+    opacity: 0.6;
+  }
+  .did-display--secondary {
+    opacity: 0.4;
+    color: var(--color-text-ghost);
+  }
+  /* Connected identity — disconnect / clear link */
+  .identity-action {
+    @apply text-[10px] cursor-pointer;
+    color: var(--color-text-dim);
+  }
+  .identity-action:hover {
+    color: var(--color-text-description);
+  }
+
+  /* Domain list — all SNS domains for a wallet */
+  .domain-list {
+    @apply px-4 py-2.5 rounded-lg;
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+  }
+  .domain-pill {
+    @apply text-[11px] px-2 py-1 rounded-full font-mono cursor-pointer flex items-center gap-1 transition-colors;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dim);
+  }
+  .domain-pill:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text-secondary);
+  }
+  .domain-pill--active {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+  .domain-pill__verified {
+    @apply text-[9px] font-bold;
+    color: var(--color-green);
+  }
+
+  /* Method preview pill (covering methods) */
+  .method-pill {
+    @apply text-[11px] px-1.5 py-0.5 rounded font-mono transition-colors cursor-pointer;
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    color: #60a5fa;
+  }
+  .method-pill:hover {
+    background: var(--color-border);
+    border-color: rgba(96, 165, 250, 0.4);
+  }
+  .method-pill--active {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+
+  /* Tier badge — 10px variant for wizard lists */
+  .tier-badge {
+    @apply text-[10px] px-1.5 py-0.5 rounded;
+  }
+  .tier-badge--core     { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+  .tier-badge--common   { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+  .tier-badge--special  { background: rgba(107, 114, 128, 0.2); color: var(--color-text-description); }
+
+  /* "required" tag */
+  .required-tag {
+    @apply text-[10px] px-1.5 py-0.5 rounded shrink-0;
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+  }
+
+  /* Review stat mini-card */
+  .review-stat {
+    @apply rounded p-3 text-center;
+    border: 1px solid var(--color-border);
+  }
+
+  /* Category heading in use case sidebar */
+  .uc-category-heading {
+    @apply text-[10px] font-semibold uppercase tracking-wider mb-1 px-2;
+    color: #facc15;
+  }
+
+  /* Preview modal */
+  .preview-modal {
+    @apply rounded-xl shadow-2xl w-full max-w-2xl mx-4 overflow-hidden max-h-[85vh] overflow-y-auto;
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border);
+  }
+  .preview-modal__header {
+    @apply flex items-center justify-between px-5 py-3 sticky top-0 z-10;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-base);
+  }
+
+  /* Score cell (use case fit grid) */
+  .score-cell {
+    @apply flex items-center justify-between rounded px-2.5 py-1.5;
+    background: rgba(31, 41, 55, 0.6);
+  }
+
+  /* Mini stat card (preview modal grid) */
+  .mini-stat {
+    @apply rounded p-2.5 text-center;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+  }
+
+  /* Compat method badge (interoperability section) */
+  .compat-badge {
+    @apply text-[11px] font-mono px-1.5 py-0.5 rounded;
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-description);
+  }
+
+  /* Identity card (signing method / methodology selector) */
+  .identity-card {
+    @apply flex items-center gap-3 rounded-lg px-3 py-3 text-left transition-colors cursor-pointer;
+  }
+  .identity-card--active {
+    border: 2px solid var(--color-blue);
+    background: rgba(59, 130, 246, 0.1);
+  }
+  .identity-card--inactive {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-raised);
+  }
+  .identity-card--inactive:hover {
+    border-color: var(--color-border-active);
+    background: var(--color-bg-elevated);
+  }
+
+  /* Boolean indicator pill (compact feat-card for inline use) */
+  .bool-pill {
+    @apply text-[11px] px-1.5 py-0.5 rounded;
+  }
+  .bool-pill--yes {
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.05);
+  }
+  .bool-pill--no {
+    border: 1px solid rgba(248, 113, 113, 0.2);
+    color: rgba(248, 113, 113, 0.6);
+  }
+  .bool-pill--unknown {
+    border: 1px solid var(--color-border);
+    color: var(--color-text-ghost);
+  }
+}

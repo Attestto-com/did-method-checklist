@@ -1,0 +1,4054 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-03-12",
+  "description": "GitHub health signals per DID method repo. Bot activity filtered out.",
+  "total": 154,
+  "methods": {
+    "did:sns": {
+      "repo": "Attestto-com/did-sns-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 27,
+        "bot": 0,
+        "total": 27
+      },
+      "lastHumanCommit": "2026-03-12T15:53:19Z",
+      "lastHumanAuthor": "chongkan",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "active",
+      "fetchedAt": "2026-03-12T19:10:26.065Z"
+    },
+    "did:btco": {
+      "repo": "ordinalsreserve/did-btco",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 5,
+      "recentCommits": {
+        "human": 15,
+        "bot": 0,
+        "total": 15
+      },
+      "lastHumanCommit": "2023-12-01T19:40:44Z",
+      "lastHumanAuthor": "brianorwhatever",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:10:29.947Z"
+    },
+    "did:eosio": {
+      "repo": "Gimly-Blockchain/eosio-did-spec",
+      "openIssues": {
+        "human": 2,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 7,
+      "recentCommits": {
+        "human": 84,
+        "bot": 0,
+        "total": 84
+      },
+      "lastHumanCommit": "2021-06-30T14:54:05Z",
+      "lastHumanAuthor": "theblockstalk",
+      "humanContributors": 4,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:10:34.779Z"
+    },
+    "did:nuggets": {
+      "repo": "NuggetsLtd/nuggets-did-resolver",
+      "openIssues": {
+        "human": 6,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 43,
+        "bot": 0,
+        "total": 43
+      },
+      "lastHumanCommit": "2021-12-23T13:55:13Z",
+      "lastHumanAuthor": "amlord",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:10:39.153Z"
+    },
+    "did:antelope": {
+      "repo": "Tonomy-Foundation/antelope-did-spec",
+      "openIssues": {
+        "human": 2,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 93,
+        "bot": 0,
+        "total": 93
+      },
+      "lastHumanCommit": "2023-02-20T14:43:38Z",
+      "lastHumanAuthor": "theblockstalk",
+      "humanContributors": 6,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:10:44.072Z"
+    },
+    "did:itn": {
+      "repo": "itn-trust/itn-did-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 45,
+        "bot": 0,
+        "total": 45
+      },
+      "lastHumanCommit": "2024-06-24T15:54:19Z",
+      "lastHumanAuthor": "bparth24",
+      "humanContributors": 4,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:10:48.467Z"
+    },
+    "did:pistis": {
+      "repo": "uino95/ssi",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 26
+      },
+      "branches": 30,
+      "recentCommits": {
+        "human": 254,
+        "bot": 1,
+        "total": 255
+      },
+      "lastHumanCommit": "2020-01-10T10:12:46Z",
+      "lastHumanAuthor": "andreataglia",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:10:55.864Z"
+    },
+    "did:lac": {
+      "repo": "lacchain/lacchain-did-registry",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 3,
+      "recentCommits": {
+        "human": 12,
+        "bot": 0,
+        "total": 12
+      },
+      "lastHumanCommit": "2022-08-02T16:07:50Z",
+      "lastHumanAuthor": "sergioceron",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:10:59.731Z"
+    },
+    "did:echo": {
+      "repo": "echoprotocol/uni-resolver-driver-did-echo",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 2
+      },
+      "branches": 4,
+      "recentCommits": {
+        "human": 11,
+        "bot": 0,
+        "total": 11
+      },
+      "lastHumanCommit": "2020-04-09T10:45:11Z",
+      "lastHumanAuthor": "anzhy-chernyavski",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:11:03.856Z"
+    },
+    "did:fox": {
+      "repo": "qikfox/fox-did-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2025-01-10T22:25:33Z",
+      "lastHumanAuthor": "qikdauie",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:11:07.754Z"
+    },
+    "did:pkh": {
+      "repo": "w3c-ccg/did-pkh",
+      "openIssues": {
+        "human": 7,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 2,
+        "bot": 0
+      },
+      "branches": 7,
+      "recentCommits": {
+        "human": 87,
+        "bot": 0,
+        "total": 87
+      },
+      "lastHumanCommit": "2023-02-15T11:46:00Z",
+      "lastHumanAuthor": "Bumblefudge",
+      "humanContributors": 4,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:11:12.748Z"
+    },
+    "did:prism": {
+      "repo": "input-output-hk/prism-did-method-spec",
+      "openIssues": {
+        "human": 7,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 45,
+        "bot": 0,
+        "total": 45
+      },
+      "lastHumanCommit": "2026-01-12T14:08:49Z",
+      "lastHumanAuthor": "FabioPinheiro",
+      "humanContributors": 7,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "active",
+      "fetchedAt": "2026-03-12T19:11:17.435Z"
+    },
+    "did:zk": {
+      "repo": "zCloak-Network/zk-did-method-specs",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 4,
+        "bot": 0,
+        "total": 4
+      },
+      "lastHumanCommit": "2022-10-23T06:17:06Z",
+      "lastHumanAuthor": "xz-cn",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:11:21.409Z"
+    },
+    "did:infra": {
+      "repo": "InfraBlockchain/infra-did-method-specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 10,
+        "bot": 0,
+        "total": 10
+      },
+      "lastHumanCommit": "2021-04-16T04:20:28Z",
+      "lastHumanAuthor": "bezalel",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:11:25.351Z"
+    },
+    "did:kilt": {
+      "repo": "KILTprotocol/specifications",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 11,
+        "bot": 0,
+        "total": 11
+      },
+      "lastHumanCommit": "2022-08-05T10:17:47Z",
+      "lastHumanAuthor": "ntn-x2",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:11:29.307Z"
+    },
+    "did:ttm": {
+      "repo": "TokenTM/TM-DID",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 21,
+        "bot": 0,
+        "total": 21
+      },
+      "lastHumanCommit": "2019-07-12T03:56:54Z",
+      "lastHumanAuthor": "mym-xjl",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:11:32.954Z"
+    },
+    "did:evan": {
+      "repo": "evannetwork/evan.network-DID-method-specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 3,
+      "recentCommits": {
+        "human": 14,
+        "bot": 0,
+        "total": 14
+      },
+      "lastHumanCommit": "2020-03-27T07:56:43Z",
+      "lastHumanAuthor": "OmairLiaquatAli",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:11:36.879Z"
+    },
+    "did:grg": {
+      "repo": "GrgChain/DID-method-specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 9,
+        "bot": 0,
+        "total": 9
+      },
+      "lastHumanCommit": "2020-09-01T06:49:05Z",
+      "lastHumanAuthor": "liyuan",
+      "humanContributors": 0,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:11:40.600Z"
+    },
+    "did:os": {
+      "repo": "OpenSig/opensig-protocol",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 8,
+        "bot": 0,
+        "total": 8
+      },
+      "lastHumanCommit": "2025-08-11T10:23:40Z",
+      "lastHumanAuthor": "dnpotter",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:11:44.302Z"
+    },
+    "did:stack": {
+      "repo": "blockstack/blockstack-core",
+      "openIssues": {
+        "human": 560,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 46,
+        "bot": 0
+      },
+      "branches": 660,
+      "recentCommits": {
+        "human": 0,
+        "bot": 0,
+        "total": 0
+      },
+      "lastHumanCommit": null,
+      "lastHumanAuthor": null,
+      "humanContributors": 137,
+      "releases": {
+        "count": 187,
+        "latest": {
+          "tag": "3.3.0.0.6",
+          "date": "2026-03-09T18:02:21Z"
+        }
+      },
+      "liveness": "dead",
+      "fetchedAt": "2026-03-12T19:12:45.530Z"
+    },
+    "did:ethr": {
+      "repo": "decentralized-identity/ethr-did-resolver",
+      "openIssues": {
+        "human": 4,
+        "bot": 2
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 2
+      },
+      "branches": 4,
+      "recentCommits": {
+        "human": 236,
+        "bot": 323,
+        "total": 559
+      },
+      "lastHumanCommit": "2024-09-30T16:50:02Z",
+      "lastHumanAuthor": "mirceanis",
+      "humanContributors": 19,
+      "releases": {
+        "count": 71,
+        "latest": {
+          "tag": "11.0.5",
+          "date": "2025-08-10T14:02:43Z"
+        }
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:13:03.518Z"
+    },
+    "did:elem": {
+      "repo": "decentralized-identity/element",
+      "openIssues": {
+        "human": 29,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 1
+      },
+      "branches": 6,
+      "recentCommits": {
+        "human": 1281,
+        "bot": 14,
+        "total": 1295
+      },
+      "lastHumanCommit": "2020-10-02T00:21:25Z",
+      "lastHumanAuthor": "Orie Steele",
+      "humanContributors": 5,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:13:26.707Z"
+    },
+    "did:io": {
+      "repo": "iotexproject/iotex-did",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 3,
+        "bot": 0
+      },
+      "branches": 5,
+      "recentCommits": {
+        "human": 46,
+        "bot": 0,
+        "total": 46
+      },
+      "lastHumanCommit": "2021-07-28T17:14:42Z",
+      "lastHumanAuthor": "raullenchai",
+      "humanContributors": 6,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:13:31.686Z"
+    },
+    "did:ccf": {
+      "repo": "microsoft/did-ccf",
+      "openIssues": {
+        "human": 6,
+        "bot": 1
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 70,
+        "bot": 0,
+        "total": 70
+      },
+      "lastHumanCommit": "2023-05-09T14:22:23Z",
+      "lastHumanAuthor": "viathefalcon",
+      "humanContributors": 4,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:13:37.292Z"
+    },
+    "did:ens": {
+      "repo": "veramolabs/did-ens-spec",
+      "openIssues": {
+        "human": 6,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 4,
+      "recentCommits": {
+        "human": 35,
+        "bot": 0,
+        "total": 35
+      },
+      "lastHumanCommit": "2021-10-05T18:16:35Z",
+      "lastHumanAuthor": "awoie",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:13:41.544Z"
+    },
+    "did:mydata": {
+      "repo": "decentralised-dataexchange/automated-data-agreements",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 7,
+      "recentCommits": {
+        "human": 131,
+        "bot": 0,
+        "total": 131
+      },
+      "lastHumanCommit": "2023-01-13T08:37:24Z",
+      "lastHumanAuthor": "lalc",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:13:47.458Z"
+    },
+    "did:elastos": {
+      "repo": "elastos/Elastos.DID.Method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 37,
+        "bot": 0,
+        "total": 37
+      },
+      "lastHumanCommit": "2021-04-16T06:11:40Z",
+      "lastHumanAuthor": "chenyukaola",
+      "humanContributors": 5,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:13:52.007Z"
+    },
+    "did:etho": {
+      "repo": "ontology-tech/DID-method-specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2020-08-14T09:25:07Z",
+      "lastHumanAuthor": "qiluge",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:13:55.826Z"
+    },
+    "did:factom": {
+      "repo": "factom-protocol/FIS",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 21,
+        "bot": 0,
+        "total": 21
+      },
+      "lastHumanCommit": "2020-04-21T01:40:24Z",
+      "lastHumanAuthor": "nklomp",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:13:59.644Z"
+    },
+    "did:mesh": {
+      "repo": "mwherman2000/TrustedDigitalWeb",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 138,
+        "bot": 0,
+        "total": 138
+      },
+      "lastHumanCommit": "2025-03-24T21:28:33Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:14:05.227Z"
+    },
+    "did:peaq": {
+      "repo": "peaqnetwork/peaq-did-specifications",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 9,
+        "bot": 0,
+        "total": 9
+      },
+      "lastHumanCommit": "2022-09-01T05:03:41Z",
+      "lastHumanAuthor": "kamrangul2404",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:09.015Z"
+    },
+    "did:ev": {
+      "repo": "KayTrust/did-method-ev",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 6,
+        "bot": 0,
+        "total": 6
+      },
+      "lastHumanCommit": "2022-10-13T09:36:55Z",
+      "lastHumanAuthor": "davux",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:12.779Z"
+    },
+    "did:hid": {
+      "repo": "hypersign-protocol/HIPs",
+      "openIssues": {
+        "human": 12,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 2,
+        "bot": 0
+      },
+      "branches": 14,
+      "recentCommits": {
+        "human": 70,
+        "bot": 0,
+        "total": 70
+      },
+      "lastHumanCommit": "2024-03-08T12:11:54Z",
+      "lastHumanAuthor": "Vishwas1",
+      "humanContributors": 5,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:17.995Z"
+    },
+    "did:ckb": {
+      "repo": "web5fans/web5-wips",
+      "openIssues": {
+        "human": 2,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 14,
+        "bot": 0,
+        "total": 14
+      },
+      "lastHumanCommit": "2026-01-26T01:19:33Z",
+      "lastHumanAuthor": "RetricSu",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "active",
+      "fetchedAt": "2026-03-12T19:14:22.066Z"
+    },
+    "did:dotbit": {
+      "repo": "dotbithq/dotbit-did-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2023-05-05T10:12:22Z",
+      "lastHumanAuthor": "zgayjjf",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:25.865Z"
+    },
+    "did:health": {
+      "repo": "didhealth/health-did-resolver",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 4,
+      "recentCommits": {
+        "human": 6,
+        "bot": 0,
+        "total": 6
+      },
+      "lastHumanCommit": "2022-08-02T20:29:57Z",
+      "lastHumanAuthor": "htekdev",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:29.652Z"
+    },
+    "did:ns": {
+      "repo": "Web7Foundation/Specifications",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 29,
+        "bot": 0,
+        "total": 29
+      },
+      "lastHumanCommit": "2025-12-10T17:41:11Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:14:33.563Z"
+    },
+    "did:selfkey": {
+      "repo": "SelfKeyFoundation/selfkey-identity",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 6
+      },
+      "branches": 8,
+      "recentCommits": {
+        "human": 21,
+        "bot": 0,
+        "total": 21
+      },
+      "lastHumanCommit": "2019-05-26T04:23:05Z",
+      "lastHumanAuthor": "cbruguera",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:39.465Z"
+    },
+    "did:vivid": {
+      "repo": "Moonlight-io/specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 12,
+        "bot": 0,
+        "total": 12
+      },
+      "lastHumanCommit": "2021-01-22T08:43:31Z",
+      "lastHumanAuthor": "Travis",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:43.219Z"
+    },
+    "did:web7": {
+      "repo": "Web7Foundation/Specifications",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 29,
+        "bot": 0,
+        "total": 29
+      },
+      "lastHumanCommit": "2025-12-10T17:41:11Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:14:46.943Z"
+    },
+    "did:bit": {
+      "repo": "dotbitHQ/did-bit-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2023-09-14T01:26:29Z",
+      "lastHumanAuthor": "pranksteess",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:50.771Z"
+    },
+    "did:cndid": {
+      "repo": "teleinfo-bif/cndid",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2025-03-23T06:31:16Z",
+      "lastHumanAuthor": "yashuoJin",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:14:54.507Z"
+    },
+    "did:dime": {
+      "repo": "dime-coin/dimedid-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2024-11-21T20:10:19Z",
+      "lastHumanAuthor": "Dhop14",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:14:58.381Z"
+    },
+    "did:emtrust": {
+      "repo": "Halialabs/did-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 27,
+      "recentCommits": {
+        "human": 182,
+        "bot": 0,
+        "total": 182
+      },
+      "lastHumanCommit": "2019-06-17T11:06:50Z",
+      "lastHumanAuthor": "Sunil Prakash",
+      "humanContributors": 19,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:04.427Z"
+    },
+    "did:grn": {
+      "repo": "EG-easy/grano-did",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 19,
+        "bot": 0,
+        "total": 19
+      },
+      "lastHumanCommit": "2023-01-09T12:13:09Z",
+      "lastHumanAuthor": "EG-easy",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:08.191Z"
+    },
+    "did:iid": {
+      "repo": "InspurIndustrialInternet/iid",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 7,
+        "bot": 0,
+        "total": 7
+      },
+      "lastHumanCommit": "2022-07-08T03:31:40Z",
+      "lastHumanAuthor": "superzoeyian",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:11.789Z"
+    },
+    "did:is": {
+      "repo": "block-core/blockcore-did-method",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2020-08-30T23:33:01Z",
+      "lastHumanAuthor": "sondreb",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:15.642Z"
+    },
+    "did:meta": {
+      "repo": "METADIUM/meta-DID",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 31,
+        "bot": 0,
+        "total": 31
+      },
+      "lastHumanCommit": "2021-06-02T07:51:25Z",
+      "lastHumanAuthor": "MetadiumRelease",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:19.753Z"
+    },
+    "did:moac": {
+      "repo": "DavidRicardoWilde/moac-did",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 9,
+        "bot": 0,
+        "total": 9
+      },
+      "lastHumanCommit": "2019-10-03T17:53:19Z",
+      "lastHumanAuthor": "DavidRicardoWilde",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:23.793Z"
+    },
+    "did:myDiD": {
+      "repo": "MyDidCom/myDiD_Method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 10,
+        "bot": 0,
+        "total": 10
+      },
+      "lastHumanCommit": "2023-10-04T14:14:24Z",
+      "lastHumanAuthor": "MyDidCom",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:27.482Z"
+    },
+    "did:san": {
+      "repo": "Baasze/DID-method-specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2020-04-17T09:01:59Z",
+      "lastHumanAuthor": "wuyahuang",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:31.266Z"
+    },
+    "did:sideos": {
+      "repo": "sideos/sideos-did-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 18,
+        "bot": 0,
+        "total": 18
+      },
+      "lastHumanCommit": "2021-09-01T08:07:24Z",
+      "lastHumanAuthor": "marcusnasarek",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:35.059Z"
+    },
+    "did:theseries": {
+      "repo": "theseriesteam/tsid-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2024-10-15T08:22:08Z",
+      "lastHumanAuthor": "theseriesteam",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:38.644Z"
+    },
+    "did:uns": {
+      "repo": "unik-name/did-method-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 13,
+        "bot": 0,
+        "total": 13
+      },
+      "lastHumanCommit": "2021-07-30T09:29:33Z",
+      "lastHumanAuthor": "SophieDM",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:15:42.515Z"
+    },
+    "did:vaultie": {
+      "repo": "vaultie/vaultie-did-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2020-08-18T21:15:36Z",
+      "lastHumanAuthor": "dsemenovsky",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:15:46.536Z"
+    },
+    "did:erc725": {
+      "repo": "WebOfTrustInfo/rebooting-the-web-of-trust-spring2018",
+      "openIssues": {
+        "human": 3,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 6,
+        "bot": 0
+      },
+      "branches": 11,
+      "recentCommits": {
+        "human": 521,
+        "bot": 0,
+        "total": 521
+      },
+      "lastHumanCommit": "2025-04-15T19:46:25Z",
+      "lastHumanAuthor": "jandrieu",
+      "humanContributors": 38,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:15:59.695Z"
+    },
+    "did:hedera": {
+      "repo": "hashgraph/did-method",
+      "openIssues": {
+        "human": 2,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 4,
+      "recentCommits": {
+        "human": 43,
+        "bot": 0,
+        "total": 43
+      },
+      "lastHumanCommit": "2025-01-14T21:54:33Z",
+      "lastHumanAuthor": "rbarker-dev",
+      "humanContributors": 5,
+      "releases": {
+        "count": 2,
+        "latest": {
+          "tag": "v1.0",
+          "date": "2024-05-22T21:13:43Z"
+        }
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:16:04.330Z"
+    },
+    "did:trustbloc": {
+      "repo": "trustbloc/trustbloc-did-method",
+      "openIssues": {
+        "human": 31,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 354,
+        "bot": 0,
+        "total": 354
+      },
+      "lastHumanCommit": "2021-08-19T06:58:34Z",
+      "lastHumanAuthor": "Firas Qutishat",
+      "humanContributors": 8,
+      "releases": {
+        "count": 4,
+        "latest": {
+          "tag": "v0.1.6",
+          "date": "2021-03-06T17:32:16Z"
+        }
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:16:13.903Z"
+    },
+    "did:cosmos": {
+      "repo": "EarthProgram/did-cosmos",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 7,
+        "bot": 0,
+        "total": 7
+      },
+      "lastHumanCommit": "2022-04-01T12:52:22Z",
+      "lastHumanAuthor": "wip-abramson",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:16:17.921Z"
+    },
+    "did:webplus": {
+      "repo": "LedgerDomain/did-webplus",
+      "openIssues": {
+        "human": 5,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 7,
+      "recentCommits": {
+        "human": 266,
+        "bot": 0,
+        "total": 266
+      },
+      "lastHumanCommit": "2026-03-05T23:20:34Z",
+      "lastHumanAuthor": "vdods",
+      "humanContributors": 5,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "active",
+      "fetchedAt": "2026-03-12T19:16:25.218Z"
+    },
+    "did:hpass": {
+      "repo": "IBM/hpass",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 8,
+        "bot": 1,
+        "total": 9
+      },
+      "lastHumanCommit": "2021-08-04T09:05:38Z",
+      "lastHumanAuthor": "jdv-ibm",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:16:29.072Z"
+    },
+    "did:bluetoqueagent": {
+      "repo": "mwherman2000/TrustedDigitalWeb",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 138,
+        "bot": 0,
+        "total": 138
+      },
+      "lastHumanCommit": "2025-03-24T21:28:33Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:16:34.234Z"
+    },
+    "did:bluetoquedeed": {
+      "repo": "mwherman2000/TrustedDigitalWeb",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 138,
+        "bot": 0,
+        "total": 138
+      },
+      "lastHumanCommit": "2025-03-24T21:28:33Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:16:39.145Z"
+    },
+    "did:bluetoquenfe": {
+      "repo": "mwherman2000/TrustedDigitalWeb",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 138,
+        "bot": 0,
+        "total": 138
+      },
+      "lastHumanCommit": "2025-03-24T21:28:33Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:16:43.735Z"
+    },
+    "did:bluetoqueproc": {
+      "repo": "mwherman2000/TrustedDigitalWeb",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 138,
+        "bot": 0,
+        "total": 138
+      },
+      "lastHumanCommit": "2025-03-24T21:28:33Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:16:48.453Z"
+    },
+    "did:object": {
+      "repo": "mwherman2000/TrustedDigitalWeb",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 138,
+        "bot": 0,
+        "total": 138
+      },
+      "lastHumanCommit": "2025-03-24T21:28:33Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:16:53.246Z"
+    },
+    "did:amo": {
+      "repo": "amolabs/docs",
+      "openIssues": {
+        "human": 4,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 275,
+        "bot": 0,
+        "total": 275
+      },
+      "lastHumanCommit": "2022-03-02T04:37:06Z",
+      "lastHumanAuthor": "davidkwak",
+      "humanContributors": 6,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:00.539Z"
+    },
+    "did:bryk": {
+      "repo": "bryk-io/did-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 7
+      },
+      "branches": 8,
+      "recentCommits": {
+        "human": 118,
+        "bot": 2,
+        "total": 120
+      },
+      "lastHumanCommit": "2023-10-03T15:45:53Z",
+      "lastHumanAuthor": "bcessa",
+      "humanContributors": 1,
+      "releases": {
+        "count": 19,
+        "latest": {
+          "tag": "v0.9.4",
+          "date": "2023-07-11T18:04:16Z"
+        }
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:08.960Z"
+    },
+    "did:signor": {
+      "repo": "cryptonicsconsulting/signor-did-contracts",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 11
+      },
+      "branches": 20,
+      "recentCommits": {
+        "human": 73,
+        "bot": 0,
+        "total": 73
+      },
+      "lastHumanCommit": "2021-01-16T16:12:38Z",
+      "lastHumanAuthor": "stbeyer",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:14.069Z"
+    },
+    "did:dweb": {
+      "repo": "Aisino-Blockchain/dweb-Method-Specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 3,
+        "bot": 0,
+        "total": 3
+      },
+      "lastHumanCommit": "2024-12-26T05:41:08Z",
+      "lastHumanAuthor": "chengsijin",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:17.874Z"
+    },
+    "did:kaname": {
+      "repo": "KanameProtocol/did-kaname-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 3,
+        "bot": 0,
+        "total": 3
+      },
+      "lastHumanCommit": "2023-03-01T06:34:32Z",
+      "lastHumanAuthor": "MizukiSonoko",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:21.624Z"
+    },
+    "did:knox": {
+      "repo": "knox-networks/knox-did-specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 6,
+        "bot": 0,
+        "total": 6
+      },
+      "lastHumanCommit": "2023-08-17T17:18:18Z",
+      "lastHumanAuthor": "adewaleafolabi",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:17:25.493Z"
+    },
+    "did:lit": {
+      "repo": "ibct-dev/lit-DID",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 42,
+        "bot": 0,
+        "total": 42
+      },
+      "lastHumanCommit": "2021-12-17T00:50:28Z",
+      "lastHumanAuthor": "picardcapt1212",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:29.725Z"
+    },
+    "did:m2m": {
+      "repo": "m2mblockchain/DID-Method-m2m",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2024-06-14T00:34:40Z",
+      "lastHumanAuthor": "m2mblockchain",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:33.619Z"
+    },
+    "did:real": {
+      "repo": "realitems/did-real",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2022-07-29T16:41:03Z",
+      "lastHumanAuthor": "rocky-m",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:39.185Z"
+    },
+    "did:unik": {
+      "repo": "unik-name/did-method-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 13,
+        "bot": 0,
+        "total": 13
+      },
+      "lastHumanCommit": "2021-07-30T09:29:33Z",
+      "lastHumanAuthor": "SophieDM",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:17:43.444Z"
+    },
+    "did:ont": {
+      "repo": "ontio/ontology-DID",
+      "openIssues": {
+        "human": 5,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 143,
+        "bot": 0,
+        "total": 143
+      },
+      "lastHumanCommit": "2020-04-08T10:25:46Z",
+      "lastHumanAuthor": "AlverLyu",
+      "humanContributors": 10,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:17:49.186Z"
+    },
+    "did:panacea": {
+      "repo": "medibloc/panacea-core",
+      "openIssues": {
+        "human": 2,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 2,
+        "bot": 2
+      },
+      "branches": 17,
+      "recentCommits": {
+        "human": 186,
+        "bot": 0,
+        "total": 186
+      },
+      "lastHumanCommit": "2025-03-17T04:19:27Z",
+      "lastHumanAuthor": "cl9200",
+      "humanContributors": 8,
+      "releases": {
+        "count": 31,
+        "latest": {
+          "tag": "v2.2.0-1",
+          "date": "2024-03-21T01:12:57Z"
+        }
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:17:58.339Z"
+    },
+    "did:zkme": {
+      "repo": "zkMeLabs/zkme-did-method-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2023-05-08T10:09:41Z",
+      "lastHumanAuthor": "zkMeTeam",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:02.155Z"
+    },
+    "did:klayr": {
+      "repo": "aldhosutra/klayr-did",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 90,
+        "bot": 0,
+        "total": 90
+      },
+      "lastHumanCommit": "2024-05-23T04:33:52Z",
+      "lastHumanAuthor": "aldhosutra",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:06.719Z"
+    },
+    "did:jolo": {
+      "repo": "jolocom/jolo-did-method",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 16
+      },
+      "branches": 18,
+      "recentCommits": {
+        "human": 165,
+        "bot": 3,
+        "total": 168
+      },
+      "lastHumanCommit": "2022-04-29T13:29:54Z",
+      "lastHumanAuthor": "Exulansis",
+      "humanContributors": 6,
+      "releases": {
+        "count": 5,
+        "latest": {
+          "tag": "jolocom-registry-contract@0.3.0",
+          "date": "2019-12-18T09:02:34Z"
+        }
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:13.207Z"
+    },
+    "did:bnb": {
+      "repo": "ontology-tech/DID-method-specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2020-08-14T09:25:07Z",
+      "lastHumanAuthor": "qiluge",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:17.194Z"
+    },
+    "did:celo": {
+      "repo": "ontology-tech/DID-method-specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2020-08-14T09:25:07Z",
+      "lastHumanAuthor": "qiluge",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:20.958Z"
+    },
+    "did:klay": {
+      "repo": "ontology-tech/DID-method-specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2020-08-14T09:25:07Z",
+      "lastHumanAuthor": "qiluge",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:24.720Z"
+    },
+    "did:onion": {
+      "repo": "BlockchainCommons/did-method-onion",
+      "openIssues": {
+        "human": 5,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 4,
+      "recentCommits": {
+        "human": 24,
+        "bot": 0,
+        "total": 24
+      },
+      "lastHumanCommit": "2021-08-06T17:40:32Z",
+      "lastHumanAuthor": "ChristopherA",
+      "humanContributors": 4,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:28.825Z"
+    },
+    "did:trx": {
+      "repo": "ontology-tech/DID-method-specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2020-08-14T09:25:07Z",
+      "lastHumanAuthor": "qiluge",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:32.539Z"
+    },
+    "did:kr": {
+      "repo": "identify202020/did-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 12,
+        "bot": 0,
+        "total": 12
+      },
+      "lastHumanCommit": "2020-12-22T04:36:35Z",
+      "lastHumanAuthor": "identify202020",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:36.323Z"
+    },
+    "did:tdid": {
+      "repo": "TencentCloud-Blockchain/TDID-Method-Specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 7,
+        "bot": 0,
+        "total": 7
+      },
+      "lastHumanCommit": "2022-02-25T09:28:21Z",
+      "lastHumanAuthor": "TencentCloud-Blockchain",
+      "humanContributors": 0,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:40.179Z"
+    },
+    "did:future": {
+      "repo": "netease-chain/Future-DID-Method-Specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2020-12-18T01:17:59Z",
+      "lastHumanAuthor": "niyuelin1990",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:43.937Z"
+    },
+    "did:iamx": {
+      "repo": "IAMXID/did-method-iamx",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 3,
+      "recentCommits": {
+        "human": 34,
+        "bot": 0,
+        "total": 34
+      },
+      "lastHumanCommit": "2022-09-14T09:29:25Z",
+      "lastHumanAuthor": "Maetti79",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:48.003Z"
+    },
+    "did:near": {
+      "repo": "ontology-tech/DID-spec-near",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 8,
+        "bot": 0,
+        "total": 8
+      },
+      "lastHumanCommit": "2020-08-02T15:14:24Z",
+      "lastHumanAuthor": "OntologyTech",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:51.758Z"
+    },
+    "did:rm": {
+      "repo": "realmatterio/RealMatter-DID-Method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 10,
+        "bot": 0,
+        "total": 10
+      },
+      "lastHumanCommit": "2023-10-10T16:54:40Z",
+      "lastHumanAuthor": "realmatterio",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:55.464Z"
+    },
+    "did:ctid": {
+      "repo": "617640999/ctid-did-register",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 12,
+        "bot": 0,
+        "total": 12
+      },
+      "lastHumanCommit": "2024-06-04T06:09:57Z",
+      "lastHumanAuthor": "617640999",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:18:59.069Z"
+    },
+    "did:gatc": {
+      "repo": "gatacaid/gataca-did-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 7,
+        "bot": 0,
+        "total": 7
+      },
+      "lastHumanCommit": "2020-05-05T11:32:04Z",
+      "lastHumanAuthor": "gatacaid",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:04.706Z"
+    },
+    "did:scid": {
+      "repo": "StraitsChain/SCID",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 4,
+        "bot": 0,
+        "total": 4
+      },
+      "lastHumanCommit": "2022-11-11T01:43:15Z",
+      "lastHumanAuthor": "mmdgj",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:08.492Z"
+    },
+    "did:yourd": {
+      "repo": "DataSovereignty-YourD/YourD-did-sepcification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 18,
+        "bot": 0,
+        "total": 18
+      },
+      "lastHumanCommit": "2023-09-16T14:03:30Z",
+      "lastHumanAuthor": "Unchain68",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:12.388Z"
+    },
+    "did:aergo": {
+      "repo": "aergoio/aergo-identity",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 3,
+      "recentCommits": {
+        "human": 26,
+        "bot": 0,
+        "total": 26
+      },
+      "lastHumanCommit": "2020-01-15T09:11:49Z",
+      "lastHumanAuthor": "jungsoo827",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:16.196Z"
+    },
+    "did:art": {
+      "repo": "ArtracID/ArtracID-DID-ART-Method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 3,
+      "recentCommits": {
+        "human": 340,
+        "bot": 0,
+        "total": 340
+      },
+      "lastHumanCommit": "2026-02-16T12:16:53Z",
+      "lastHumanAuthor": "ART-DID",
+      "humanContributors": 26,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "active",
+      "fetchedAt": "2026-03-12T19:19:25.807Z"
+    },
+    "did:cn": {
+      "repo": "caict-4iot-dev/CN-DID-Method-Specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 8,
+        "bot": 0,
+        "total": 8
+      },
+      "lastHumanCommit": "2025-03-20T05:35:48Z",
+      "lastHumanAuthor": "caict-develop-zhangbo",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:19:29.524Z"
+    },
+    "did:dxd": {
+      "repo": "Data-Alliance/did-dxd",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 27,
+        "bot": 0,
+        "total": 27
+      },
+      "lastHumanCommit": "2022-11-25T07:49:38Z",
+      "lastHumanAuthor": "beggarstar",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:33.289Z"
+    },
+    "did:gwm": {
+      "repo": "GreatWall-Blockchain/GWDID-Method-Specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 1,
+        "bot": 0,
+        "total": 1
+      },
+      "lastHumanCommit": "2024-06-24T03:02:15Z",
+      "lastHumanAuthor": "GreatWall-Blockchain",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:36.992Z"
+    },
+    "did:hsk": {
+      "repo": "hashkeydid/hashkeydid-w3c-specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 18,
+        "bot": 0,
+        "total": 18
+      },
+      "lastHumanCommit": "2022-10-11T04:04:05Z",
+      "lastHumanAuthor": "herroxu",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:40.768Z"
+    },
+    "did:midnight": {
+      "repo": "IAMXID/did-midnight",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 4,
+        "bot": 0,
+        "total": 4
+      },
+      "lastHumanCommit": "2025-03-19T09:36:06Z",
+      "lastHumanAuthor": "Maetti79",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:19:44.397Z"
+    },
+    "did:pid": {
+      "repo": "proof-id/pid-did-driver",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 9,
+        "bot": 0,
+        "total": 9
+      },
+      "lastHumanCommit": "2022-02-20T01:23:42Z",
+      "lastHumanAuthor": "alvin-reyes",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:48.301Z"
+    },
+    "did:pml": {
+      "repo": "PML-ID/pml-did-specs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2021-08-17T08:11:01Z",
+      "lastHumanAuthor": "PML-ID",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:52.135Z"
+    },
+    "did:psi": {
+      "repo": "didpsi/psi-DID",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 1,
+        "bot": 0,
+        "total": 1
+      },
+      "lastHumanCommit": "2021-10-28T03:47:37Z",
+      "lastHumanAuthor": "didpsi",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:55.666Z"
+    },
+    "did:ray": {
+      "repo": "pcrui/did-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 1,
+        "bot": 0,
+        "total": 1
+      },
+      "lastHumanCommit": "2022-07-26T05:50:20Z",
+      "lastHumanAuthor": "pcrui",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:19:59.384Z"
+    },
+    "did:resume": {
+      "repo": "realmatterio/Resume-DID-Method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 9,
+      "recentCommits": {
+        "human": 317,
+        "bot": 0,
+        "total": 317
+      },
+      "lastHumanCommit": "2024-02-19T09:45:18Z",
+      "lastHumanAuthor": "realmatterio",
+      "humanContributors": 30,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:07.945Z"
+    },
+    "did:snplab": {
+      "repo": "snplab-io/snplab-did-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 3,
+        "bot": 0,
+        "total": 3
+      },
+      "lastHumanCommit": "2022-04-12T17:20:20Z",
+      "lastHumanAuthor": "jestun-snp",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:11.753Z"
+    },
+    "did:ti": {
+      "repo": "HTiBRI/TiDID-Method-Specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 4,
+        "bot": 0,
+        "total": 4
+      },
+      "lastHumanCommit": "2023-03-30T05:52:33Z",
+      "lastHumanAuthor": "michael-fighting",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:15.401Z"
+    },
+    "did:tr": {
+      "repo": "bzlab/ssi-turkiye-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 14,
+        "bot": 0,
+        "total": 14
+      },
+      "lastHumanCommit": "2024-12-02T12:25:06Z",
+      "lastHumanAuthor": "burcinbozkurtgunay",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:19.171Z"
+    },
+    "did:vid": {
+      "repo": "vpayment/did-method-spec",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 4,
+        "bot": 0,
+        "total": 4
+      },
+      "lastHumanCommit": "2019-10-16T00:16:32Z",
+      "lastHumanAuthor": "vpayment",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:23.143Z"
+    },
+    "did:plc": {
+      "repo": "bluesky-social/did-method-plc",
+      "openIssues": {
+        "human": 28,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 5,
+        "bot": 0
+      },
+      "branches": 8,
+      "recentCommits": {
+        "human": 208,
+        "bot": 0,
+        "total": 208
+      },
+      "lastHumanCommit": "2026-02-03T16:21:23Z",
+      "lastHumanAuthor": "rafaeleyng",
+      "humanContributors": 14,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "active",
+      "fetchedAt": "2026-03-12T19:20:31.734Z"
+    },
+    "did:tangle": {
+      "repo": "TangleID/TangleID",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 1
+      },
+      "branches": 7,
+      "recentCommits": {
+        "human": 196,
+        "bot": 45,
+        "total": 241
+      },
+      "lastHumanCommit": "2025-11-28T06:58:43Z",
+      "lastHumanAuthor": "jserv",
+      "humanContributors": 2,
+      "releases": {
+        "count": 1,
+        "latest": {
+          "tag": "v1.2.0",
+          "date": "2019-07-03T08:24:03Z"
+        }
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:20:39.023Z"
+    },
+    "did:icon": {
+      "repo": "icon-project/icon-DID",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 9,
+        "bot": 0,
+        "total": 9
+      },
+      "lastHumanCommit": "2019-08-14T09:26:45Z",
+      "lastHumanAuthor": "DaegiMin",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:42.679Z"
+    },
+    "did:jwks": {
+      "repo": "catena-labs/did-jwks",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 20,
+        "bot": 0,
+        "total": 20
+      },
+      "lastHumanCommit": "2026-02-21T03:23:56Z",
+      "lastHumanAuthor": "venables",
+      "humanContributors": 1,
+      "releases": {
+        "count": 4,
+        "latest": {
+          "tag": "did-jwks@1.1.0",
+          "date": "2026-02-21T03:25:51Z"
+        }
+      },
+      "liveness": "active",
+      "fetchedAt": "2026-03-12T19:20:46.610Z"
+    },
+    "did:content": {
+      "repo": "KataruInc/did-content-spec",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 17,
+        "bot": 0,
+        "total": 17
+      },
+      "lastHumanCommit": "2025-02-27T08:09:56Z",
+      "lastHumanAuthor": "MizukiSonoko",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:50.379Z"
+    },
+    "did:cot": {
+      "repo": "ComputingOfThings/dids",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2023-04-17T07:59:27Z",
+      "lastHumanAuthor": "suutaku",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:54.149Z"
+    },
+    "did:tys": {
+      "repo": "chainyard-tys/tys",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 1,
+        "bot": 0,
+        "total": 1
+      },
+      "lastHumanCommit": "2019-04-23T11:10:21Z",
+      "lastHumanAuthor": "chainyard-tys",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:20:57.709Z"
+    },
+    "did:vaa": {
+      "repo": "caict-develop-zhangbo/vaa-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 4,
+        "bot": 0,
+        "total": 4
+      },
+      "lastHumanCommit": "2020-08-05T05:17:42Z",
+      "lastHumanAuthor": "caict-develop-zhangbo",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:03.072Z"
+    },
+    "did:asset": {
+      "repo": "KILTprotocol/specifications",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 11,
+        "bot": 0,
+        "total": 11
+      },
+      "lastHumanCommit": "2022-08-05T10:17:47Z",
+      "lastHumanAuthor": "ntn-x2",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:21:06.749Z"
+    },
+    "did:unitrust": {
+      "repo": "sheca-bc/did-unitrust-specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 3,
+        "bot": 0,
+        "total": 3
+      },
+      "lastHumanCommit": "2024-11-07T05:44:40Z",
+      "lastHumanAuthor": "mengluzeng",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:10.480Z"
+    },
+    "did:andorra": {
+      "repo": "davidgbvargroup/did-andorra-method-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 6,
+        "bot": 0,
+        "total": 6
+      },
+      "lastHumanCommit": "2025-12-04T14:56:02Z",
+      "lastHumanAuthor": "davidgbvargroup",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:21:14.006Z"
+    },
+    "did:bba": {
+      "repo": "blobaa/bba-did-method-specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 51,
+        "bot": 0,
+        "total": 51
+      },
+      "lastHumanCommit": "2021-01-04T17:09:44Z",
+      "lastHumanAuthor": "atz3n",
+      "humanContributors": 1,
+      "releases": {
+        "count": 2,
+        "latest": {
+          "tag": "v0.1.1",
+          "date": "2020-08-30T22:20:18Z"
+        }
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:21:18.081Z"
+    },
+    "did:ct": {
+      "repo": "blueroominnovation/did-ct-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2024-03-06T08:42:21Z",
+      "lastHumanAuthor": "arnaunsbri",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:21.898Z"
+    },
+    "did:dsrv": {
+      "repo": "dsrvlabs/did_method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2022-03-07T01:36:30Z",
+      "lastHumanAuthor": "daoauth",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:25.589Z"
+    },
+    "did:dual": {
+      "repo": "Smart-ID-Card/Dual-DID",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 3,
+        "bot": 0,
+        "total": 3
+      },
+      "lastHumanCommit": "2021-08-05T10:04:05Z",
+      "lastHumanAuthor": "sidca-hj",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:29.454Z"
+    },
+    "did:kdid": {
+      "repo": "KingdomFintechBJ-BC/kdid",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2023-05-04T01:55:05Z",
+      "lastHumanAuthor": "KingdomFintechBJ-BC",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:33.128Z"
+    },
+    "did:ldid": {
+      "repo": "LONGEVITY-DIGITAL/LDID-Method-Specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 3,
+        "bot": 0,
+        "total": 3
+      },
+      "lastHumanCommit": "2023-10-24T02:14:49Z",
+      "lastHumanAuthor": "liweihang",
+      "humanContributors": 0,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:37.423Z"
+    },
+    "did:omn": {
+      "repo": "OmniOneID/did_method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 6,
+        "bot": 0,
+        "total": 6
+      },
+      "lastHumanCommit": "2019-05-30T09:19:52Z",
+      "lastHumanAuthor": "vegetar808",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:41.022Z"
+    },
+    "did:dock": {
+      "repo": "docknetwork/dock-did-driver",
+      "openIssues": {
+        "human": 2,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 3
+      },
+      "branches": 8,
+      "recentCommits": {
+        "human": 53,
+        "bot": 6,
+        "total": 59
+      },
+      "lastHumanCommit": "2024-02-21T21:44:05Z",
+      "lastHumanAuthor": "mike-parkhill",
+      "humanContributors": 3,
+      "releases": {
+        "count": 5,
+        "latest": {
+          "tag": "v2.0.2",
+          "date": "2023-02-20T21:26:32Z"
+        }
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:45.633Z"
+    },
+    "did:polygon": {
+      "repo": "ayanworks/polygon-did-method-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 11,
+        "bot": 0,
+        "total": 11
+      },
+      "lastHumanCommit": "2021-11-17T13:22:31Z",
+      "lastHumanAuthor": "ajile-in",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:49.263Z"
+    },
+    "did:schema": {
+      "repo": "51nodes/schema-registry-did-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 14,
+        "bot": 0,
+        "total": 14
+      },
+      "lastHumanCommit": "2020-08-28T12:02:48Z",
+      "lastHumanAuthor": "MajdT51",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:52.946Z"
+    },
+    "did:iwt": {
+      "repo": "infowallet/did_method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 27,
+        "bot": 0,
+        "total": 27
+      },
+      "lastHumanCommit": "2019-02-18T04:50:21Z",
+      "lastHumanAuthor": "infowallet",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:21:56.578Z"
+    },
+    "did:wba": {
+      "repo": "chgaowei/AgentNetworkProtocol",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 187,
+        "bot": 0,
+        "total": 187
+      },
+      "lastHumanCommit": "2025-02-16T10:22:25Z",
+      "lastHumanAuthor": "chgaowei",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:02.072Z"
+    },
+    "did:hpo": {
+      "repo": "hippocrat-protocol/hpo-did-method-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 6,
+        "bot": 0,
+        "total": 6
+      },
+      "lastHumanCommit": "2023-09-21T04:55:34Z",
+      "lastHumanAuthor": "ChrisCho-H",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:07.331Z"
+    },
+    "did:self": {
+      "repo": "excid-io/did-self",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 6,
+        "bot": 0,
+        "total": 6
+      },
+      "lastHumanCommit": "2024-06-17T13:45:05Z",
+      "lastHumanAuthor": "nikosft",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:10.964Z"
+    },
+    "did:id": {
+      "repo": "Mastercard/did-methods",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 7,
+        "bot": 0,
+        "total": 7
+      },
+      "lastHumanCommit": "2021-12-21T14:28:41Z",
+      "lastHumanAuthor": "SWAJ",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:14.681Z"
+    },
+    "did:ala": {
+      "repo": "alastria/alastria-identity",
+      "openIssues": {
+        "human": 27,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 7,
+        "bot": 3
+      },
+      "branches": 28,
+      "recentCommits": {
+        "human": 68,
+        "bot": 0,
+        "total": 68
+      },
+      "lastHumanCommit": "2023-02-03T07:05:46Z",
+      "lastHumanAuthor": "jftavira",
+      "humanContributors": 6,
+      "releases": {
+        "count": 1,
+        "latest": {
+          "tag": "mvp0.1",
+          "date": "2020-05-20T07:21:17Z"
+        }
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:20.081Z"
+    },
+    "did:ockam": {
+      "repo": "ockam-network/did-method-spec",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 6,
+      "recentCommits": {
+        "human": 12,
+        "bot": 0,
+        "total": 12
+      },
+      "lastHumanCommit": "2021-01-03T17:28:10Z",
+      "lastHumanAuthor": "mrinalwadhwa",
+      "humanContributors": 2,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:25.508Z"
+    },
+    "did:ion": {
+      "repo": "decentralized-identity/ion-did-method",
+      "openIssues": {
+        "human": 72,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 6
+      },
+      "branches": 33,
+      "recentCommits": {
+        "human": 209,
+        "bot": 6,
+        "total": 215
+      },
+      "lastHumanCommit": "2023-08-25T15:23:54Z",
+      "lastHumanAuthor": "yorkerhodes3",
+      "humanContributors": 28,
+      "releases": {
+        "count": 17,
+        "latest": {
+          "tag": "v1.0.4",
+          "date": "2022-06-09T01:42:53Z"
+        }
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:35.782Z"
+    },
+    "did:bee": {
+      "repo": "mesur-io/did-method-bee",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 5,
+        "bot": 0,
+        "total": 5
+      },
+      "lastHumanCommit": "2022-07-13T12:23:37Z",
+      "lastHumanAuthor": "mprorock",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:39.450Z"
+    },
+    "did:cr": {
+      "repo": "SelfSovereignDrm/core",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 3,
+        "bot": 0,
+        "total": 3
+      },
+      "lastHumanCommit": "2022-11-22T05:46:25Z",
+      "lastHumanAuthor": "SelfSovereignDrm",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:43.055Z"
+    },
+    "did:web": {
+      "repo": "w3c-ccg/did-method-web",
+      "openIssues": {
+        "human": 42,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 7,
+      "recentCommits": {
+        "human": 85,
+        "bot": 0,
+        "total": 85
+      },
+      "lastHumanCommit": "2024-07-31T16:23:00Z",
+      "lastHumanAuthor": "Orie Steele",
+      "humanContributors": 15,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:48.245Z"
+    },
+    "did:jwk": {
+      "repo": "quartzjer/did-jwk",
+      "openIssues": {
+        "human": 5,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 3,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 21,
+        "bot": 0,
+        "total": 21
+      },
+      "lastHumanCommit": "2023-08-19T19:21:43Z",
+      "lastHumanAuthor": "quartzjer",
+      "humanContributors": 4,
+      "releases": {
+        "count": 1,
+        "latest": {
+          "tag": "v1.0",
+          "date": "2023-02-15T22:03:50Z"
+        }
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:52.246Z"
+    },
+    "did:trust": {
+      "repo": "trustcerts/did-trust-method",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 4,
+        "bot": 0,
+        "total": 4
+      },
+      "lastHumanCommit": "2022-08-03T11:53:53Z",
+      "lastHumanAuthor": "Mirko Mollik",
+      "humanContributors": 0,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:55.838Z"
+    },
+    "did:iden3": {
+      "repo": "iden3/did-iden3",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 20,
+        "bot": 0,
+        "total": 20
+      },
+      "lastHumanCommit": "2024-07-10T10:16:28Z",
+      "lastHumanAuthor": "vmidyllic",
+      "humanContributors": 4,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:22:59.509Z"
+    },
+    "did:polygonid": {
+      "repo": "iden3/did-iden3",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 20,
+        "bot": 0,
+        "total": 20
+      },
+      "lastHumanCommit": "2024-07-10T10:16:28Z",
+      "lastHumanAuthor": "vmidyllic",
+      "humanContributors": 4,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:23:03.144Z"
+    },
+    "did:ptn": {
+      "repo": "palletone/palletone-DID",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 30,
+        "bot": 0,
+        "total": 30
+      },
+      "lastHumanCommit": "2020-03-05T10:28:23Z",
+      "lastHumanAuthor": "shuizhongmose",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:23:07.168Z"
+    },
+    "did:holo": {
+      "repo": "WebOfTrustInfo/rwot9-prague",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 1,
+        "bot": 0
+      },
+      "branches": 11,
+      "recentCommits": {
+        "human": 783,
+        "bot": 0,
+        "total": 783
+      },
+      "lastHumanCommit": "2025-04-15T19:53:11Z",
+      "lastHumanAuthor": "jandrieu",
+      "humanContributors": 62,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:23:23.088Z"
+    },
+    "did:bid": {
+      "repo": "teleinfo-bif/bid",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 33,
+        "bot": 0,
+        "total": 33
+      },
+      "lastHumanCommit": "2022-11-04T09:05:01Z",
+      "lastHumanAuthor": "teleinfo-bif",
+      "humanContributors": 3,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:23:27.379Z"
+    },
+    "did:qui": {
+      "repo": "mwherman2000/TrustedDigitalWeb",
+      "openIssues": {
+        "human": 1,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 2,
+      "recentCommits": {
+        "human": 138,
+        "bot": 0,
+        "total": 138
+      },
+      "lastHumanCommit": "2025-03-24T21:28:33Z",
+      "lastHumanAuthor": "mwherman2000",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "stale",
+      "fetchedAt": "2026-03-12T19:23:32.651Z"
+    },
+    "did:com": {
+      "repo": "commercionetwork/Commercio.network-DID-Method-Specification",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 1,
+        "bot": 0,
+        "total": 1
+      },
+      "lastHumanCommit": "2019-11-12T12:01:48Z",
+      "lastHumanAuthor": "egidiocasati",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "dormant",
+      "fetchedAt": "2026-03-12T19:23:36.331Z"
+    },
+    "did:op": {
+      "repo": "oceanprotocol/OEPs",
+      "openIssues": {
+        "human": 0,
+        "bot": 0
+      },
+      "openPRs": {
+        "human": 0,
+        "bot": 0
+      },
+      "branches": 1,
+      "recentCommits": {
+        "human": 2,
+        "bot": 0,
+        "total": 2
+      },
+      "lastHumanCommit": "2021-08-23T07:21:56Z",
+      "lastHumanAuthor": "trentmc",
+      "humanContributors": 1,
+      "releases": {
+        "count": 0,
+        "latest": null
+      },
+      "liveness": "archived",
+      "fetchedAt": "2026-03-12T19:23:42.802Z"
+    }
+  }
+}

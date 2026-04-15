@@ -1,0 +1,221 @@
+{
+  "version": "1.0.0",
+  "description": "The W3C/DIF/IETF identity ecosystem is fragmented across dozens of repos, working groups, and standards bodies. This file centralizes the relevant specs, repos, and their relationships.",
+  "bodies": {
+    "W3C": {
+      "name": "World Wide Web Consortium",
+      "role": "Core DID and VC specifications. The 'constitution' of decentralized identity.",
+      "url": "https://www.w3.org/",
+      "workingGroups": [
+        { "name": "DID Working Group", "url": "https://www.w3.org/2019/did-wg/", "status": "Closed (delivered DID Core v1.1)" },
+        { "name": "VC Working Group", "url": "https://www.w3.org/2017/vc/WG/", "status": "Active (VC Data Model 2.0)" },
+        { "name": "Credentials Community Group", "url": "https://w3c-ccg.github.io/", "status": "Active (incubation)" }
+      ]
+    },
+    "DIF": {
+      "name": "Decentralized Identity Foundation",
+      "role": "Interoperability protocols — how DID-based systems talk to each other. DIDComm, Presentation Exchange, Universal Resolver.",
+      "url": "https://identity.foundation/",
+      "workingGroups": [
+        { "name": "DIDComm WG", "url": "https://identity.foundation/working-groups/did-comm.html" },
+        { "name": "Claims & Credentials WG", "url": "https://identity.foundation/working-groups/claims-credentials.html" },
+        { "name": "Identifiers & Discovery WG", "url": "https://identity.foundation/working-groups/identifiers-discovery.html" }
+      ]
+    },
+    "IETF": {
+      "name": "Internet Engineering Task Force",
+      "role": "Token and credential formats — SD-JWT, Status Lists, OAuth extensions. The 'plumbing' that makes credentials work in web infrastructure.",
+      "url": "https://www.ietf.org/",
+      "workingGroups": [
+        { "name": "OAuth WG", "url": "https://datatracker.ietf.org/wg/oauth/about/", "status": "Active (SD-JWT, Status Lists)" }
+      ]
+    },
+    "OpenID": {
+      "name": "OpenID Foundation",
+      "role": "Browser and API integration — how wallets present credentials to websites. OID4VP, OID4VCI, SIOP v2.",
+      "url": "https://openid.net/",
+      "workingGroups": [
+        { "name": "Digital Credentials Protocols WG", "url": "https://openid.net/wg/digital-credentials-protocols/" }
+      ]
+    },
+    "ToIP": {
+      "name": "Trust Over IP Foundation",
+      "role": "Governance frameworks — how trust is established between parties that don't know each other. Trust registries, governance stacks.",
+      "url": "https://trustoverip.org/"
+    },
+    "GLEIF": {
+      "name": "Global Legal Entity Identifier Foundation",
+      "role": "Legal entity identity — the LEI (Legal Entity Identifier) system and its verifiable digital form (vLEI). The bridge between corporate identity and decentralized identity.",
+      "url": "https://www.gleif.org/"
+    }
+  },
+  "specs": [
+    {
+      "id": "did-core",
+      "name": "W3C DID Core v1.1",
+      "body": "W3C",
+      "type": "Recommendation",
+      "specUrl": "https://www.w3.org/TR/did-core/",
+      "repoUrl": "https://github.com/w3c/did-core",
+      "description": "The foundational spec. Defines what a DID is, what a DID Document looks like, and the abstract operations (Create, Read, Update, Deactivate). Every DID method MUST conform to this.",
+      "role": "Defines the identifier and document format",
+      "dependencies": [],
+      "dependedOnBy": ["did-resolution", "did-registries", "vc-data-model"]
+    },
+    {
+      "id": "did-resolution",
+      "name": "DID Resolution v0.3",
+      "body": "W3C",
+      "type": "Draft",
+      "specUrl": "https://w3c.github.io/did-resolution/",
+      "repoUrl": "https://github.com/w3c/did-resolution",
+      "description": "How to resolve a DID into a DID Document. Defines the resolution algorithm, metadata, and error handling. Still a draft — methods implement it but it's not yet a W3C Recommendation.",
+      "role": "Defines how DIDs are looked up",
+      "dependencies": ["did-core"],
+      "dependedOnBy": ["universal-resolver"]
+    },
+    {
+      "id": "did-registries",
+      "name": "W3C DID Spec Registries",
+      "body": "W3C",
+      "type": "Note",
+      "specUrl": "https://www.w3.org/TR/did-spec-registries/",
+      "repoUrl": "https://github.com/w3c/did-spec-registries",
+      "description": "The registry of all known DID methods, verification method types, and service endpoint types. This is where methods are 'registered' — though registration is just a PR to this repo, not a formal approval.",
+      "role": "Lists all known DID methods",
+      "dependencies": ["did-core"],
+      "dependedOnBy": []
+    },
+    {
+      "id": "did-use-cases",
+      "name": "W3C DID Use Cases and Requirements",
+      "body": "W3C",
+      "type": "Note",
+      "specUrl": "https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/",
+      "repoUrl": "https://github.com/w3c/did-use-cases",
+      "description": "Defines the 22 requirements (R1-R22) that DID methods should satisfy, mapped to real-world use cases. This is the basis for the scoring methodology used in this index.",
+      "role": "Defines requirements and use cases — the scoring basis",
+      "dependencies": ["did-core"],
+      "dependedOnBy": []
+    },
+    {
+      "id": "vc-data-model",
+      "name": "W3C VC Data Model 2.0",
+      "body": "W3C",
+      "type": "Recommendation",
+      "specUrl": "https://www.w3.org/TR/vc-data-model-2.0/",
+      "repoUrl": "https://github.com/w3c/vc-data-model",
+      "description": "Defines what a Verifiable Credential is — the data model for signed claims. DIDs identify the issuer, holder, and verifier. VCs carry the actual claims (diplomas, KYC status, medical records).",
+      "role": "Defines the credential format",
+      "dependencies": ["did-core"],
+      "dependedOnBy": ["sd-jwt", "vc-status-list", "oid4vp"]
+    },
+    {
+      "id": "sd-jwt",
+      "name": "SD-JWT (Selective Disclosure JWT)",
+      "body": "IETF",
+      "type": "Draft",
+      "specUrl": "https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/",
+      "repoUrl": "https://github.com/oauth-wg/oauth-selective-disclosure-jwt",
+      "description": "Per-field selective disclosure for JWTs. Each field gets its own salt and hash. The holder reveals only the fields they choose. Verifiers can verify disclosed fields without seeing the rest. Simpler than AnonCreds, works with standard JOSE libraries.",
+      "role": "Enables selective disclosure in credentials",
+      "dependencies": ["vc-data-model"],
+      "dependedOnBy": ["oid4vp"]
+    },
+    {
+      "id": "vc-status-list",
+      "name": "W3C Bitstring Status List v1.0",
+      "body": "W3C",
+      "type": "Recommendation",
+      "specUrl": "https://www.w3.org/TR/vc-bitstring-status-list/",
+      "repoUrl": "https://github.com/w3c/vc-bitstring-status-list",
+      "description": "A compact bitfield published at a stable URL. Each credential gets a bit position. A 0 means valid, 1 means revoked (or suspended). Any verifier can check credential status without contacting the issuer — they just fetch the bitfield.",
+      "role": "Enables credential revocation and suspension",
+      "dependencies": ["vc-data-model"],
+      "dependedOnBy": []
+    },
+    {
+      "id": "didcomm-v2",
+      "name": "DIDComm Messaging v2",
+      "body": "DIF",
+      "type": "Specification",
+      "specUrl": "https://identity.foundation/didcomm-messaging/spec/",
+      "repoUrl": "https://github.com/decentralized-identity/didcomm-messaging",
+      "description": "Peer-to-peer encrypted messaging using DID Document keys. Messages are encrypted (AuthCrypt or AnonCrypt), routed through service endpoints, and carry protocol-specific payloads (Present Proof, Issue Credential, Trust Ping).",
+      "role": "Transport layer for credential exchange",
+      "dependencies": ["did-core"],
+      "dependedOnBy": []
+    },
+    {
+      "id": "presentation-exchange",
+      "name": "DIF Presentation Exchange v2",
+      "body": "DIF",
+      "type": "Specification",
+      "specUrl": "https://identity.foundation/presentation-exchange/",
+      "repoUrl": "https://github.com/decentralized-identity/presentation-exchange",
+      "description": "A format for verifiers to describe what credentials they need (presentation definition) and for holders to respond with matching credentials (presentation submission). Works across credential formats (JWT, JSON-LD, AnonCreds).",
+      "role": "Defines what verifiers request and holders provide",
+      "dependencies": ["vc-data-model"],
+      "dependedOnBy": ["oid4vp"]
+    },
+    {
+      "id": "oid4vp",
+      "name": "OpenID for Verifiable Presentations (OID4VP)",
+      "body": "OpenID",
+      "type": "Draft",
+      "specUrl": "https://openid.net/specs/openid-4-verifiable-presentations-1_0.html",
+      "repoUrl": "https://github.com/openid/OpenID4VP",
+      "description": "Extends OAuth 2.0 to support Verifiable Presentations in browser flows. A website requests credentials via a standard OAuth redirect. The wallet returns a VP. Works with existing OAuth infrastructure.",
+      "role": "Browser-based credential presentation",
+      "dependencies": ["vc-data-model", "presentation-exchange"],
+      "dependedOnBy": []
+    },
+    {
+      "id": "oid4vci",
+      "name": "OpenID for Verifiable Credential Issuance (OID4VCI)",
+      "body": "OpenID",
+      "type": "Draft",
+      "specUrl": "https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html",
+      "repoUrl": "https://github.com/openid/OpenID4VCI",
+      "description": "Extends OAuth 2.0 for credential issuance. An issuer provides credentials to a holder's wallet via standard OAuth flows. Supports pre-authorized and authorization code flows.",
+      "role": "Browser-based credential issuance",
+      "dependencies": ["vc-data-model"],
+      "dependedOnBy": []
+    },
+    {
+      "id": "universal-resolver",
+      "name": "DIF Universal Resolver",
+      "body": "DIF",
+      "type": "Implementation",
+      "specUrl": "https://dev.uniresolver.io/",
+      "repoUrl": "https://github.com/decentralized-identity/universal-resolver",
+      "description": "A shared HTTP service that wraps many DID method drivers behind a single REST API. Call GET /1.0/identifiers/did:sns:alice.crbank.sol and get back a standard DID Document. Convenience for testing — production should use direct resolution.",
+      "role": "Multi-method resolution gateway",
+      "dependencies": ["did-resolution"],
+      "dependedOnBy": []
+    },
+    {
+      "id": "vlei",
+      "name": "GLEIF vLEI",
+      "body": "GLEIF",
+      "type": "Specification",
+      "specUrl": "https://www.gleif.org/en/lei-solutions/gleifs-digital-strategy-for-the-lei/introducing-the-verifiable-lei",
+      "repoUrl": "https://github.com/WebOfTrust/vLEI",
+      "description": "Verifiable Legal Entity Identifier — a digitally verifiable form of the LEI. Chains organizational credentials: GLEIF → QVI (Qualified vLEI Issuer) → Legal Entity → Person acting in a role. The bridge between corporate registries and decentralized identity.",
+      "role": "Organizational identity and legal entity binding",
+      "dependencies": [],
+      "dependedOnBy": []
+    }
+  ],
+  "dependencyMap": {
+    "description": "How specs depend on each other — reading this from bottom to top shows the full stack.",
+    "layers": [
+      { "layer": "Applications", "specs": ["wallets", "enterprise platforms", "government eID systems"] },
+      { "layer": "Presentation", "specs": ["oid4vp", "oid4vci", "didcomm-v2", "presentation-exchange"] },
+      { "layer": "Credentials", "specs": ["vc-data-model", "sd-jwt", "vc-status-list"] },
+      { "layer": "Trust", "specs": ["vlei", "trust-frameworks"] },
+      { "layer": "Resolution", "specs": ["did-resolution", "universal-resolver"] },
+      { "layer": "Foundation", "specs": ["did-core", "did-registries", "did-use-cases"] }
+    ]
+  }
+}
