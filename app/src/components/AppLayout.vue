@@ -28,7 +28,8 @@ onMounted(loadAll)
           </h1>
         </router-link>
         <p class="shell-header__subtitle">
-          A development catalogue for DID method visibility — not a registry, not an endorsement
+          A development catalogue for DID method visibility — not a registry, not an endorsement.
+          <br><span style="opacity: 0.6;">Proof of concept — data is community-sourced and unverified. Feedback welcome via <a href="https://github.com/Attestto-com/did-method-checklist/issues" target="_blank" style="color: inherit; text-decoration: underline;">GitHub Issues</a>.</span>
         </p>
       </div>
     </header>
