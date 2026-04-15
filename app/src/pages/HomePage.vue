@@ -100,7 +100,7 @@ const { methods } = useMethodsData()
         <div class="step-card">
           <h4 class="step-card__title">1. Clone the repo</h4>
           <div class="code-inline">
-            <code>git clone https://github.com/user/did-landscape-explorer.git</code>
+            <code>git clone https://github.com/Attestto-com/did-method-checklist.git</code>
           </div>
           <p class="step-card__desc">
             Full source + all method data as JSON files you can query, transform, and extend.

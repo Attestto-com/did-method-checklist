@@ -160,7 +160,7 @@ async function resolveSnsDomain(address: string) {
         hasDidDocument: false,
       }))
 
-      // Pass 2: check which domains have DID Documents (Attestto-enabled)
+      // Pass 2: check which domains have DID Documents (DID-enabled)
       if (DID_RESOLVER_URL) {
         const verified = await resolveIdentities({
           chain: 'solana',
@@ -568,57 +568,57 @@ function fillDummy() {
   signingMethod.value = 'did:key'
   contributorDid.value = 'did:key:z6MkDemo1234567890abcdef'
   identityConnected.value = true
-  contributorName.value = 'Eduardo Chongkan'
-  methodology.value = 'llm-assisted'
-  llmModel.value = 'Claude Opus 4'
-  methodName.value = 'did:sns'
-  specUrl.value = 'https://spec.attestto.com/did-sns/'
-  repoUrl.value = 'https://github.com/Attestto-com/did-sns-spec'
-  blockchain.value = 'Solana'
-  registryType.value = 'blockchain'
-  contactName.value = 'Eduardo Chongkan'
-  selectedUseCaseId.value = 'UC-ENT'
+  contributorName.value = 'Jane Doe'
+  methodology.value = 'manual'
+  methodName.value = 'did:example'
+  specUrl.value = 'https://www.w3.org/TR/did-core/#example'
+  repoUrl.value = 'https://github.com/example/did-example'
+  blockchain.value = ''
+  registryType.value = 'web'
+  contactName.value = 'Jane Doe'
+  selectedUseCaseId.value = 'UC-CRED'
 
-  // Features — did:sns actual capabilities
-  const snsFeatures: Record<string, boolean> = {
+  // Features — partial for demo
+  const demoFeatures: Record<string, boolean> = {
     create: false, read: false, update: false, deactivate: false,
-    keyRotation: true, didLog: false, recovery: true, multiSig: true,
-    vc: true, sd: true, didcomm: true, resolver: true, jsonld: true, privacy: true,
+    keyRotation: true, didLog: false, recovery: false, multiSig: false,
+    vc: true, sd: false, didcomm: false, resolver: true, jsonld: true, privacy: true,
   }
   for (const f of FEATURE_DEFINITIONS) {
-    features.value[f.key] = snsFeatures[f.key] ?? null
+    features.value[f.key] = demoFeatures[f.key] ?? null
   }
 
-  // Requirements — did:sns meets all 22
-  const approaches: Record<string, string> = {
-    R1: 'Ed25519, secp256k1, ML-DSA-44 signatures via DID Document keys',
-    R2: 'Controller creates DID via SNS domain registration on Solana',
-    R3: 'Solana Name Service enforces global uniqueness',
-    R4: 'Resolution reads from Solana on-chain registry',
-    R5: 'DID Document contains Ed25519/secp256k1/ML-DSA verification methods',
-    R6: 'Keys replaced in DID Document without changing the DID',
-    R7: 'Service endpoints: DIDCommMessaging, CredentialExchange, LinkedDomains',
-    R8: 'No PII on-chain, SD-JWT selective disclosure, pairwise subdomains',
-    R9: 'DID Document controller + delegation properties, multi-sig',
-    R10: 'Works globally via Solana, no jurisdiction-specific infra',
-    R11: 'Decentralized — no single authority can revoke',
-    R12: 'Minimal SOL for SNS domain, no recurring fees',
-    R13: 'W3C DID Core compliant, open-source tooling, Universal Resolver',
-    R14: 'Pairwise subdomain DIDs via SHA-256(verifierDID + holderSecret)',
-    R15: 'ML-DSA-44 and ML-KEM-768 post-quantum key types defined',
-    R16: 'On-chain data persists regardless of issuer status',
-    R17: 'Multiple resolver implementations, not tied to single deployment',
-    R18: 'Controller retains keys via Solana wallet, independent of provider',
-    R19: 'DIDComm v2 authenticated encrypted messaging',
-    R20: 'Cross-chain via alsoKnownAs with did:ens, did:pkh, did:web',
-    R21: 'vLEI bridge for legal identity binding via verifiable credential',
-    R22: 'Human-readable SNS domain names (e.g., alice.sol)',
+  // Requirements — mix of met, partial, and not-assessed for realistic demo
+  const statuses: Record<string, { status: AssessmentStatus; approach: string }> = {
+    R1: { status: 'met', approach: 'Ed25519 signatures via DID Document keys' },
+    R2: { status: 'met', approach: 'Controller creates DID via web domain' },
+    R3: { status: 'met', approach: 'Domain name system enforces uniqueness' },
+    R4: { status: 'met', approach: 'Resolution via HTTPS endpoint' },
+    R5: { status: 'met', approach: 'DID Document contains Ed25519 verification methods' },
+    R6: { status: 'partial', approach: 'Key rotation supported but requires domain access' },
+    R7: { status: 'met', approach: 'Service endpoints defined in DID Document' },
+    R8: { status: 'partial', approach: 'No PII in DID Document, but DID is correlatable' },
+    R9: { status: 'met', approach: 'Controller property in DID Document' },
+    R10: { status: 'met', approach: 'Works globally via DNS' },
+    R11: { status: 'not-met', approach: 'Domain registrar can deny service' },
+    R12: { status: 'met', approach: 'Domain registration cost only' },
+    R13: { status: 'met', approach: 'W3C DID Core compliant, open-source' },
+    R14: { status: 'not-assessed', approach: '' },
+    R15: { status: 'not-assessed', approach: '' },
+    R16: { status: 'partial', approach: 'Depends on domain renewal' },
+    R17: { status: 'met', approach: 'Standard HTTP resolution' },
+    R18: { status: 'partial', approach: 'Controller holds keys but domain is rented' },
+    R19: { status: 'not-assessed', approach: '' },
+    R20: { status: 'met', approach: 'alsoKnownAs for cross-method linking' },
+    R21: { status: 'not-assessed', approach: '' },
+    R22: { status: 'met', approach: 'Human-readable domain names' },
   }
   for (const r of REQUIREMENTS) {
+    const s = statuses[r.id]
     assessments.value[r.id] = {
-      status: 'met',
-      approach: approaches[r.id] ?? 'Defined in spec',
-      evidence: 'https://spec.attestto.com/did-sns/',
+      status: s?.status ?? 'not-assessed',
+      approach: s?.approach ?? '',
+      evidence: 'https://www.w3.org/TR/did-core/',
     }
   }
 }
@@ -1181,11 +1181,11 @@ function canAdvance(): boolean {
               >
                 <span>{{ d.label }}</span>
                 <span v-if="d.isFavourite" class="text-[8px]" title="Favourite domain">&#9733;</span>
-                <span v-if="d.hasDidDocument" class="domain-pill__verified" title="Attestto-enabled — DID Document attached">&#10003;</span>
+                <span v-if="d.hasDidDocument" class="domain-pill__verified" title="DID Document attached">&#10003;</span>
               </button>
             </div>
             <div v-if="allResolvedDomains.some(d => d.hasDidDocument)" class="text-[9px] text-muted mt-1.5">
-              &#10003; = Attestto-enabled (DID Document attached)
+              &#10003; = DID Document attached
             </div>
           </div>
         </div>
@@ -1259,15 +1259,11 @@ function canAdvance(): boolean {
             <p class="callout__title">No identity wallet detected</p>
             <p class="callout__body">No credential wallet extensions responded. Install one to present your DID.</p>
           </div>
-          <div class="identity-card identity-card--inactive" style="border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 6%, transparent);">
-            <div class="flex items-center gap-3 w-full">
-              <span class="text-2xl">&#128274;</span>
-              <div class="flex-1">
-                <div class="text-xs font-semibold text-secondary">Attestto Creds</div>
-                <div class="text-[10px] text-muted leading-tight mt-0.5">Self-sovereign credential wallet with DIDComm v2 and selective disclosure.</div>
-              </div>
-              <a href="https://github.com/Attestto-com/attestto-creds" target="_blank" class="btn-accent text-xs whitespace-nowrap">Install Extension</a>
-            </div>
+          <div class="text-[10px] text-muted mt-1">
+            You can use any credential wallet extension that supports the
+            <a href="https://chapi.io/" target="_blank" class="link">CHAPI</a> or
+            <a href="https://github.com/nickreserved/universal-wallet-interop-spec" target="_blank" class="link">Universal Wallet</a> protocols.
+            Alternatively, use the "Generate did:key" or "Paste DID" options above.
           </div>
           <button class="btn-outline w-full" @click="discoverCredentialWallets">Retry Discovery</button>
         </div>

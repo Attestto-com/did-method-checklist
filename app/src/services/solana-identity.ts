@@ -1,9 +1,9 @@
 /**
- * Solana identity resolution — SNS domain + Attestto SBT lookup.
+ * Solana identity resolution — SNS domain + SBT lookup.
  *
  * After a Solana wallet connects, checks for:
  *  1. SNS .sol domain → resolves to did:sns
- *  2. Attestto SSID SBT → adds verified badge
+ *  2. on-chain SBT → adds verified badge
  *  3. Bare CAIP-10 degraded fallback (not did:pkh — see did:sns spec §13)
  *
  * Uses lightweight API calls — no heavy Solana SDK dependency.
@@ -23,8 +23,8 @@ export interface SolanaIdentity {
   domain: string | null
   /** All SNS domains owned by this address */
   allDomains: SnsDomain[]
-  /** Whether an Attestto SSID SBT was found */
-  hasAttessttoSbt: boolean
+  /** Whether an on-chain SBT was found */
+  hasSbt: boolean
   /** Raw wallet address */
   address: string
 }
@@ -33,7 +33,7 @@ export interface SolanaIdentity {
  * Resolve the best identity for a Solana wallet address.
  *
  * 1. Reverse-lookup SNS domain via Bonfida API → did:sns
- * 2. Check for Attestto SSID SBT (TODO: implement when SBT program is live)
+ * 2. Check for on-chain SBT (TODO: implement when SBT program is live)
  * 3. Fall back to bare CAIP-10 (not did:pkh — deprecated, no production usage)
  */
 export async function resolveSolanaIdentity(
@@ -48,7 +48,7 @@ export async function resolveSolanaIdentity(
     method: null,
     domain: null,
     allDomains: [],
-    hasAttessttoSbt: false,
+    hasSbt: false,
     address,
   }
 
@@ -62,7 +62,7 @@ export async function resolveSolanaIdentity(
         method: 'did:sns',
         domain: result.primary,
         allDomains: result.all,
-        hasAttessttoSbt: false, // TODO: check SBT once program is live
+        hasSbt: false, // TODO: check SBT once program is live
         address,
       }
     }

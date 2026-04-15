@@ -92,11 +92,11 @@ export const ACCEPTED_DID_METHODS: string[] = [
 export const DEFAULT_SIGNING_METHOD: SigningMethod = 'did:key'
 
 /**
- * Universal Resolver URL for verifying DID Documents on SNS domains.
- * Domains with a DID Document attached are "Attestto-enabled".
+ * Universal Resolver URL for verifying DID Documents on domains.
+ * Domains with a DID Document attached are marked with a checkmark.
  * Set to empty string to skip DID Document verification.
  */
-export const DID_RESOLVER_URL = 'https://dev-uniresolver.attestto.com'
+export const DID_RESOLVER_URL = 'https://dev.uniresolver.io'
 
 /** Get enabled providers sorted by order */
 export function getEnabledProviders(): IdentityProviderConfig[] {
