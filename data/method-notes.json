@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "description": "Editorial notes, analysis, and status explanations for DID methods. Managed via forms — rendered as cards on detail pages.",
+  "notes": {
+    "did:ion": [
+      {
+        "type": "status",
+        "severity": "critical",
+        "title": "Project Discontinued",
+        "body": "Microsoft disbanded the ION team in mid-2023. The last commit was August 2023. While the Sidetree protocol and Bitcoin anchoring still function, there is no active maintenance, no security patches, and no roadmap. The repo is not archived on GitHub but is effectively abandoned.",
+        "source": "https://github.com/decentralized-identity/ion-did-method",
+        "date": "2023-08-25"
+      },
+      {
+        "type": "analysis",
+        "severity": "warning",
+        "title": "Intended Use Case Never Fully Delivered",
+        "body": "did:ion was designed as Microsoft's enterprise identity layer — corporate credentials, employee badges, and portable VCs anchored to Bitcoin via the Sidetree protocol. It meets only 6 of 22 W3C requirements (27%). Critical gaps: no privacy architecture (R8), no key rotation (R6), no selective disclosure (R14), no legal entity binding (R21), and no documented crypto suite support. The project stopped before the ecosystem matured around SD-JWT, DIDComm v2, and post-quantum readiness.",
+        "source": "https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/",
+        "date": "2026-03-12"
+      },
+      {
+        "type": "analysis",
+        "severity": "info",
+        "title": "Legacy Value: Sidetree Protocol Concepts",
+        "body": "The main contribution of did:ion to the ecosystem is the Sidetree protocol — a Layer 2 anchoring pattern that batches DID operations into a single blockchain transaction. This pattern influenced did:orb and other methods. Cross-method compatibility with did:web, did:key, and did:ethr via the Universal Resolver remains functional.",
+        "source": "https://identity.foundation/sidetree/spec/",
+        "date": "2026-03-12"
+      }
+    ]
+  }
+}

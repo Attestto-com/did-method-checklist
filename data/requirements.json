@@ -5,133 +5,133 @@
     {
       "id": "R1",
       "name": "Authentication / Proof of Control",
-      "description": "The DID method MUST support cryptographic authentication and proof of control over the identifier.",
+      "description": "It is possible to prove that the entity claiming control over the identifier is indeed its controller.",
       "benefits": ["antiExploitation", "sustainability"]
     },
     {
       "id": "R2",
       "name": "Decentralized / Self-Issued",
-      "description": "Identifiers MUST be created without a central registration authority.",
+      "description": "These identifiers are created and managed by the controller of the identifier, who may also be its subject. They are not assigned, given, sold, or rented to the individual using them. The party relying on the identifier for identification, authentication, and authorization, does not need to manage the creation, update, and recovery of these identifiers.",
       "benefits": ["antiCensorship", "antiExploitation", "privacy", "sustainability"]
     },
     {
       "id": "R3",
       "name": "Guaranteed Unique Identifier",
-      "description": "The method MUST guarantee global uniqueness of identifiers.",
+      "description": "Identifiers are globally unique with no possibility of duplication, however unlikely that may be.",
       "benefits": ["easeOfUse", "sustainability"]
     },
     {
       "id": "R4",
       "name": "No Call Home",
-      "description": "Resolution MUST NOT require contacting the issuer or any single third party.",
+      "description": "When using these identifiers, there is no need to contact the issuer of the identifier to verify it. Verification and authentication can occur without further communication with the issuer.",
       "benefits": ["antiCensorship", "antiExploitation", "privacy", "sustainability"]
     },
     {
       "id": "R5",
       "name": "Associated Cryptographic Material",
-      "description": "The DID Document MUST include public keys or verification methods for cryptographic operations.",
+      "description": "The identifier is tightly coupled with cryptographic material that can be used to prove control over that identifier.",
       "benefits": ["antiCensorship", "antiExploitation", "easeOfUse"]
     },
     {
       "id": "R6",
       "name": "Streamlined Key Rotation",
-      "description": "The method MUST support key rotation without changing the DID identifier.",
+      "description": "When authentication materials need to be updated, these identifiers can update without direct intervention with requesting parties and with minimal individual interaction.",
       "benefits": ["antiCensorship", "antiExploitation", "easeOfUse", "sustainability"]
     },
     {
       "id": "R7",
       "name": "Service Endpoint Discovery",
-      "description": "The DID Document MUST support service endpoints for messaging, credential exchange, and other interactions.",
+      "description": "These identifiers allow requesting parties to look up available service endpoints for interacting with the subject of the identifier.",
       "benefits": ["easeOfUse"]
     },
     {
       "id": "R8",
       "name": "Privacy Preserving",
-      "description": "The method MUST minimize personally identifiable information stored on-chain or in the DID Document.",
+      "description": "Use of the identifier does not, of itself, reveal any information about the subject.",
       "benefits": ["antiCensorship", "antiExploitation", "privacy"]
     },
     {
       "id": "R9",
       "name": "Delegation of Control",
-      "description": "The method MUST support delegating control over a DID to other DIDs or keys.",
+      "description": "The controller of the identifier is able to delegate that control to a third party.",
       "benefits": ["easeOfUse"]
     },
     {
       "id": "R10",
       "name": "Inter-Jurisdictional",
-      "description": "The method MUST work across legal jurisdictions without requiring jurisdiction-specific infrastructure.",
+      "description": "Inter-jurisdictional identifiers do not depend on the legal jurisdiction in which they are issued. They are valid for uses anywhere without loss of fidelity or reliability. No jurisdiction is directly able to prevent their use.",
       "benefits": ["antiCensorship", "sustainability"]
     },
     {
       "id": "R11",
       "name": "Cannot Be Administratively Denied",
-      "description": "No single administrative authority can revoke or deny a DID without the controller's consent.",
+      "description": "These identifiers can't be denied or taken away by administrative function. This prevents shifting politics and bad actors from interfering.",
       "benefits": ["antiCensorship"]
     },
     {
       "id": "R12",
       "name": "Minimized Rents",
-      "description": "Ongoing costs for maintaining a DID SHOULD be minimal or zero.",
+      "description": "These identifiers don't incur ongoing expenses if unused nor on a per transaction basis. Fees based on updates—which incurs network and computational costs to verify—are considered \"minimal\".",
       "benefits": ["sustainability"]
     },
     {
       "id": "R13",
       "name": "No Vendor Lock-In",
-      "description": "The DID and its associated data MUST be portable across implementations and providers.",
+      "description": "These identifiers are not dependent on any given vendor. Vendor-specific identifiers restrict usage to that which is acceptable to the vendor and may allow vendors to extract disproportionate rents for usage.",
       "benefits": ["antiExploitation", "sustainability"]
     },
     {
       "id": "R14",
       "name": "Preempt / Limit Trackable Data Trails",
-      "description": "The method SHOULD minimize correlation across interactions and contexts.",
+      "description": "As cookies and other session/state-tracking mechanisms were gradually turned into scaffolding for unwanted or collusive tracking in the evolution of the web stack, so too might any new data exchange or communication systems unwittingly facilitate unwanted tracking based on new data trails. Resistance to these kinds of surveillance exploits need to be designed into new systems.",
       "benefits": ["antiCensorship", "antiExploitation", "privacy"]
     },
     {
       "id": "R15",
       "name": "Cryptographic Future-Proof",
-      "description": "The method SHOULD define a migration path for post-quantum cryptography or algorithm agility.",
+      "description": "These identifiers are capable of being updated as technology evolves. Current cryptography techniques are known to be susceptible to quantum computational attacks. Future-proofed identifiers provide a means to continue using the same identifier with updated, advanced authentication and authorization technologies.",
       "benefits": ["antiExploitation", "sustainability"]
     },
     {
       "id": "R16",
       "name": "Survives Issuing Organization Mortality",
-      "description": "The DID MUST remain resolvable and usable even if the original issuing organization ceases to exist.",
+      "description": "These identifiers survive the demise of the organization that issued them. They usefulness of these identifiers survive organizations going out of business, being purchased (and potentially losing domain names or root credentials), and even the internal decay of an organization that no longer has the ability to verify the authenticity of records they once issued.",
       "benefits": ["sustainability"]
     },
     {
       "id": "R17",
       "name": "Survives Deployment End-of-Life",
-      "description": "The DID MUST remain usable if a specific software deployment is retired.",
+      "description": "These identifiers are usable even after the systems deployed by requesting parties move past their useful lifetime. They are robust against technology fads and can seamlessly work with both legacy and next-generation systems.",
       "benefits": ["antiCensorship", "sustainability"]
     },
     {
       "id": "R18",
       "name": "Survives Relationship with Service Provider",
-      "description": "The DID MUST remain under the controller's authority regardless of their relationship with any service provider.",
+      "description": "These identifiers are not dependent on the tenure of the relationship with a service provider. This contrasts with identifiers like service-centric emails, e.g. joe@example.com, which, when used as identifiers in other systems, can cause problems when individuals no longer use the service provider.",
       "benefits": ["antiExploitation", "sustainability"]
     },
     {
       "id": "R19",
       "name": "Cryptographic Authentication and Communication",
-      "description": "The method MUST enable authenticated, encrypted communication between DID controllers.",
+      "description": "These identifiers enable cryptographic techniques to authenticate individuals and to secure communications with the subject of the identifier, typically using public-private key pairs.",
       "benefits": ["antiCensorship", "antiExploitation"]
     },
     {
       "id": "R20",
       "name": "Registry Agnostic",
-      "description": "The method SHOULD NOT depend on a single verifiable data registry.",
+      "description": "These identifiers are free to reside on any registry implementing a compatible interface. They are not beholden to any particular technology or vendor.",
       "benefits": ["antiCensorship", "antiExploitation", "sustainability"]
     },
     {
       "id": "R21",
       "name": "Legally-Enabled Identity",
-      "description": "The method SHOULD support binding a DID to a legal identity where required by regulation.",
+      "description": "These identifiers can be used as a basis for credentials and transactions that can be recognized as legally valid under one or more jurisdictions.",
       "benefits": ["antiExploitation", "easeOfUse", "sustainability"]
     },
     {
       "id": "R22",
       "name": "Human-Centered Interoperability",
-      "description": "The method SHOULD support human-readable identifiers or aliases for usability.",
+      "description": "Decentralized identifiers need to be easy to use by people with no technical expertise or specialist knowledge.",
       "benefits": ["easeOfUse", "sustainability"]
     }
   ]

@@ -259,7 +259,7 @@
 
 <script>
 // ─── Globals ─────────────────────────────────────────────────────────────────
-let DATA, GLOSS, ECO, allMethods=[], sortCol='reqPct', sortDir=-1
+let DATA, GLOSS, ECO, NOTES, CLAIMS, USECASES, INDUSTRIES, allMethods=[], sortCol='reqPct', sortDir=-1
 const PAGE_SIZE = 50
 let currentPage = 0
 const activeFilters = { uc:new Set(), ind:new Set(), req:new Set(), feat:new Set(), crypto:new Set() }
@@ -272,10 +272,12 @@ const CRYPTO_MAP = {ed25519:'Ed25519',secp256k1:'secp256k1',p256:'P-256',bls:'BL
 
 // ─── Boot ────────────────────────────────────────────────────────────────────
 async function init() {
-  const [dRes, gRes, eRes] = await Promise.all([
-    fetch('./data/methods-index.json'), fetch('./data/glossary.json'), fetch('./data/ecosystem-sources.json')
+  const [dRes, gRes, eRes, nRes, cRes, ucRes, indRes] = await Promise.all([
+    fetch('./data/methods-index.json'), fetch('./data/glossary.json'), fetch('./data/ecosystem-sources.json'), fetch('./data/method-notes.json'),
+    fetch('./data/method-claims.json'), fetch('./data/use-cases.json'), fetch('./data/industries.json')
   ])
-  DATA = await dRes.json(); GLOSS = await gRes.json(); ECO = await eRes.json()
+  DATA = await dRes.json(); GLOSS = await gRes.json(); ECO = await eRes.json(); NOTES = await nRes.json()
+  CLAIMS = await cRes.json(); USECASES = await ucRes.json(); INDUSTRIES = await indRes.json()
   allMethods = DATA.methods
 
   setupTabs()
@@ -480,6 +482,30 @@ function bindSort(){document.querySelectorAll('#main-table th[data-col]').forEac
   th.querySelector('.arrow').textContent=sortDir===-1?' ▼':' ▲'; applyFilters()
 })})}
 
+// ─── Method notes (from data/method-notes.json) ─────────────────────────────
+const NOTE_SEVERITY_STYLES = {
+  critical: { border: '#dc2626', bg: '#fef2f2', icon: '⛔', color: '#991b1b' },
+  warning:  { border: '#d97706', bg: '#fffbeb', icon: '⚠️', color: '#92400e' },
+  info:     { border: '#2563eb', bg: '#eff6ff', icon: 'ℹ️', color: '#1e40af' },
+}
+function renderMethodNotes(method) {
+  const notes = NOTES?.notes?.[method]
+  if (!notes || !notes.length) return ''
+  return notes.map(n => {
+    const s = NOTE_SEVERITY_STYLES[n.severity] || NOTE_SEVERITY_STYLES.info
+    const sourceLink = n.source ? ` <a href="${n.source}" target="_blank" style="color:${s.color};font-size:0.78rem;text-decoration:underline">source ↗</a>` : ''
+    const dateStr = n.date ? `<span style="font-size:0.75rem;color:${s.color};opacity:0.7;margin-left:0.5rem">${n.date}</span>` : ''
+    return `<div style="margin-top:0.75rem;padding:1rem 1.25rem;border-left:4px solid ${s.border};background:${s.bg};border-radius:0.5rem">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem">
+        <span style="font-size:1.1rem">${s.icon}</span>
+        <strong style="color:${s.color};font-size:0.92rem">${n.title}</strong>
+        ${dateStr}
+      </div>
+      <p style="color:${s.color};font-size:0.85rem;line-height:1.55;margin:0">${n.body}${sourceLink}</p>
+    </div>`
+  }).join('')
+}
+
 // ─── Detail page ─────────────────────────────────────────────────────────────
 function openDetail(m){
   const dp=document.getElementById('detail-page')
@@ -504,22 +530,41 @@ function openDetail(m){
   }).join('')
 
   // Requirements with tech approach table
+  const specBase = m.specUrl || (m.githubRepo ? `https://github.com/${m.githubRepo}` : null)
   const reqDetailRows=Array.from({length:22},(_,i)=>{
     const id=`R${i+1}`,met=m.reqMet.includes(id),g=rGloss[id],rt=m.reqTechs?.[id]
-    const techTags=rt&&rt.techs.length ? rt.techs.map(t=>`<span class="tag ${met?'blue':''}">${t}</span>`).join(' ') : `<span style="color:var(--muted);font-size:0.72rem">${met?rt?.approach||'—':'Not covered'}</span>`
-    return `<tr>
-      <td><span class="tag ${met?'green':'red'}">${id}</span></td>
-      <td style="font-size:0.75rem">${g?g.short:id}</td>
+    const techTags=rt&&rt.techs.length
+      ? rt.techs.map(t=>`<span class="tag ${met?'blue':''}" style="font-size:0.8rem;padding:0.2em 0.5em">${t}</span>`).join(' ')
+      : `<span style="color:var(--muted)">${met?rt?.approach||'—':'<span class="tag red">Not covered</span>'}</span>`
+    const specLink = specBase && met ? `<a href="${specBase}" target="_blank" title="View in method spec" style="font-size:0.78rem">spec ↗</a>` : ''
+    return `<tr style="font-size:0.88rem">
+      <td><span class="tag ${met?'green':'red'}" style="font-size:0.82rem;padding:0.2em 0.5em">${id}</span></td>
+      <td style="font-weight:500">${g?g.full:id}</td>
       <td>${techTags}</td>
-      <td style="font-size:0.68rem;color:var(--muted)">${g?`<a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#req${g.w3cSection.replace('.','')}" target="_blank" style="color:var(--muted)">§${g.w3cSection}</a>`:''}</td>
+      <td style="text-align:center">${specLink}</td>
+      <td style="color:var(--muted)">${g?`<a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#req${g.w3cSection.replace('.','')}" target="_blank" style="color:var(--muted)">§${g.w3cSection}</a>`:''}</td>
     </tr>`
   }).join('')
 
-  // Use case scores with needed requirements
+  // Use case requirement coverage — show which reqs are met/missing per use case
+  const UC_KEY_TO_FOCAL = { enterprise:'UC-ENT', education:'UC-EDU', healthcare:'UC-RX', legal:'UC-LAW', credentials:'UC-CRED', communication:'UC-COMM' }
   const ucRows=Object.entries(m.ucScores).map(([k,v])=>{
+    const focalId = UC_KEY_TO_FOCAL[k]
+    const focal = USECASES.focal.find(f=>f.id===focalId)
+    const needed = focal ? focal.requiredRequirements : []
+    const met = needed.filter(r=>m.reqMet.includes(r))
+    const missing = needed.filter(r=>!m.reqMet.includes(r))
+    const reqPills = needed.map(r => {
+      const isMet = m.reqMet.includes(r)
+      return `<span class="tag ${isMet?'green':'red'}" style="font-size:0.65rem;padding:0.1em 0.35em" title="${GLOSS.requirements[r]?.full||r}">${r}</span>`
+    }).join(' ')
     return `<tr>
-      <td style="min-width:7.5rem;font-weight:500">${UC_MAP[k]||k}</td>
-      <td style="min-width:10rem">${pb(v,v*0.55)}</td>
+      <td style="min-width:7.5rem;font-weight:500;vertical-align:top;padding-top:0.4rem">${UC_MAP[k]||k}</td>
+      <td>
+        <div style="margin-bottom:0.3rem">${pb(v,v*0.55)}</div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.15rem">${met.length}/${needed.length} requirements met</div>
+        <div>${reqPills}</div>
+      </td>
     </tr>`
   }).join('')
 
@@ -550,10 +595,27 @@ function openDetail(m){
     </div>`
   }).join('')||'<span style="color:var(--muted);font-size:0.8rem">No features documented</span>'
 
-  // Industries with context
-  const indRows=m.industries.length?m.industries.map(i=>{
-    return `<span class="tag" style="margin-bottom:0.2rem">${IND_MAP[i]||i}</span>`
-  }).join(' '):'<span style="color:var(--muted);font-size:0.8rem">None inferred. <a href="./checklist.md">Submit a checklist</a> to specify.</span>'
+  // Industries — ONLY from verified claims, not inferred
+  const claim = CLAIMS?.methods?.[m.method]
+  const verifiedIndustries = claim?.industries || []
+  const indRows = verifiedIndustries.length
+    ? verifiedIndustries.map(ind => {
+        const indMeta = INDUSTRIES.l2Verticals.find(v=>v.id===ind.id) || {}
+        return `<div style="margin-bottom:0.6rem;padding:0.5rem 0.75rem;border-left:3px solid #2563eb;background:#f8fafc;border-radius:0.25rem">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.2rem">
+            <span class="tag blue" style="font-size:0.78rem">${indMeta.name||IND_MAP[ind.id]||ind.id}</span>
+            ${ind.source?`<a href="${ind.source}" target="_blank" style="font-size:0.7rem;color:#2563eb">evidence ↗</a>`:''}
+          </div>
+          <p style="font-size:0.75rem;color:#475569;margin:0">${ind.evidence}</p>
+        </div>`
+      }).join('')
+    : `<div style="padding:0.75rem 1rem;border-left:4px solid #dc2626;background:#fef2f2;border-radius:0.5rem">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem">
+          <span style="font-size:1rem">⛔</span>
+          <strong style="color:#991b1b;font-size:0.85rem">No industry verticals documented</strong>
+        </div>
+        <p style="color:#991b1b;font-size:0.78rem;margin:0">This method's spec does not explicitly define target industries or use case verticals. <a href="./checklist.md" style="color:#991b1b;text-decoration:underline">Submit a checklist</a> to add verified claims.</p>
+      </div>`
 
   // Cross-method compatibility
   const compatHtml = m.compat
@@ -582,19 +644,28 @@ function openDetail(m){
 
     ${abstractHtml}
 
+    ${renderMethodNotes(m.method)}
+
     <!-- Row 1: Industry + Use Cases + Benefits side by side -->
     <div class="detail-grid">
       <div class="detail-section">
         <h3>Industry Verticals</h3>
-        <p>${indRows}</p>
+        ${indRows}
       </div>
       <div class="detail-section">
         <h3>Cross-Method Compatibility</h3>
         ${compatHtml}
       </div>
       <div class="detail-section">
-        <h3>Use Case Scores</h3>
-        <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;">Score = reqs met / reqs needed. <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#focal" target="_blank">W3C source ↗</a></p>
+        <h3>Use Case Requirement Coverage</h3>
+        <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.2rem;">Each W3C use case defines required requirements. Bar = % of those requirements this method meets. <a href="https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/#focal" target="_blank">W3C source ↗</a></p>
+        <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;"><span class="tag green" style="font-size:0.6rem;padding:0.05em 0.3em">R</span> = met &nbsp; <span class="tag red" style="font-size:0.6rem;padding:0.05em 0.3em">R</span> = missing</p>
+        ${claim?.useCaseSummary ? `<div style="padding:0.5rem 0.75rem;border-left:3px solid #2563eb;background:#f8fafc;border-radius:0.25rem;margin-bottom:0.6rem">
+          <p style="font-size:0.78rem;color:#334155;margin:0"><strong>Documented use case:</strong> ${claim.useCaseSummary}</p>
+          ${claim.useCaseSource?`<a href="${claim.useCaseSource}" target="_blank" style="font-size:0.7rem;color:#2563eb">source ↗</a>`:''}
+        </div>` : `<div style="padding:0.5rem 0.75rem;border-left:4px solid #dc2626;background:#fef2f2;border-radius:0.25rem;margin-bottom:0.6rem">
+          <p style="font-size:0.78rem;color:#991b1b;margin:0"><strong>⛔ No use case documented in spec.</strong> Scores below are computed from requirement overlap only — not claimed by the method.</p>
+        </div>`}
         <table>${ucRows}</table>
       </div>
       <div class="detail-section">
@@ -621,7 +692,7 @@ function openDetail(m){
       </p>
       <div class="req-grid">${reqGrid}</div>
       <table style="margin-top:0.75rem">
-        <thead><tr><th style="width:2.5rem">Req</th><th style="width:6rem">Name</th><th>Tech / Approach</th><th style="width:2.5rem">W3C</th></tr></thead>
+        <thead><tr><th style="width:2.5rem">Req</th><th style="width:8rem">Name</th><th>Tech / Approach</th><th style="width:3rem;text-align:center">Spec</th><th style="width:2.5rem">W3C</th></tr></thead>
         <tbody>${reqDetailRows}</tbody>
       </table>
     </div>
