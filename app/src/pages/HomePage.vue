@@ -5,7 +5,7 @@ const { methods } = useMethodsData()
 </script>
 
 <template>
-  <div class="space-y-10 max-w-4xl mx-auto">
+  <div class="space-y-10 w-full">
 
     <!-- Hero -->
     <div class="text-center space-y-3 pt-4">
