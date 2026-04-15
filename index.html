@@ -138,10 +138,13 @@
 </head>
 <body>
 <div class="container">
-  <h1>DID Method Index <span style="font-size:0.6em;color:var(--muted);font-weight:400">V2</span></h1>
+  <h1>DID Method Checklist <span style="font-size:0.6em;color:var(--muted);font-weight:400">V2</span></h1>
   <p class="subtitle">
-    225 methods analyzed against 22 W3C requirements, 18 use cases, and 30+ features.
-    Data: <a href="https://www.w3.org/TR/did-spec-registries/">W3C DID Spec Registries</a> + GitHub.
+    Self-assessment framework for DID method authors. 225 methods indexed against 22 W3C requirements, 18 use cases, and 30+ features.
+    Data sourced from <a href="https://www.w3.org/TR/did-spec-registries/">W3C DID Spec Registries</a> + GitHub &mdash; not editorial opinion.
+    <strong>This tool does not grade or rank methods.</strong> Scores reflect requirement overlap, not quality judgments.
+    Method authors can <a href="./checklist.md">submit verified claims</a> to correct or enrich their method's data.
+    <br>
     Built by <a href="https://attestto.org">Attestto</a> &mdash;
     <a href="https://github.com/Attestto-com/did-method-checklist">GitHub</a> &middot;
     <a href="./checklist.md">Submit Your Method</a> &middot;
@@ -805,6 +808,11 @@ function openDetail(m){
 
   dp.innerHTML=`
     <button class="back-btn" onclick="closeDetail()">← Back to Explorer</button>
+
+    <div class="method-box" style="margin-bottom:1rem;font-size:0.78rem;background:var(--amber-bg);border-left:3px solid var(--amber);">
+      <strong>Self-assessment data.</strong> The information below is derived from the method's public spec and GitHub repo — not from editorial review by Attestto.
+      Scores reflect W3C requirement overlap, not quality judgments. Method authors can <a href="./checklist.md">submit corrections</a>.
+    </div>
 
     <div class="detail-header">
       <h1><code>${m.method}</code></h1>
