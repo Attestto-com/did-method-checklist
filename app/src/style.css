@@ -140,7 +140,8 @@ body {
    * 3. LAYOUT
    * ═══════════════════════════════════════════════════════════════ */
   .layout-page {
-    @apply max-w-7xl mx-auto;
+    @apply mx-auto;
+    max-width: 96rem;
   }
   .layout-page-full {
     @apply max-w-full;
