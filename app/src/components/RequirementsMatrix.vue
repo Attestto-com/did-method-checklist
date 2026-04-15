@@ -86,7 +86,7 @@ const emit = defineEmits<{
               class="text-sm font-bold"
               :style="{ color: m.gradeResult.color }"
             >
-              {{ m.gradeResult.grade }}
+              {{ m.gradeResult.pct }}%
             </span>
             <span v-else class="text-[10px] text-ghost">?</span>
           </td>

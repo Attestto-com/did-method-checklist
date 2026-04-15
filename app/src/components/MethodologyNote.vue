@@ -25,14 +25,18 @@ const expanded = ref(false)
       </p>
 
       <div>
-        <h4 class="methodology-note__heading">What the grades mean</h4>
+        <h4 class="methodology-note__heading">What the percentages mean</h4>
         <ul class="list-disc pl-5 space-y-1 text-xs">
-          <li><strong class="text-status-met">A/A+</strong> — Method community has documented coverage for 85%+ of W3C requirements</li>
-          <li><strong class="text-status-partial">B</strong> — 70–84% documented coverage</li>
-          <li><strong class="text-muted">C</strong> — 50–69% documented coverage</li>
-          <li><strong class="text-status-not-met">D/F</strong> — Below 50% documented coverage</li>
-          <li><strong class="text-dim">Not Assessed</strong> — No data has been submitted for this method. This does NOT mean the method lacks features.</li>
+          <li><strong class="text-status-met">80%+</strong> — High coverage: the method's community has documented most W3C requirements</li>
+          <li><strong class="text-status-partial">50–79%</strong> — Moderate coverage: some requirements documented, others pending</li>
+          <li><strong class="text-muted">1–49%</strong> — Partial coverage: assessment is in early stages</li>
+          <li><strong class="text-dim">Not Assessed</strong> — No data has been submitted. This does NOT mean the method lacks features — it means nobody has filled in the self-assessment yet.</li>
         </ul>
+        <p class="text-xs mt-2 text-muted">
+          <strong>This tool does not grade, rank, or recommend methods.</strong>
+          It helps teams understand their options by showing what each method's community has documented.
+          If you are a method author and your data is missing or wrong, <a href="/self-assessment" class="link">submit a self-assessment</a>.
+        </p>
       </div>
 
       <div>

@@ -42,7 +42,7 @@ const category = REGISTRY_TYPES[props.method.registryType]
             class="text-2xl font-bold"
             :style="{ color: method.gradeResult.color }"
           >
-            {{ method.gradeResult.grade }}
+            {{ method.gradeResult.pct }}%
           </div>
           <span v-else class="text-sm text-muted italic px-2 py-1 rounded" style="background: var(--color-bg-input);">
             Not Assessed

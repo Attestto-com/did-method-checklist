@@ -1,33 +1,31 @@
 import type { AssessmentStatus, Grade, GradeResult, MethodEntry } from '@/types/method'
 
 /**
- * Grading configuration.
+ * Coverage computation.
  *
- * IMPORTANT: Grades reflect documented claims in the registry,
- * NOT the method's actual capabilities. A low grade means
- * "we haven't verified this feature yet," not "the method doesn't have it."
+ * This tool does NOT grade or rank methods. It computes requirement
+ * coverage — what percentage of W3C requirements a method claims to meet
+ * based on self-reported data.
  *
- * Methods with `assessed: false` NEVER receive a letter grade —
- * they show "Not Assessed" (gray, no grade).
+ * Low coverage means "not yet assessed" or "the method's spec doesn't
+ * address this requirement" — NOT "the method is bad."
  */
 
 // ---------------------------------------------------------------------------
-// Grade thresholds
+// Coverage thresholds (descriptive labels, NOT judgments)
 // ---------------------------------------------------------------------------
 
-const GRADE_THRESHOLDS: { min: number; grade: Grade; label: string; color: string }[] = [
-  { min: 95, grade: 'A+', label: 'Excellent', color: 'var(--color-green)' },
-  { min: 85, grade: 'A', label: 'Strong', color: 'var(--color-green)' },
-  { min: 70, grade: 'B', label: 'Good', color: 'var(--color-yellow)' },
-  { min: 50, grade: 'C', label: 'Adequate', color: 'var(--color-text-muted)' },
-  { min: 30, grade: 'D', label: 'Weak', color: 'var(--color-red)' },
-  { min: 0, grade: 'F', label: 'Insufficient', color: 'var(--color-red)' },
+const COVERAGE_THRESHOLDS: { min: number; grade: Grade; label: string; color: string }[] = [
+  { min: 80, grade: 'N/A', label: 'High coverage', color: 'var(--color-green)' },
+  { min: 50, grade: 'N/A', label: 'Moderate coverage', color: 'var(--color-yellow)' },
+  { min: 1,  grade: 'N/A', label: 'Partial coverage', color: 'var(--color-text-muted)' },
+  { min: 0,  grade: 'N/A', label: 'Not assessed', color: 'var(--color-text-dim)' },
 ]
 
 const NOT_ASSESSED_RESULT: GradeResult = {
   grade: 'N/A',
   pct: 0,
-  label: 'Not Assessed',
+  label: 'Not assessed',
   color: 'var(--color-text-dim)',
 }
 
@@ -35,7 +33,7 @@ const NOT_ASSESSED_RESULT: GradeResult = {
 // Public API
 // ---------------------------------------------------------------------------
 
-/** Compute grade for a method. Returns "Not Assessed" if method hasn't been assessed. */
+/** Compute coverage for a method. Returns "Not assessed" if method hasn't been assessed. */
 export function computeGrade(method: MethodEntry, totalRequirements: number): GradeResult {
   if (!method.assessed) {
     return { ...NOT_ASSESSED_RESULT }
@@ -44,10 +42,10 @@ export function computeGrade(method: MethodEntry, totalRequirements: number): Gr
   const metCount = countMet(method)
   const pct = totalRequirements > 0 ? Math.round((metCount / totalRequirements) * 100) : 0
 
-  const threshold = GRADE_THRESHOLDS.find(t => pct >= t.min) ?? GRADE_THRESHOLDS[GRADE_THRESHOLDS.length - 1]
+  const threshold = COVERAGE_THRESHOLDS.find(t => pct >= t.min) ?? COVERAGE_THRESHOLDS[COVERAGE_THRESHOLDS.length - 1]
 
   return {
-    grade: threshold.grade,
+    grade: 'N/A', // Never show letter grades
     pct,
     label: threshold.label,
     color: threshold.color,
