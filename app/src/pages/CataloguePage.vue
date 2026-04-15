@@ -54,6 +54,12 @@ const stats = computed(() => {
 </script>
 
 <template>
+  <!-- Page explanation -->
+  <p class="text-xs text-muted" style="border-left: 3px solid var(--color-border); padding: 0.5rem 0.75rem; margin-bottom: 0.5rem;">
+    Browse self-reported method data. Coverage percentages reflect what each team has documented — not our evaluation.
+    Gaps mean "not yet assessed", not "the method lacks this capability."
+  </p>
+
   <!-- Stats bar -->
   <div class="grid grid-cols-4 sm:grid-cols-7 gap-3">
     <div

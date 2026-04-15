@@ -10,6 +10,10 @@ const { filtered } = useFilters(() => methodsWithGrades.value)
 
 <template>
   <div class="space-y-8">
+    <p class="text-xs text-muted" style="border-left: 3px solid var(--color-border); padding: 0.5rem 0.75rem;">
+      Feature comparison across methods. Data is community-sourced — gaps mean "not yet documented", not "missing."
+      Method teams can update their entry via the Self-Assessment wizard.
+    </p>
     <FeatureMatrix :methods="filtered" />
     <OverlapAnalysis :methods="methods" />
   </div>

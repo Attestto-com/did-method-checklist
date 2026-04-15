@@ -16,6 +16,10 @@ const selectedMethodData = () => {
 </script>
 
 <template>
+  <p class="text-xs text-muted" style="border-left: 3px solid var(--color-border); padding: 0.5rem 0.75rem; margin-bottom: 1rem;">
+    How each method maps to the 22 W3C DID Use Case requirements. Based on self-assessments, not independent review.
+    If your method's data is missing or wrong, submit a correction via the Self-Assessment wizard.
+  </p>
   <RequirementsMatrix
     :methods="filtered"
     @select-method="(m: string) => selectedMethod = m"
