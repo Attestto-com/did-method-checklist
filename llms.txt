@@ -1,0 +1,110 @@
+# DID Method Checklist
+
+> A community-sourced self-assessment framework for DID method visibility. Not a registry, not an endorsement. Each method team is responsible for its own assessment.
+
+## What this is
+
+A tool for DID method authors and evaluators to compare methods against the 22 W3C DID Use Case requirements (https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/). 225 methods are indexed. Data is self-reported and LLM-seeded for demo purposes. Method teams should review and correct their entries.
+
+## Repository structure
+
+- `app/` - Vue 3 + Tailwind 4 + TypeScript frontend (the tool)
+- `data/` - JSON data files (methods, requirements, use cases, glossary)
+- `scripts/` - Data pipeline scripts (build-index, enrich, fetch-github-health)
+- `checklist.md` - 17-section submission questionnaire template
+
+## Key data files
+
+- `data/methods-index.json` - All 225 methods with requirements, features, scores, metadata (~774KB)
+- `data/requirements.json` - W3C R1-R22 requirement definitions
+- `data/use-cases.json` - 6 focal + 12 non-focal use case definitions
+- `data/glossary.json` - Scoring methodology, requirements, benefits, crypto definitions
+- `data/ecosystem-sources.json` - Standards bodies, specs, working groups
+- `data/features.json` - Feature definitions (key rotation, recovery, multi-sig, etc.)
+- `data/industries.json` - L2 industry vertical definitions
+- `data/method-claims.json` - Verified industry/use-case claims per method
+- `data/method-notes.json` - Editorial notes per method (severity-coded)
+- `data/github-health.json` - GitHub repo health signals (commits, issues, releases)
+
+## W3C Requirements (R1-R22)
+
+| ID | Name | Tier |
+|----|------|------|
+| R1 | Authentication / Proof of Control | Core |
+| R2 | Decentralized / Self-Issued | Common |
+| R3 | Guaranteed Unique Identifier | Common |
+| R4 | No Call Home | Specialized |
+| R5 | Associated Cryptographic Material | Common |
+| R6 | Streamlined Key Rotation | Specialized |
+| R7 | Service Endpoint Discovery | Common |
+| R8 | Privacy Preserving | Common |
+| R9 | Delegation of Control | Specialized |
+| R10 | Inter-Jurisdictional | Common |
+| R11 | Cannot Be Administratively Denied | Specialized |
+| R12 | Minimized Rents | Specialized |
+| R13 | No Vendor Lock-In | Common |
+| R14 | Preempt / Limit Trackable Data Trails | Specialized |
+| R15 | Cryptographic Future-Proof | Specialized |
+| R16 | Survives Issuing Organization Mortality | Specialized |
+| R17 | Survives Deployment End-of-Life | Specialized |
+| R18 | Survives Relationship with Service Provider | Common |
+| R19 | Cryptographic Authentication & Communication | Specialized |
+| R20 | Registry Agnostic | Specialized |
+| R21 | Legally-Enabled Identity | Specialized |
+| R22 | Human-Centered Interoperability | Core |
+
+## Assessment status values
+
+- `met` - Requirement is satisfied, with documented approach
+- `partial` - Partially addressed or has limitations
+- `not-met` - Requirement is not satisfied by design
+- `not-applicable` - Requirement does not apply to this method type
+- `not-assessed` - No data available (does NOT mean failing)
+
+## Method entry schema
+
+Each method in `methods-index.json` has:
+- `method` - DID method name (e.g. "did:web")
+- `specUrl` - Link to specification
+- `githubRepo` - GitHub repository (owner/repo)
+- `blockchain` - Underlying chain (if any)
+- `registryType` - "blockchain", "web", or "peer"
+- `reqMet` - Array of met requirement IDs (e.g. ["R1", "R2", "R3"])
+- `reqPct` - Percentage of requirements met
+- `feat` - Feature flags (keyRotation, recovery, multiSig, etc.)
+- `crypto` - Crypto support (ed25519, secp256k1, p256, bls, pq)
+- `ucScores` - Use case coverage scores (enterprise, healthcare, education, legal, credentials, communication)
+- `industries` - Industry vertical tags
+- `stars` - GitHub stars
+- `active` - Active in last 6 months
+
+## LLM analysis prompts
+
+Structured prompts for analysis workflows are in `app/public/data/prompts/`:
+- `context-loader.md` - Full reference data (load this first)
+- `spec-assessment.md` - Produce importable self-assessment JSON from a spec
+- `deep-analysis.md` - Comprehensive technical review
+- `comparison.md` - Side-by-side method comparison
+
+## Design principles
+
+1. Observable facts only. Show what methods claim. Do not assign grades or rankings.
+2. Not assessed does not equal failing. Missing data means unknown, not negative.
+3. Community-sourced. All data comes from method authors, implementers, or contributors.
+4. Each team owns their assessment. We do not evaluate methods on their behalf.
+5. Open and forkable. Every piece of data is in plain JSON.
+
+## How to contribute
+
+1. Fork the repo
+2. Run the self-assessment wizard at https://attestto-com.github.io/did-method-checklist/#/self-assessment
+3. Export JSON and submit via pull request
+4. Or edit `data/methods-index.json` directly
+
+## Links
+
+- Live tool: https://attestto-com.github.io/did-method-checklist/
+- GitHub: https://github.com/Attestto-com/did-method-checklist
+- W3C DID Core: https://www.w3.org/TR/did-core/
+- W3C DID Use Cases: https://www.w3.org/TR/2021/NOTE-did-use-cases-20210317/
+- W3C DID Spec Registries: https://www.w3.org/TR/did-spec-registries/
