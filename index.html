@@ -130,6 +130,10 @@
     .page-btn:disabled{opacity:0.4;cursor:default;}
     .page-info{font-size:0.72rem;color:var(--muted);padding:0 0.3rem;}
     footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);color:var(--muted);font-size:0.72rem;}
+
+    /* Resolver presets */
+    .resolve-preset{display:flex;align-items:center;width:100%;padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:white;cursor:pointer;text-align:left;transition:all 0.15s;}
+    .resolve-preset:hover{border-color:var(--accent);background:var(--accent-light);}
   </style>
 </head>
 <body>
@@ -138,15 +142,17 @@
   <p class="subtitle">
     225 methods analyzed against 22 W3C requirements, 18 use cases, and 30+ features.
     Data: <a href="https://www.w3.org/TR/did-spec-registries/">W3C DID Spec Registries</a> + GitHub.
-    Built by <a href="https://attestto.com">Attestto</a> &mdash;
+    Built by <a href="https://attestto.org">Attestto</a> &mdash;
     <a href="https://github.com/Attestto-com/did-method-checklist">GitHub</a> &middot;
-    <a href="./checklist.md">Submit Your Method</a>
+    <a href="./checklist.md">Submit Your Method</a> &middot;
+    <a href="https://attestto.org/docs">Documentation</a>
   </p>
 
   <!-- Tab bar -->
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="overview">Overview</button>
     <button class="tab-btn" data-tab="explorer">Explorer</button>
+    <button class="tab-btn" data-tab="resolve">Live Resolution</button>
     <button class="tab-btn" data-tab="ecosystem">Ecosystem Map</button>
     <button class="tab-btn" data-tab="methodology">Methodology</button>
   </div>
@@ -220,6 +226,86 @@
     </div>
   </div>
 
+  <!-- ═══ TAB: Live Resolution ═══════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-resolve">
+    <div class="method-box" style="margin-bottom:1.5rem;">
+      <strong>Try it live.</strong> Resolve any <code>did:pki</code> or <code>did:sns</code> identifier to a W3C DID Document.
+      These are two DID methods built by <a href="https://attestto.org">Attestto</a> —
+      <a href="https://spec.attestto.com/did-pki">did:pki</a> bridges national PKI hierarchies,
+      <a href="https://spec.attestto.com/did-sns">did:sns</a> resolves Solana Name Service domains.
+      Resolution is powered by the <a href="https://github.com/Attestto-com/attestto-did-resolver">Attestto DID Resolver</a>.
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+      <!-- did:pki presets -->
+      <div class="detail-section">
+        <h3>did:pki — National PKI Bridge</h3>
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.75rem;">
+          Maps X.509 CA hierarchies to DID Documents. Currently covers Costa Rica's national PKI.
+          <a href="https://github.com/w3c/did-extensions/pull/697" target="_blank">W3C PR #697 ↗</a>
+        </p>
+        <div id="pki-presets" style="display:flex;flex-direction:column;gap:0.4rem;"></div>
+      </div>
+      <!-- did:sns presets -->
+      <div class="detail-section">
+        <h3>did:sns — Solana Name Service</h3>
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.75rem;">
+          Resolves .sol domain names to DID Documents with on-chain verification.
+          <a href="https://spec.attestto.com/did-sns" target="_blank">Spec ↗</a>
+        </p>
+        <div id="sns-presets" style="display:flex;flex-direction:column;gap:0.4rem;"></div>
+      </div>
+    </div>
+
+    <!-- Custom resolver -->
+    <div class="detail-section" style="margin-bottom:1.5rem;">
+      <h3>Resolve Any DID</h3>
+      <div style="display:flex;gap:0.5rem;align-items:center;margin-top:0.5rem;">
+        <input type="text" id="resolve-input" placeholder="did:pki:cr:raiz-nacional or did:sns:attestto" style="flex:1;font-size:0.88rem;padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:6px;font-family:monospace;">
+        <button id="resolve-btn" style="padding:0.5rem 1.2rem;background:var(--accent);color:white;border:none;border-radius:6px;font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;">Resolve →</button>
+      </div>
+      <p id="resolve-error" style="color:var(--red);font-size:0.8rem;margin-top:0.4rem;display:none;"></p>
+    </div>
+
+    <!-- Result -->
+    <div id="resolve-result" style="display:none;">
+      <div class="detail-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h3 id="resolve-result-title">DID Document</h3>
+          <span id="resolve-timing" style="font-size:0.72rem;color:var(--muted);"></span>
+        </div>
+        <pre id="resolve-json" style="margin-top:0.5rem;background:var(--code-bg);border:1px solid var(--border);border-radius:6px;padding:1rem;font-size:0.78rem;overflow-x:auto;max-height:600px;overflow-y:auto;line-height:1.5;"></pre>
+      </div>
+    </div>
+
+    <!-- Attestto Components Demo -->
+    <div style="margin-top:2rem;">
+      <h2>Attestto Web Components</h2>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;">
+        These open-source Web Components work with any website — no framework required.
+        <a href="https://attestto.org/docs" target="_blank">Full documentation ↗</a>
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div class="detail-section">
+          <h3>Document Verification</h3>
+          <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.75rem;">
+            Drop a PDF to verify signatures and compute hashes. Everything runs client-side.
+            <a href="https://www.npmjs.com/package/@attestto/verify" target="_blank">@attestto/verify ↗</a>
+          </p>
+          <attestto-verify></attestto-verify>
+        </div>
+        <div class="detail-section">
+          <h3>DID Login</h3>
+          <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.75rem;">
+            One HTML element for passwordless authentication. Supports DID wallets and OAuth fallback.
+            <a href="https://www.npmjs.com/package/@attestto/login" target="_blank">@attestto/login ↗</a>
+          </p>
+          <attestto-login did-label="Login with DID" theme="light"></attestto-login>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══ TAB: Ecosystem Map ══════════════════════════════════════════════ -->
   <div class="tab-panel" id="tab-ecosystem">
     <div id="eco-intro"></div>
@@ -257,7 +343,100 @@
   </footer>
 </div>
 
+<script type="module" src="https://unpkg.com/@attestto/verify"></script>
+<script type="module" src="https://unpkg.com/@attestto/login"></script>
+
 <script>
+// ─── Resolver API ─────────────────────────────────────────────────────────────
+const RESOLVER_URL = 'https://uni-resolver-driver-did-sns.fly.dev'
+
+const PKI_PRESETS = [
+  { did: 'did:pki:cr:raiz-nacional', label: 'Costa Rica Root CA' },
+  { did: 'did:pki:cr:sinpe:persona-fisica', label: 'SINPE Persona Física CA' },
+  { did: 'did:pki:cr:sinpe:persona-juridica', label: 'SINPE Persona Jurídica CA' },
+]
+
+const SNS_PRESETS = [
+  { did: 'did:sns:attestto', label: 'attestto.sol' },
+  { did: 'did:sns:bonfida', label: 'bonfida.sol' },
+  { did: 'did:sns:devnet:test.attestto', label: 'test.attestto.sol (devnet)' },
+]
+
+function initResolver() {
+  // Render preset buttons
+  const pkiWrap = document.getElementById('pki-presets')
+  const snsWrap = document.getElementById('sns-presets')
+  if (!pkiWrap || !snsWrap) return
+
+  PKI_PRESETS.forEach(p => {
+    pkiWrap.innerHTML += `<button class="resolve-preset" onclick="resolveDID('${p.did}')" title="${p.did}">
+      <code style="font-size:0.78rem">${p.did}</code>
+      <span style="font-size:0.72rem;color:var(--muted);margin-left:0.5rem">${p.label}</span>
+    </button>`
+  })
+  SNS_PRESETS.forEach(p => {
+    snsWrap.innerHTML += `<button class="resolve-preset" onclick="resolveDID('${p.did}')" title="${p.did}">
+      <code style="font-size:0.78rem">${p.did}</code>
+      <span style="font-size:0.72rem;color:var(--muted);margin-left:0.5rem">${p.label}</span>
+    </button>`
+  })
+
+  // Bind resolve button
+  document.getElementById('resolve-btn').addEventListener('click', () => {
+    const did = document.getElementById('resolve-input').value.trim()
+    if (did) resolveDID(did)
+  })
+  document.getElementById('resolve-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const did = e.target.value.trim()
+      if (did) resolveDID(did)
+    }
+  })
+}
+
+async function resolveDID(did) {
+  const resultDiv = document.getElementById('resolve-result')
+  const jsonPre = document.getElementById('resolve-json')
+  const titleEl = document.getElementById('resolve-result-title')
+  const timingEl = document.getElementById('resolve-timing')
+  const errorEl = document.getElementById('resolve-error')
+
+  // Update input
+  document.getElementById('resolve-input').value = did
+
+  // Show loading
+  errorEl.style.display = 'none'
+  resultDiv.style.display = 'block'
+  titleEl.textContent = `Resolving ${did}...`
+  jsonPre.textContent = 'Loading...'
+  timingEl.textContent = ''
+
+  const start = performance.now()
+  try {
+    const resp = await fetch(`${RESOLVER_URL}/1.0/identifiers/${encodeURIComponent(did)}`)
+    const elapsed = Math.round(performance.now() - start)
+    const data = await resp.json()
+
+    timingEl.textContent = `${elapsed}ms`
+    titleEl.textContent = resp.ok ? `DID Document — ${did}` : `Resolution Error — ${did}`
+    jsonPre.textContent = JSON.stringify(data, null, 2)
+
+    // Syntax highlight
+    jsonPre.innerHTML = jsonPre.textContent
+      .replace(/"([^"]+)":/g, '<span style="color:var(--accent)">"$1"</span>:')
+      .replace(/: "([^"]+)"/g, ': <span style="color:var(--green)">"$1"</span>')
+      .replace(/: (true|false|null)/g, ': <span style="color:var(--amber)">$1</span>')
+      .replace(/: (\d+)/g, ': <span style="color:var(--purple)">$1</span>')
+  } catch (err) {
+    const elapsed = Math.round(performance.now() - start)
+    timingEl.textContent = `${elapsed}ms`
+    titleEl.textContent = `Resolution Failed — ${did}`
+    errorEl.textContent = `Network error: ${err.message}. The resolver may be sleeping — try again in a few seconds.`
+    errorEl.style.display = 'block'
+    jsonPre.textContent = ''
+  }
+}
+
 // ─── Globals ─────────────────────────────────────────────────────────────────
 let DATA, GLOSS, ECO, NOTES, CLAIMS, USECASES, INDUSTRIES, allMethods=[], sortCol='reqPct', sortDir=-1
 const PAGE_SIZE = 50
@@ -289,6 +468,7 @@ async function init() {
   bindFilters(); bindSort()
   renderEcosystem()
   renderMethodology()
+  initResolver()
 }
 
 // ─── Tabs ────────────────────────────────────────────────────────────────────
