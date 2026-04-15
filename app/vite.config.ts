@@ -3,9 +3,9 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'path'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [vue(), tailwindcss()],
-  base: '/did-method-checklist/',
+  base: command === 'serve' ? '/' : '/did-method-checklist/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -14,4 +14,4 @@ export default defineConfig({
 build: {
     outDir: 'dist',
   },
-})
+}))
