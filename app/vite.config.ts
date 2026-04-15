@@ -5,7 +5,7 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [vue(), tailwindcss()],
-  base: '/did-extensions/explorer/',
+  base: '/did-method-checklist/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),

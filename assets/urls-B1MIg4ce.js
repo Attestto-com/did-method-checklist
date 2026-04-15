@@ -1,0 +1,1 @@
+function n(r){if(!r)return null;try{const e=new URL(r);if(e.hostname!=="github.com")return null;const t=e.pathname.replace(/\.git$/,"").replace(/\/$/,"").split("/").filter(Boolean);return t.length<2?null:`https://github.com/${t[0]}/${t[1]}/archive/refs/heads/main.zip`}catch{return null}}export{n as r};
