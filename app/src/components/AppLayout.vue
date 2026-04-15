@@ -29,7 +29,7 @@ onMounted(loadAll)
         </router-link>
         <p class="shell-header__subtitle">
           A development catalogue for DID method visibility — not a registry, not an endorsement.
-          <br><span style="opacity: 0.6;">Proof of concept. Each method team is responsible for its own self-assessment — we do not evaluate methods on their behalf. Data is unverified. <a href="https://github.com/Attestto-com/did-method-checklist/issues" target="_blank" style="color: inherit; text-decoration: underline;">Feedback welcome</a>.</span>
+          <br><span style="color: #eab308;">Proof of concept. Each method team is responsible for its own self-assessment — we do not evaluate methods on their behalf. Data is unverified. <a href="https://github.com/Attestto-com/did-method-checklist/issues" target="_blank" style="color: #eab308; text-decoration: underline;">Feedback welcome</a>.</span>
         </p>
       </div>
     </header>
