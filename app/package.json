@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@attestto/id-wallet-adapter": "^0.4.1",
-    "identity-resolver": "0.2.0",
+    "@attestto/identity-resolver": "^0.3.0",
     "jose": "^6.2.1",
     "vue": "^3.5.13",
     "vue-router": "^5.0.3"

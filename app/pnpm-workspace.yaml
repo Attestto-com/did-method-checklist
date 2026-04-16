@@ -1,2 +1,0 @@
-overrides:
-  identity-resolver: link:../../wallet-identity-resolver/packages/core

@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  identity-resolver: link:../../wallet-identity-resolver/packages/core
-
 importers:
 
   .:
@@ -14,9 +11,9 @@ importers:
       '@attestto/id-wallet-adapter':
         specifier: ^0.4.1
         version: 0.4.1
-      identity-resolver:
-        specifier: link:../../wallet-identity-resolver/packages/core
-        version: link:../../wallet-identity-resolver/packages/core
+      '@attestto/identity-resolver':
+        specifier: ^0.3.0
+        version: 0.3.0
       jose:
         specifier: ^6.2.1
         version: 6.2.1
@@ -81,6 +78,9 @@ packages:
 
   '@attestto/id-wallet-adapter@0.4.1':
     resolution: {integrity: sha512-k2SZ1ZKiKQNin1Y/O+e6ylBdQxkaKkzc+vn8GK+YTI0R5DzDbRRLiTT3DxjPbssQbFXkDRQFq/NGkfOr+NJQBQ==}
+
+  '@attestto/identity-resolver@0.3.0':
+    resolution: {integrity: sha512-i3CTOlG8mdddxQwrD8y7sinV/Wc2w9ZxopEIRMjroQcq8HXORt6oyouZ4z1Ghk3ZB9jnsMN3VewdcdmEzok+3g==}
 
   '@babel/generator@7.29.1':
     resolution: {integrity: sha512-qsaF+9Qcm2Qv8SRIMMscAvG4O3lJ0F1GuMo5HR/Bp02LopNgnZBC/EkbevHFeGs4ls/oPz9v+Bsmzbkbe+0dUw==}
@@ -1549,6 +1549,8 @@ snapshots:
   '@alloc/quick-lru@5.2.0': {}
 
   '@attestto/id-wallet-adapter@0.4.1': {}
+
+  '@attestto/identity-resolver@0.3.0': {}
 
   '@babel/generator@7.29.1':
     dependencies:

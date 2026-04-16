@@ -9,7 +9,7 @@ import { repoZipUrl } from '@/config/urls'
 import { discoverWallets, type WalletAnnouncement } from '@attestto/id-wallet-adapter'
 import { getEnabledProviders, ACCEPTED_DID_METHODS, DID_RESOLVER_URL } from '@/config/identity'
 import { generateDidKey, signAssessment, persistKeyToSession, loadKeyFromSession, clearKeyFromSession, type GeneratedKey } from '@/services/did-key'
-import { resolveIdentities, sns, caip10 } from 'identity-resolver'
+import { resolveIdentities, sns } from '@attestto/identity-resolver'
 
 const { methods, useCases, loadAll } = useMethodsData()
 onMounted(loadAll)
@@ -146,7 +146,7 @@ async function resolveSnsDomain(address: string) {
     const identities = await resolveIdentities({
       chain: 'solana',
       address,
-      providers: [sns(), caip10()],
+      providers: [sns()],
     })
     const snsResults = identities.filter(i => i.provider === 'sns' && i.did)
     if (snsResults.length > 0) {
