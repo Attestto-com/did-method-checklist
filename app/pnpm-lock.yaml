@@ -11,9 +11,9 @@ importers:
 
   .:
     dependencies:
-      identity-bridge:
-        specifier: ^0.1.0
-        version: 0.1.0
+      '@attestto/id-wallet-adapter':
+        specifier: ^0.4.1
+        version: 0.4.1
       identity-resolver:
         specifier: link:../../wallet-identity-resolver/packages/core
         version: link:../../wallet-identity-resolver/packages/core
@@ -78,6 +78,9 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@attestto/id-wallet-adapter@0.4.1':
+    resolution: {integrity: sha512-k2SZ1ZKiKQNin1Y/O+e6ylBdQxkaKkzc+vn8GK+YTI0R5DzDbRRLiTT3DxjPbssQbFXkDRQFq/NGkfOr+NJQBQ==}
 
   '@babel/generator@7.29.1':
     resolution: {integrity: sha512-qsaF+9Qcm2Qv8SRIMMscAvG4O3lJ0F1GuMo5HR/Bp02LopNgnZBC/EkbevHFeGs4ls/oPz9v+Bsmzbkbe+0dUw==}
@@ -1025,9 +1028,6 @@ packages:
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
 
-  identity-bridge@0.1.0:
-    resolution: {integrity: sha512-3q7YhfWYG4ZVB9Yt8nwA1PifUKXpQOb69D9oJA2UYkAfkxfH2wcDhfEAH1QDY/9d2j7MmWhcKJx/N81hBYQMjg==}
-
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
@@ -1547,6 +1547,8 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@attestto/id-wallet-adapter@0.4.1': {}
 
   '@babel/generator@7.29.1':
     dependencies:
@@ -2406,8 +2408,6 @@ snapshots:
   he@1.2.0: {}
 
   hookable@5.5.3: {}
-
-  identity-bridge@0.1.0: {}
 
   ignore@5.3.2: {}
 
